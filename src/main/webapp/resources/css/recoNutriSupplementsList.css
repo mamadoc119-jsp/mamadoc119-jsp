@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+
+.supplements-full-container{
+    margin-top: 200px;
+}
+
+.supplements-origin-box{
+    margin: 0 auto;
+    width: 1200px;
+    height: 1200px; /*바꾸기*/ 
+}
+
+
+.supplements-title{
+    font-weight: bolder;
+    font-size: 45px;
+    margin-bottom: 5px;
+}
+.supplements-origin-title{
+    margin-left: 140PX;
+    width: 910px;
+    text-align: center;
+}
+
+.supplements-sub-title{
+color: #999999; 
+}
+
+
+.supplements-search-full-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.search{
+    font-size: 16px;
+ 
+    padding: 10px;
+    border: 0px;
+    border: 1px solid 999999;
+    border-radius: 5px;
+    float: left;
+}
+
+.search-button{
+    width: 60px;
+    height: 100%;
+    border: 0px;
+    outline: none;
+    float: right;
+    background-color: #f9bb00;;
+    border-radius: 5px;
+    margin-left: 10px ;
+    cursor: pointer;
+}
+
+div select{
+    height: 39px;
+    margin-right: 10px;
+}
+.drop-div{
+    border-radius: 5px;
+}
+
+.supplements-list-full-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+}
+
+th, td{
+    height: 50px;
+}
+.reco-supply-cotain-box{
+    width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3개의 열을 생성 */
+    gap: 10px; /* 열 사이의 간격 설정 */
+    margin: 0 auto;
+ 
+}
+
+.reco-supply-se-box{
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+    height: 370px;
+    border-radius: 24px;
+    width: 247px;
+    margin-bottom: 48px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+    
+}
+.kindSuppImg-container{
+    width: 240px;
+    height: 200px;
+}
+.kindSuppImg{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.su-title{
+    font-weight: bold;
+    font-size: 21px;
+}
+.su-detail{
+    margin-top: 10px;
+}
+
+/*페이징처리 위치 참고*/
+.paging-part{
+    border: 1px solid black;
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+}
