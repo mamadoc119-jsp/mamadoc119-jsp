@@ -11,21 +11,27 @@
     <script defer src="${pageContext.request.contextPath}/resources/js/memberInfo.js"></script>
 </head>
 <body>
+	<!-- 헤더(로그아웃) -->
+	<jsp:include page="../include/header.jsp" />
+	
+	<!-- 일반 회원 정보 수정 -->
     <form class="join" action="${pageContext.request.contextPath}/index.jsp">
-    <div class="join-container">
+    	<div class="join-container">
 
-    <h1 class="join-title">일반 회원 정보 수정</h1>
-    <h5 class="join-subtitle">*표시는 수정 가능한 항목입니다.</h5>
+		<!-- 일반 회원 정보 수정 제목, 소제목 -->
+    	<h1 class="join-title">일반 회원 정보 수정</h1>
+    	<h5 class="join-subtitle">*표시는 수정 가능한 항목입니다.</h5>
 
-    <div class="join-name"><h5>성명</h5>
-        <input type="text" class="join-name" id="bt-non" readonly></div>
+		<!-- 회원 정보 수정 양식 -->
+    	<div class="join-name"><h5>성명</h5>
+      		<input type="text" class="join-name" id="bt-non" readonly></div>
 
-    <div class="join-email"><h5>이메일</h5>
-        <input type="email" class="join-email" id="bt-non" readonly></div>
+    	<div class="join-email"><h5>이메일</h5>
+       	 	<input type="email" class="join-email" id="bt-non" readonly></div>
 
-    <div class="join-nickname"><h5>닉네임*</h5>
-        <input type="text" class="join-nickname" class="bt" placeholder=" 닉네임 입력" required>
-        <button class="bt-certification">인증하기</button></div>
+    	<div class="join-nickname"><h5>닉네임*</h5>
+        	<input type="text" class="join-nickname" class="bt" placeholder=" 닉네임 입력" required>
+        	<button class="bt-certification">인증하기</button></div>
 
         <div class="join-zipcode"><h5>우편번호*</h5>
             <input type="text" class="join-zipcode" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
@@ -34,16 +40,17 @@
             <input type="text" class="join-addr-extra" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
             <input type="text" class="join-address-detail" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요."><br>
 
+		<!-- 회원 정보 수정 완료 버튼 -->
         <div class="join-button"><button class="bt-join">확인</button></div>
 
+		<!-- 비밀번호 찾기 및 회원 탈퇴 -->
         <span class="change-pw"><a href="${pageContext.request.contextPath}/password/ckMember.jsp" class="change-pw-tag">비밀번호 찾기</a></span>
         <span class="withdrawal"><a href="${pageContext.request.contextPath}/index.jsp" class="withdrawal-tag">회원 탈퇴</a></span>
-    </div>
-</form>
+    	</div>
+	</form>
 
-        
-
-    
-
+	<!-- footer -->
+	<jsp:include page="../include/footer.jsp" />
+	
 </body>
 </html>

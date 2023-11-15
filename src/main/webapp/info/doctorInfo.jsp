@@ -11,12 +11,18 @@
     <script defer src="${pageContext.request.contextPath}/resources/js/doctorInfo.js"></script>
 </head>
 <body>
+	<!-- 헤더(로그아웃) -->
+	<jsp:include page="../include/header.jsp" />
+
+	<!-- 의료인 회원 정보 수정 -->
     <form class="join" action="${pageContext.request.contextPath}/index.jsp">
     <div class="join-container">
 
+	<!-- 의료인 회원 정보 수정 제목, 소제목 -->
     <h1 class="join-title">의료인 회원 정보 수정</h1>
     <h5 class="join-subtitle">*표시는 수정 가능한 항목입니다.</h5>
 
+	<!-- 회원 정보 수정 양식 -->
     <div class="join-name"><h5>성명</h5>
         <input type="text" class="join-name" id="bt-non" readonly></div>
 
@@ -37,12 +43,17 @@
     <div class="join-major"><h5>전공</h5>
         <input type="text" class="join-major" id="bt-non" readonly></div>
 
+	<!-- 회원 정보 수정 완료 버튼 -->
         <div class="join-button"><button class="bt-join">확인</button></div>
 
+	<!-- 비밀번호 찾기 및 회원 탈퇴 -->
         <span class="change-pw"><a href="${pageContext.request.contextPath}/password/ckMember.jsp" class="change-pw-tag">비밀번호 찾기</a></span>
         <span class="withdrawal"><a href="${pageContext.request.contextPath}/index.jsp" class="withdrawal-tag">회원 탈퇴</a></span>
     </div>
 </form>
+
+	<!-- footer -->
+	<jsp:include page="../include/footer.jsp" />
 
 </body>
 </html>
