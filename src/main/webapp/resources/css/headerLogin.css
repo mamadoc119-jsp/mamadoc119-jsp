@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+header{
+    width: 1515px;
+    height: 118px;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: auto;
+    z-index: 20;
+    background: #fff;
+    font-size: 16px;
+    
+}
+.main-header-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.main-header-logo{
+    margin-left: 80px;
+    width: 100px;
+    height: 90%;
+    margin-right: 100px;
+}
+.main-logo-tag{
+    width: 100%;
+    height: 100%;
+}
+.main-logo-img{
+    width: 100%;
+    height: 100%;
+}
+.main-header-category{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    margin-right: 70px;
+    align-items: center;
+}
+.main-header-category-ul{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+    position: relative;
+}
+.main-header-category-list{
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.main-category-tag,
+.main-member-tag{
+    text-decoration: none;
+    color: #000;
+}
+.main-category-tag:hover,
+.main-member-tag:hover,
+.main-hidden-tag:hover{
+    color: #f9bb00;
+}
+.main-header-member{
+    width: 15%;
+    height: 100%;
+}
+.main-header-member-ul{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+.main-header-member-list{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+@keyframes fadeInDown{
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to{
+        opacity: none;
+        transform: 2;
+    }
+}
+.main-hidden-category{
+    position: absolute;
+    top: 95px;
+    left: 0px;
+    width: 100%;
+    height: 130px;
+    background-color: #000;
+    opacity: 60%;
+    display: none;
+    animation: fadeInDown 1s;
+}
+.main-hidden-ul{
+    list-style: none;
+    margin-left: 755px;
+    margin-top: 10px;
+}
+.main-hidden-ul2{
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 300px;
+}
+.main-hidden-ul3{
+    list-style: none;
+    margin-top: 10px;
+    margin-left: 28px;
+}
+.main-hidden-list{
+   margin-bottom: 8px;
+}
+.main-hidden-tag{
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+}
