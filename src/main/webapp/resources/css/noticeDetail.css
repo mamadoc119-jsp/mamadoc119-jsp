@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.modify-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #1cd6ff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #1cd6ff;
+    margin-right: 5px;
+}
+
+.modify-btn:hover{
+    background: #1cd6ff;
+    color: white;
+    transition: 0.3s;
+}
+
+.remove-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #f95a00;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #f95a00;
+}
+
+.remove-btn:hover{
+    background-color: #f95a00;
+    color: white;
+    transition: 0.3s;
+}
