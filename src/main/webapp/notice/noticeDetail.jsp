@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noticeDetail.css">
 </head>
 <body>
+<jsp:include page="../include/header.jsp" />
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
-        <div style="width: 1200px;display: flex;flex-direction: column;">
-            
+        <div style="width: 900px;display: flex;flex-direction: column;">
+            <div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">공지사항</div>
             <!-- 제목/등록날짜 -->
             <div style="display: flex;justify-content: space-between;border-bottom: 1px solid gray;padding: 10px;">
                 <!-- 제목 -->
@@ -50,6 +52,7 @@
             </div>
         </div>
     </div>
+<jsp:include page="../include/footer.jsp" />
 <script src="${pageContext.request.contextPath}/resources/js/noticeDetail.js"></script>
 </body>
 </html>

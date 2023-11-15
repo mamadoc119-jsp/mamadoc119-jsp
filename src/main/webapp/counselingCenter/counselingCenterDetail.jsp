@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +11,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
+<jsp:include page="../include/header.jsp" />
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
-        <div style="width: 1200px;display: flex;flex-direction: column;">
-
+        <div style="width: 900px;display: flex;flex-direction: column;">
+			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
             <!-- 제목/등록날짜 -->
             <div style="display: flex;justify-content: space-between;border-bottom: 1px solid gray;padding: 10px;">
                 <!-- 제목 -->
@@ -74,7 +76,7 @@
                         <input type="button" value="댓글" class="toggle" id="11">
                         <div style="position: absolute;display: flex;flex-direction: column;right: 10px;top: 38px;">
                             <input type="button" value="수정" class="reply" id="10">
-                            <form action="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" onsubmit="return removeReply();">
+                            <form action="${pageContext.request.contextPath}/counselingCenter/counselingCenterList.jsp" onsubmit="return removeReply();">
                                 <!-- 댓글 pk -->
                                 <input type="hidden" value="1">
                                 <button class="remove" id="10">삭제</button>
@@ -94,6 +96,7 @@
             </div>
         </div>
     </div>
+<jsp:include page="../include/footer.jsp" />
 <script src="${pageContext.request.contextPath}/resources/js/counselingCenterDetail.js"></script>
 </body>
 </html>
