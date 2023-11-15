@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +10,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/precautionDetail.css">
 </head>
 <body>
+<jsp:include page="../include/header.jsp" />
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
-        <div style="width: 1200px;display: flex;flex-direction: column;">
-            
+        <div style="width: 900px;display: flex;flex-direction: column;">
+            <div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">예방알림</div>
             <!-- 제목/등록날짜 -->
             <div style="display: flex;justify-content: space-between;border-bottom: 1px solid gray;padding: 10px;">
                 <!-- 제목 -->
@@ -44,12 +46,13 @@
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionList.jsp" onsubmit="return removeMsg();">
+                <form action="${pageContext.request.contextPath}/precaution/precautionaryNoticeList.jsp" onsubmit="return removeMsg();">
                     <button class="remove-btn">삭제</button>
                 </form>
             </div>
         </div>
     </div>
+<jsp:include page="../include/footer.jsp" />
 <script src="${pageContext.request.contextPath}/resources/js/precautionDetail.js"></script>
 </body>
 </html>
