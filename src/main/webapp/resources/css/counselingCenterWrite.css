@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.title{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    border: 2px solid #f9bb00;
+    border-radius: 5px;
+}
+
+/* 버튼 */
+.previous-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #f95a00;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #f95a00;
+}
+
+.previous-btn:hover{
+    background-color: #f95a00;
+    color: white;
+    transition: 0.3s;
+}
+
+.regist-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #f9bb00;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #f9bb00;
+}
+
+.regist-btn:hover{
+    background-color: #f9bb00;
+    color: white;
+    transition: 0.3s;
+}
