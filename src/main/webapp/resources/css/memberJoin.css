@@ -1,7 +1,5 @@
 body{
-    width: 1000px;
-    height: auto;
-    margin-top: 130px;
+    width: 1550px;
 }
 
 form{
@@ -11,9 +9,8 @@ form{
 
 .join-container{
     width: 420px;
-    height: 2200px;
+    height: 1820px;
     position: relative;
-    left: 500px;
     padding: 50px;
     box-shadow: 3px 3px 10px grey;
     /* border: solid 1px black; */
@@ -33,14 +30,29 @@ form{
     margin-bottom: 40px;
 }
 
-input[type=text], input[type=password], input[type=email]{
+.input{
    width: 300px;
    height: 40px;
+   margin: 10px 0px 30px 0px;
 }
 
-.join-addr-extra, .join-address-detail{
-    width: 150px;
-    height: 40px;
+
+.address-code{
+	width: 300px;
+   	height: 40px;
+   	margin: 10px 0px 10px 0px;
+}
+
+.address {
+    margin-bottom: 10px;
+    width: 410px;
+   	height: 40px;
+}
+
+.address-find{
+	width: 410px;
+   	height: 40px;
+   	margin-bottom: 10px;
 }
 
 #bt-non{
@@ -56,15 +68,6 @@ button{
     height: 45px;
     margin-left: -4px;
 } 
-
-.join-address, .join-zipcode, .join-address-detail {
-    margin-bottom: 5px;
-}
-
-.join-address-detail{
-    margin-bottom: 10px;
-    margin-top: 5px;
-}
 
 
 .scroll-box{
@@ -84,6 +87,7 @@ button{
 
 .join-agree-all{
     font-weight: bold;
+    margin-top: 10px;
 }
 
 .bt-join{

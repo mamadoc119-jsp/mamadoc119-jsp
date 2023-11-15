@@ -11,55 +11,60 @@
     <script defer src="${pageContext.request.contextPath}/resources/js/doctorJoin.js"></script>
 </head>
 <body>
+	<!-- 헤더(로그아웃) -->
+	<jsp:include page="../include/header.jsp" />
+	
+	<!-- 의료인 회원가입 페이지 -->
     <form class="join" action="${pageContext.request.contextPath}/login/login.jsp">
     <div class="join-container">
 
+	<!-- 회원가입 페이지 제목, 소제목 -->
     <h1 class="join-title">의료인 회원가입</h1>
     <h4 class="join-subtitle">회원가입을 위해 아래 항목을 입력해주세요.</h4>
 
+	<!-- 의료인 회원가입 양식 -->
     <div class="join-subcontainer">
     <h5 class="join-info">*표시는 필수항목입니다.</h5>
 
     <div class="join-name"><h5>성명*</h5>
-        <input type="text" class="join-name" id="bt-non" placeholder=" 이름 입력" required></div>
+        <input type="text" class="input" id="bt-non" placeholder=" 이름 입력" required></div>
 
     <div class="join-email"><h5>이메일*</h5>
-        <input type="email" class="join-email" id="bt-non" placeholder=" 이메일 입력" required></div>
+        <input type="email" class="input" id="bt-non" placeholder=" 이메일 입력" required></div>
 
     <div class="join-code"><h5>인증코드 입력*</h5>
-        <input type="text" class="join-code" class="bt" placeholder=" 인증코드 입력" required>
-        <button class="bt-sendcode">인증코드 발송</button></div>
+        <input type="text" class="input" class="bt" placeholder=" 인증코드 입력" required>
+        <button class="bt-sendcode" type="button">인증코드 발송</button></div>
 
     <div class="join-nickname"><h5>닉네임*</h5>
-        <input type="text" class="join-nickname" class="bt" placeholder=" 닉네임 입력" required>
-        <button class="bt-certification">인증하기</button></div>
+        <input type="text" class="input" class="bt" placeholder=" 닉네임 입력" required>
+        <button class="bt-certification" type="button">인증하기</button></div>
 
     <div class="join-pw"><h5>비밀번호*</h5>
-        <input type="password" class="join-pw" id="bt-non" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required></div>
+        <input type="password" class="input" id="bt-non" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required></div>
 
     <div class="join-ckpw"><h5>비밀번호 재입력*</h5>
-        <input type="password" class="join-ckpw" id="bt-non" placeholder=" 비밀번호를 한번 더 입력해주세요." required></div>
+        <input type="password" class="input" id="bt-non" placeholder=" 비밀번호를 한번 더 입력해주세요." required></div>
 
         <div class="join-zipcode"><h5>근무지 주소*</h5>
-            <input type="text" class="join-zipcode" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
-            <button class="bt-findzipcode" onclick="sample6_execDaumPostcode()">주소찾기</button></div>
-            <input type="text" class="join-address" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." readonly>
-            <input type="text" class="join-addr-extra" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
-            <input type="text" class="join-address-detail" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요."></div><br>
+            <input type="text" class="address-code" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
+            <button class="bt-findzipcode" type="button" onclick="sample6_execDaumPostcode()">주소찾기</button></div>
+            <input type="text" class="address-find" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." readonly>
+            <input type="text" class="address" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
+            <input type="text" class="address" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요."></div><br>
     
-
     <div class="join-license-number"><h5>의사면허번호*</h5>
-        <input type="text" class="join-license-number" id="bt-non" placeholder=" 의사면허번호를 입력해주세요." required></div>
+        <input type="text" class="input" id="bt-non" placeholder=" 의사면허번호를 입력해주세요." required></div>
 
     <div class="join-major"><h5>전공*</h5>
-        <input type="text" class="join-major" id="bt-non" placeholder=" 전공을 입력해주세요." required></div>
+        <input type="text" class="input" id="bt-non" placeholder=" 전공을 입력해주세요." required></div>
 
     <div class="join-file"><h5>면허증 파일 업로드*</h5>
-        <input type="file" class="join-file" placeholder="의사면허증 파일을 업로드해주세요." required></div>
+        <input type="file" class="input" placeholder="의사면허증 파일을 업로드해주세요." required></div>
 
-
+	<!-- 이용약관 체크박스 -->
     <div class="join-agree-term-container">
-    <input type="checkbox" class="join-agree-term" name="agree">이용약관 동의*</div>
+    <input type="checkbox" class="join-agree-term" name="agree"> 이용약관 동의*</div>
     <div class="scroll-box">
        
         <strong>제 1장 총칙</strong>
@@ -183,8 +188,9 @@
         
     </div><br>
 
+	<!-- 개인정보 이용 및 취급 동의 체크박스 -->
     <div class="join-agree-personal-info-container">
-        <input type="checkbox" class="join-agree-personal-info" name="agree">개인정보 이용 및 취급 동의*</div>
+        <input type="checkbox" class="join-agree-personal-info" name="agree"> 개인정보 이용 및 취급 동의*</div>
         <div id ="box" class="scroll-box">            
             <p>제1조 (목적) 본 약관은 똥강아지 사이트(이하 "당 사이트")가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 
                 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
@@ -198,16 +204,20 @@
                 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
             <p>제1조 (목적) 본 약관은 똥강아지 사이트(이하 "당 사이트")가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 
                 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
-
         </div><br><hr>
 
+		<!-- 전체 동의 체크박스 -->
         <div class="join-agree-all">
-            <input type="checkbox" class="join-agree-all" onclick="selectAll(this)">모두 동의하기</div><br>
+            <input type="checkbox" class="join-agree-all" onclick="selectAll(this)"> 모두 동의하기</div><br>
 
+		<!-- 회원가입 버튼 -->
         <div class="join-button"><button class="bt-join">확인</button></div>
 
     </div>
 </form>
 
+	<!-- footer -->
+	<jsp:include page="../include/footer.jsp" />
+	
 </body>
 </html>
