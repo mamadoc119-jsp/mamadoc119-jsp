@@ -180,28 +180,28 @@
         <div class="main-pc-cate">
             <div class="main-pc-title">
                 <div class="main-pc-name">예방알림</div>
-                <a href="" class="main-pc-all">
+                <a href="${pageContext.request.contextPath}/precaution/precautionaryNoticeList.jsp" class="main-pc-all">
                     <div class="main-show-text">전체보기</div>
                     <img src="${pageContext.request.contextPath}/resources/img/more.png" alt="main-pc-more" class="main-all-img">
                 </a>
             </div>
             <!-- 예방알림 최신 3개글 -->
             <div class="main-pc-group">
-                <a href="" class="main-pc-detail">
+                <a href="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
                         예방알림글 제목 ㅎㅎ
                     </div>
                     <div class="main-detail-nick">종민Lee</div>
                     <div class="main-detail-date">2023.11.10</div>
                 </a>
-                <a href="" class="main-pc-detail">
+                <a href="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
                         예방알림글 제목 ㅎㅎ
                     </div>
                     <div class="main-detail-nick">종민Lee</div>
                     <div class="main-detail-date">2023.11.10</div>
                 </a>
-                <a href="" class="main-pc-detail">
+                <a href="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
                         예방알림글 제목 ㅎㅎ
                     </div>
@@ -213,28 +213,28 @@
         <div class="main-pc-cate">
             <div class="main-pc-title">
                 <div class="main-pc-name">상담소</div>
-                <a href="" class="main-pc-all">
+                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterList.jsp" class="main-pc-all">
                     <div class="main-show-text">전체보기</div>
                     <img src="${pageContext.request.contextPath}/resources/img/more.png" alt="main-pc-more" class="main-all-img">
                 </a>
             </div>
             <!-- 상담소 최신 3개글 -->
             <div class="main-pc-group">
-                <a href="" class="main-pc-detail">
+                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
                         상담소글 제목 ㅎㅎ
                     </div>
                     <div class="main-detail-nick">예은na</div>
                     <div class="main-detail-date">2023.11.10</div>
                 </a>
-                <a href="" class="main-pc-detail">
+                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
                         상담소글 제목 ㅎㅎ
                     </div>
                     <div class="main-detail-nick">예은na</div>
                     <div class="main-detail-date">2023.11.10</div>
                 </a>
-                <a href="" class="main-pc-detail">
+                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
                         상담소글 제목 ㅎㅎ
                     </div>

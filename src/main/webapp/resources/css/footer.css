@@ -9,7 +9,7 @@ body{
     justify-content: center;
 }
 footer{
-    width: 1515px;
+    width: 100%;
     background-color: #f4f4f4;
     display: flex;
 }
