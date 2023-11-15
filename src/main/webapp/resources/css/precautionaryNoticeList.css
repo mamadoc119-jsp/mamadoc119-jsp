@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+
+}
+.precautionary-full-container{
+    margin-top: 200px;
+}
+
+.precautionary-origin-box{
+    margin: 0 auto;
+    width: 1200px;
+    height: 1200px; /*바꾸기*/ 
+}
+
+
+.precautionary-title{
+    font-weight: bolder;
+    font-size: 45px;
+    margin-bottom: 5px;
+}
+.precautionary-origin-title{
+    margin-left: 140PX;
+    width: 910px;
+    text-align: center;
+}
+
+.precautionary-sub-title{
+    color: #999999; 
+}
+
+.search{
+    height: 38px;
+    width: 450px;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    margin: 0; /* 다른 요소와의 간격을 제거 */
+    padding: 0;
+}
+
+.precautionary-search-full-container{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.drop-div{
+    border-radius: 5px;
+} 
+
+.pre-search{
+    font-size: 16px;
+    width: 450px;
+    padding: 10px;
+    border: 0px;
+    border: 1px solid 999999;
+    border-radius: 5px;
+    float: left;
+}
+
+.search-button{
+    width: 60px;
+    height: 100%;
+    border: 0px;
+    outline: none;
+    float: right;
+    background-color: #f9bb00;;
+    border-radius: 5px;
+    margin-left: 10px ;
+    cursor: pointer;
+}
+
+div select{
+    height: 40px;
+    margin-right: 10px;
+    
+}
+
+
+.precautionary-list-full-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+}
+
+th, td{
+height: 50px;
+}
+.pre-title-contents{
+padding-left: 10px;
+}
+
+.write-down-div{
+display: flex;
+justify-content: right;
+margin-right: 180px;
+margin-top: 10px;
+
+}
+
+.write-down{
+    background-color: #f9bb00;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    width: 70px;
+    border: 0px;
+    height: 38px;
+}
+
+a{
+text-decoration: none;
+color: black;
+}
+
+/*페이징처리 위치 참고*/
+.paging-part{
+    border: 1px solid black;
+    width: 500px;
+    height: 50px;
+    margin: 0 auto;
+}
