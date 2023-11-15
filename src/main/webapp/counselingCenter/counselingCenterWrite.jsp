@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상담소</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/counselingCenterWrite.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 </head>
 <body>
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
-        <div style="width: 1200px;display: flex;flex-direction: column;">
-            
+        <div style="width: 900px;display: flex;flex-direction: column;">
+            <div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
             <form action="${pageContext.request.contextPath}/counselingCenter/counselingCenterList.jsp" onsubmit="return registMsg();">
                 <!-- 제목/등록날짜 -->
                 <div style="display: flex;">
@@ -35,21 +36,22 @@
     </div>
 <script src="${pageContext.request.contextPath}/resources/js/counselingCenterWrite.js"></script>
 <script>
-    $('#summernote').summernote({
-        placeholder: '내용을 입력하세요.',
-        tabsize: 2,
-        height: 500,
-        focus: true,
-        toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ['insert', ['link', 'picture', 'video']],
-            ['view', ['fullscreen', 'codeview', 'help']]
-        ]
-    });
+$('#summernote').summernote({
+    placeholder: '내용을 입력하세요.',
+    tabsize: 2,
+    height: 500,
+    focus: true,
+    disableResizeEditor: true,
+    toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+    ]
+});
 </script>
 </body>
 </html>
