@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.modify-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #1cd6ff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #1cd6ff;
+    margin-right: 5px;
+}
+
+.modify-btn:hover{
+    background: #1cd6ff;
+    color: white;
+    transition: 0.3s;
+}
+
+.remove-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #f95a00;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #f95a00;
+}
+
+.remove-btn:hover{
+    background-color: #f95a00;
+    color: white;
+    transition: 0.3s;
+}
+
+.regist-btn{
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: #f9bb00;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+    border: 2px solid #f9bb00;
+}
+
+.regist-btn:hover{
+    background-color: #f9bb00;
+    color: white;
+    transition: 0.3s;
+}
+
+/* 토글 */
+.toggle{
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+    color: #f9bb00;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    border: 2px solid #f9bb00;
+}
+
+.toggle:hover{
+    background-color: #f9bb00;
+    color: white;
+    transition: 0.3s;
+}
+
+.reply{
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+    color: #1cd6ff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    border: 2px solid #1cd6ff;
+    display: none;
+}
+
+.reply:hover{
+    background-color: #1cd6ff;
+    color: white;
+    transition: 0.3s;
+}
+
+.remove{
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+    color: #f95a00;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    border: 2px solid #f95a00;
+    display: none;
+}
+
+.remove:hover{
+    background-color: #f95a00;
+    color: white;
+    transition: 0.3s;
+}
+
+.reply-textarea{
+    margin-top: 10px;
+    margin-bottom: 6px;
+    margin-right: 10px;
+    margin-left: -1px;
+    height: 60px;
+    width: 100%;
+    resize: none;
+}
+
+.reply-modify-btn{
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+    color: #1cd6ff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 4px 8px;
+    border: 2px solid #1cd6ff;
+}
+
+.reply-modify-btn:hover{
+    background-color: #1cd6ff;
+    color: white;
+    transition: 0.3s;
+}
