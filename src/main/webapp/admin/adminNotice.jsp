@@ -15,7 +15,7 @@
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
-             <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
+            <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminDoctorApply.jsp">신청함 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
@@ -61,7 +61,7 @@
                 <div class="title">내용</div>
                 <div class="date">작성일자</div>
                 <div class="sortation">
-                    <a href="#"><button class="show-btn">보기</button></a><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
+                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeDetail.jsp'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
                     <button class="remove-btn">삭제</button>
                 </div>
             </div>
@@ -70,7 +70,5 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:src="@{/js/admin/adminClass.js}"></script>
 </body>
 </html>

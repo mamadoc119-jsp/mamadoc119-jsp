@@ -62,7 +62,7 @@
                 <div class="title">예방상담 게시물 제목</div>
                 <div class="date">작성일자</div>
                 <div class="sortation">
-                    <a href="#"><button class="show-btn">보기</button></a> <!--클릭 시 예방상담 상세페이지로 이동-->
+                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/precaution/precautionDetail.jsp'">보기</button> <!--클릭 시 예방상담 상세페이지로 이동-->
                     <button class="remove-btn">삭제</button>
                 </div>
             </div>

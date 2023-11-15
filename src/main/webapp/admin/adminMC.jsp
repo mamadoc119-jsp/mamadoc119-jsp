@@ -63,7 +63,7 @@
                 <div class="title">의료상담 게시판 제목</div>
                 <div class="date">작성일자</div>
                 <div class="sortation">
-                    <a href="#"><button class="show-btn">보기</button></a><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
+                   <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
                     <button class="remove-btn">삭제</button>
                 </div>
             </div>
@@ -73,8 +73,5 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:src="@{/js/admin/adminClass.js}"></script>
-
 </body>
 </html>
