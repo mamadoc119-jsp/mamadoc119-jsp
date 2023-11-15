@@ -16,7 +16,7 @@
     
 </head>
 <body>
-    <header class="header" th:fragment="adminHeader">
+    <header class="header">
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" placeholder="제목을 입력해주세요" id="noticeTitle" name="noticeTitle"></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" placeholder="제목을 입력해주세요" id="noticeTitle" name="noticeTitle" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                     <tr>
@@ -53,7 +53,7 @@
                    
                 </table>
                 <div class="btn-container">
-                <button  class="register-btn"type="button" value="등록" id="btn"> 등록 </button>
+                <button  class="register-btn" type="submit" value="등록" id="btn"> 등록 </button>
                 <!--button을 페이지리로딩과 폼제출을 막아줌 스크립트를 이용하여 입력한 값들을 전송합니다-->
                 <!-- submit을 하면 작성했던 글들이 사라지는것을 방지하기 위함 -->
                 </div>
@@ -62,7 +62,6 @@
         
     </div>
 </div>
-<script th:src="@{/js/admin/adminMain.js}"></script>
 <script>
 $('#summernote').summernote({
         placeholder: '내용을 입력하세요.',

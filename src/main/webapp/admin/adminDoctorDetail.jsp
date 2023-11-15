@@ -80,7 +80,7 @@
         </div>
     </div><!--"right-container" 끝-->
 </div><!--"main-container" 끝-->
-<input type="hidden" value="의료진 신청번호?의료진 유저번호?" class="apply-num">
+<!-- <input type="hidden" value="의료진 신청번호?의료진 유저번호?" class="apply-num"> -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/adminDoctorDetail.js"></script>
 </body>

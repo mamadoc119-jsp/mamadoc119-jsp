@@ -62,7 +62,7 @@
                 <div class="birth">닉네임</div>
                 <div class="phone">근무지 주소</div>
                 <div class="sortation-mento">
-                    <button class="detail-btn"><a href="${pageContext.request.contextPath}/admin/adminDocterDetail.jsp">상세</a></button> <!--상세 버튼 클릭하면 증빙자료를 볼 수 있어야 되는데 어떻게 처리해야댈지 상의해야함-->
+                    <button class="detail-btn"><a href="${pageContext.request.contextPath}/admin/adminDoctorDetail.jsp">상세</a></button> <!--상세 버튼 클릭하면 증빙자료를 볼 수 있어야 되는데 어떻게 처리해야댈지 상의해야함-->
                     <button class="approval-btn" onclick="location.href(승인처리)">승인</button> <!--승인 시 의료진으로 회원가입이 완료됨--> <!--onclick 나중에 js파일로 숨길거임-->
                     <button class="refusal-btn " onclick="location.href(거부처리)">거부</button><!-- 거부 시 회원가입 기각--><!--onclick 나중에 js파일로 숨길거임-->
                 </div>
@@ -72,6 +72,5 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 </html>

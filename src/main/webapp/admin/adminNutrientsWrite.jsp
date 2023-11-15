@@ -30,31 +30,31 @@
     </div>
     <div class="right-container">
         <div class="all-container"> 
-            <form id="form" action="gymWriteOk.bo" method ="post" enctype="multipart/form-data"><!--서버에 보내기 위해 form 태그를 사용함--> 
+            <form id="form" action="" method ="post" enctype="multipart/form-data"><!--서버에 보내기 위해 form 태그를 사용함--> 
                 <table><!--테이블 이용 10행, 2열의 표를 만듬-->
                     <tr><!--tr은 하나의 행을 의미함-->
                         <th colspan="2">영양제 등록</th><!--th 제목의 셀을 의미함, colspan=2는 2칸의 셀은 가로로 병합을 의미-->
                     </tr>
                     <tr>
                         <th>영양제명</th>
-                        <td><input type="text" placeholder="시설명을 입력해주세요" id="nutrientsTitle" name="nutrientsTitle"></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" placeholder="시설명을 입력해주세요" id="nutrientsTitle" name="nutrientsTitle" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                     
                     <tr>
                         <th>영양제사진</th>
-                        <td><input type="file" id="photo" name="photoName" accept="image/gif, image/jpeg, image/png" /></td>
+                        <td><input type="file" id="photo" name="photoName" accept="image/gif, image/jpeg, image/png" required/></td>
                         <!--input file을 이용하여 파일을 업로드하여 사진을 불러올 수 있도록 함-->
                     </tr>
                     
                     <tr>
                         <th>효과</th>
-                        <td><input type="text" placeholder="효과를 입력해주세요" id="nutrientsPerf" name="nutrientsPerf"></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" placeholder="효과를 입력해주세요" id="nutrientsPerf" name="nutrientsPerf" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                     <tr>
                         <th>정보</th>
-                        <td><input type="text" placeholder="영양제 정보를 입력해주세요" id="nutrientsInfo" name="nutrientsInfo"></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" placeholder="영양제 정보를 입력해주세요" id="nutrientsInfo" name="nutrientsInfo" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                    
@@ -67,7 +67,7 @@
                    
                 </table>
                 <div class="btn-container">
-                <button type="button" value="등록" id="btn"> 등록 </button>
+                <button type="submit" value="등록" id="btn">등록 </button>
                 <!--button을 페이지리로딩과 폼제출을 막아줌 스크립트를 이용하여 입력한 값들을 전송합니다-->
                 <!-- submit을 하면 작성했던 글들이 사라지는것을 방지하기 위함 -->
                 </div>
@@ -76,7 +76,5 @@
         
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:src="@{/js/admin/adminMain.js}"></script>
 </body>
 </html>
