@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +11,9 @@
 </head>
 <body>
 
+<!-- 헤더 -->
+<jsp:include page="../include/header.jsp" />
+<!-- 헤더 -->
 
     <div class="supplements-full-container">
         <!--영양제추천 타이틀-->
@@ -237,6 +241,9 @@
         </div>
     
         </div>
-    </div>
+  </div> 
+  
+    <!-- footer -->
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

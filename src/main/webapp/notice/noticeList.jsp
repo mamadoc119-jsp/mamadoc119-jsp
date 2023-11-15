@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +10,8 @@
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noticeList.css">
 </head>
 <body>
+<jsp:include page="../include/header.jsp" />
+
     <div class="notice-full-container">
         <!--예방알림 타이틀-->
         <div class="notice-origin-box">
@@ -66,5 +69,7 @@
 
         </div>
     </div>
+    <!-- footer -->
+<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

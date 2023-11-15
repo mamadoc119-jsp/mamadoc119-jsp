@@ -245,6 +245,7 @@
         </div>
     </section>
 </main>
+
 <!-- footer -->
 <jsp:include page="include/footer.jsp" />
 <script defer src="${pageContext.request.contextPath}/resources/js/mainPage.js"></script>
