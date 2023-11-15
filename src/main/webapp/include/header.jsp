@@ -22,7 +22,7 @@
         <nav class="main-header-category">
             <ul class="main-header-category-ul">
                 <li class="main-header-category-list">
-                    <a href="" class="main-category-tag">소아영양제</a>
+                    <a href="${pageContext.request.contextPath}/recoNutriSupplements/recoNutriSupplementsList.jsp" class="main-category-tag">소아영양제</a>
                 </li>
                 <li class="main-header-category-list">
                     <a href="${pageContext.request.contextPath}/findHp/findHp.jsp" class="main-category-tag">병원찾기</a>
@@ -31,10 +31,10 @@
                     <a href="" class="main-category-tag">야간진료병원</a>
                 </li>
                 <li class="main-header-category-list">
-                    <a href="" class="main-category-tag">정보놀이터</a>
+                    <a href="${pageContext.request.contextPath}/precaution/precautionaryNoticeList.jsp" class="main-category-tag">정보놀이터</a>
                 </li>
                 <li class="main-header-category-list">
-                    <a href="" class="main-category-tag">공지사항</a>
+                    <a href="${pageContext.request.contextPath}/notice/noticeList.jsp" class="main-category-tag">공지사항</a>
                 </li>
             </ul>
         </nav>
@@ -51,10 +51,10 @@
         <div class="main-hidden-category">
             <ul class="main-hidden-ul">
                 <li class="main-hidden-list">
-                    <a href="" class="main-hidden-tag">예방 알림</a>
+                    <a href="${pageContext.request.contextPath}/precaution/precautionaryNoticeList.jsp" class="main-hidden-tag">예방 알림</a>
                 </li>
                 <li class="main-hidden-list">
-                    <a href="" class="main-hidden-tag">상담소</a>
+                    <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterList.jsp" class="main-hidden-tag">상담소</a>
                 </li>
             </ul>
             <ul class="main-hidden-ul2">
