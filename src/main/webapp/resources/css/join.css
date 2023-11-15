@@ -1,0 +1,52 @@
+body{
+    width: 1000px;
+    height: auto;
+    margin-top: 130px;
+}
+
+form{
+    margin-bottom: 170px;
+    margin-top: 200px;
+}
+
+.join-container{
+    width: 580px;
+    height: 400px;
+    position: relative;
+    left: 430px;
+    padding: 50px;
+    box-shadow: 3px 3px 10px grey;
+    /* border: solid 1px black; */
+}
+
+.join-title{
+    text-align: center;
+    margin: 20px;
+}
+
+.member-img, .doctor-img{
+    width: 200px;
+    height: 200px;
+    margin: 40px 40px 40px 45px;
+}
+
+.join-text{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.doctor{
+    margin: 40px 40px 40px 130px;
+    position: relative;
+}
+
+.member{
+    margin: 40px 40px 40px 80px;
+    position: relative;
+}
+
+a{
+    text-decoration: none;
+}
+
+
