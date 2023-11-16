@@ -43,7 +43,7 @@
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
                 <!-- 수정 -->
-                <form action="${pageContext.request.contextPath}/clinic/counselingCenterModify.jsp">
+                <form action="${pageContext.request.contextPath}/clinic/clinicModify.jsp">
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->
@@ -76,7 +76,7 @@
                         <input type="button" value="댓글" class="toggle" id="11">
                         <div style="position: absolute;display: flex;flex-direction: column;right: 10px;top: 38px;">
                             <input type="button" value="수정" class="reply" id="10">
-                            <form action="${pageContext.request.contextPath}/clinic/counselingCenterList.jsp" onsubmit="return removeReply();">
+                            <form action="${pageContext.request.contextPath}/clinic/clinicList.jsp" onsubmit="return removeReply();">
                                 <!-- 댓글 pk -->
                                 <input type="hidden" value="1">
                                 <button class="remove" id="10">삭제</button>
