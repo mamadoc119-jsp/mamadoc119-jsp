@@ -81,5 +81,5 @@ function modifyReplyBtn(e){
     var modifyBtn = document.getElementById(modifyId);
     var modify = modifyBtn.parentElement.parentElement.nextElementSibling;
     console.log(modify);
-    $(modify).contents().unwrap().wrapAll("<form action='${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp' class='reply-form'></form>");
+    $(modify).contents().unwrap().wrapAll("<form action='${pageContext.request.contextPath}/counselingCenter/clinicclinicDetail.jsp' class='reply-form'></form>");
 }
