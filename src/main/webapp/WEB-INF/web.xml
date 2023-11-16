@@ -9,4 +9,117 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+	<servlet>
+		<servlet-name>Member</servlet-name>
+		<servlet-class>com.mama.doc.me.MemberFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Member</servlet-name>
+		<url-pattern>*.me</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>Doctor</servlet-name>
+		<servlet-class>com.mama.doc.do.DoctorFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Doctor</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>Precaution</servlet-name>
+		<servlet-class>com.mama.doc.pr.PrecautionFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Precaution</servlet-name>
+		<url-pattern>*.pr</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Clinic</servlet-name>
+		<servlet-class>com.mama.doc.cl.ClinicFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Clinic</servlet-name>
+		<url-pattern>*.cl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Admin</servlet-name>
+		<servlet-class>com.mama.doc.ad.AdminFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Admin</servlet-name>
+		<url-pattern>*.ad</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdNutrients</servlet-name>
+		<servlet-class>com.mama.doc.adnu.AdNutrientsFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdNutrients</servlet-name>
+		<url-pattern>*.adnu</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdNotice</servlet-name>
+		<servlet-class>com.mama.doc.adno.AdNoticeFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdNotice</servlet-name>
+		<url-pattern>*.adno</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdClinic</servlet-name>
+		<servlet-class>com.mama.doc.adcl.AdClinicFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdClinic</servlet-name>
+		<url-pattern>*.adcl</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdPrecaution</servlet-name>
+		<servlet-class>com.mama.doc.adpr.AdPrecautionFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdPrecaution</servlet-name>
+		<url-pattern>*.adpr</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdDoctor</servlet-name>
+		<servlet-class>com.mama.doc.addo.AdDoctorFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdDoctor</servlet-name>
+		<url-pattern>*.addo</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>AdMember</servlet-name>
+		<servlet-class>com.mama.doc.adme.AdMemberFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdMember</servlet-name>
+		<url-pattern>*.adme</url-pattern>
+	</servlet-mapping>
+		
+	
+	<servlet>
+		<servlet-name>MainPage</servlet-name>
+		<servlet-class>com.mama.doc.ma.MainPageFrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MainPage</servlet-name>
+		<url-pattern>*.ma</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
 </web-app>
