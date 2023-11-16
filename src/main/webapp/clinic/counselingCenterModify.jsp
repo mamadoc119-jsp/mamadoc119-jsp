@@ -16,7 +16,7 @@
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
         <div style="width: 900px;display: flex;flex-direction: column;">
 			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
-            <form action="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" onsubmit="return modifyMsg();">
+            <form action="${pageContext.request.contextPath}/clinic/counselingCenterDetail.jsp" onsubmit="return modifyMsg();">
                 <!-- 제목/등록날짜 -->
                 <div style="display: flex;">
                     <!-- 제목 -->
