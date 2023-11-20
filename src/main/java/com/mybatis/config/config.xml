@@ -5,6 +5,8 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
+	
+   
 	<!-- 별칭 설정 -->
 	
 	<typeAliases>
@@ -14,6 +16,10 @@
 		<typeAlias type="com.mama.doc.dto.PrecautionDTO" alias="PrecautionDTO" />
 		<!-- 나예은 : 예방알림VO -->
 		<typeAlias type="com.mama.doc.vo.PrecautionVO" alias="PrecautionVO" />
+
+		<typeAlias type="com.mama.doc.dto.NoticeDto" alias = "noticeDto"/>
+		<typeAlias type="com.mama.doc.vo.AdPrVo" alias = "adPrVo"/>
+		<typeAlias type="com.mama.doc.vo.AdClinicVo" alias = "adClinicVo"/>
 	</typeAliases>
 
 <environments default="oracle">
@@ -34,6 +40,10 @@
 		<mapper resource="com/mybatis/mapper/MemberMapper.xml"></mapper>
 		<!-- 나예은 : 예방알림 -->
 		<mapper resource="com/mybatis/mapper/PrecautionMapper.xml"></mapper>
+   		<!-- commit할때 지워 -->
+		<mapper resource = "com/mybatis/mapper/adNoticeMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/adPrMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/adClinicMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>

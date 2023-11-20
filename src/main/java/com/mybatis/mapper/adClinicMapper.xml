@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adcl">
+  <select id="adClinicList" parameterType = "adClinicVo" resultType="adClinicVo">
+    SELECT 
+    C.clinic_number,
+    C.member_number,
+    C.clinic_title,
+    C.clinic_content,
+    C.clinic_date,
+    M.member_name,
+    M.member_nickname
+	FROM MAMADOC_CLINIC C
+	JOIN MAMADOC_MEMBER M ON C.member_number = M.member_number
+
+   </select>
+   
+  
+   <delete id="adClinicDelete" parameterType="long">
+       delete from mamadoc_clinic where clinic_number = #{clinicNumber}
+	</delete>
+   
+
+   
+   
+   <!-- 
+   <select id="getTotal" resultType="_int">
+      select count(board_num) from tbl_board
+   </select> -->
+</mapper>

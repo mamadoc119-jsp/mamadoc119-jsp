@@ -30,33 +30,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="title-contents"><a href="">2023년 12월 31일 서버 점검 예정입니다.</a></td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.11.10</td>
-                    </tr>
-                    <!--아래는 반복되는 부분, 백단시 삭제하세요-->
-                    <tr>
-                        <td class="title-contents">새로운 영양제 추천이 올라왔습니다.</td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.10.25</td>
-                    </tr>
-                    <tr>
-                        <td class="title-contents">새로운 영양제 추천이 올라왔습니다.</td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.10.25</td>
-                    </tr>
-                    <tr>
-                        <td class="title-contents">새로운 영양제 추천이 올라왔습니다.</td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.10.25</td>
-                    </tr>
-                    <tr>
-                        <td class="title-contents">새로운 영양제 추천이 올라왔습니다.</td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.10.25</td>
-                    </tr>
-                    <!--여기까지는 반복되는 부분, 백단시 삭제하세요-->
+                <c:choose>
+                   <c:when test="${not empty adNoticeList}">
+	                   	<c:forEach var="adNotice" items="${adNoticeList}" varStatus="status">
+	                    <tr>
+	                        <td class="title-contents"><a href="${pageContext.request.contextPath}/notice/noticeDetail.adno?noticeNumber=${adNotice.noticeNumber}"><c:out value="${adNotice.noticeTitle}"/></a></td>
+	                        <td align="center">관리자</td>
+	                        <td align="center"><c:out value="${adNotice.noticeDate}"/></td>
+	                    </tr>
+	                    </c:forEach>
+                    </c:when>
+                 </c:choose>
                 </tbody>
             </table>
         </div>

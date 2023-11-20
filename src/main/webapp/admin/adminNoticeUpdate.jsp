@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,7 +20,7 @@
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
-             <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
+            <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminDoctorApply.jsp">신청함 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
@@ -34,20 +35,23 @@
     </div>
     <div class="right-container">
         <div class="all-container"> 
-            <form id="form" action="noticeWriteOk.adno" method ="get"><!--서버에 보내기 위해 form 태그를 사용함--> 
+            <form id="form" action="AdNoticeUpdateOk.adno" method ="post"><!--서버에 보내기 위해 form 태그를 사용함--> 
+            	<input type="hidden" name="noticeNumber" value="${noticeDetail.getNoticeNumber()}"/>
                 <table><!--테이블 이용 10행, 2열의 표를 만듬-->
                     <tr><!--tr은 하나의 행을 의미함-->
                         <th colspan="2">공지사항 등록</th><!--th 제목의 셀을 의미함, colspan=2는 2칸의 셀은 가로로 병합을 의미-->
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text" placeholder="제목을 입력해주세요" id="noticeTitle" name="noticeTitle" required></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" value="${noticeDetail.getNoticeTitle()}" placeholder="제목을 입력해주세요" id="noticeTitle" name="noticeTitle" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                     <tr>
                         <th>내용</th>
                         <!--textarea를 사용해 긴글을 작성 받게 합니다 / summernote로 바꿀까?-->
-                        <td><textarea id="summernote" class="summernote" placeholder="내용을 입력해주세요" name="noticeContent"></textarea></td>
+                        <td><textarea id="summernote" class="summernote" placeholder="내용을 입력해주세요" name="noticeContent">
+                        <c:out value="${noticeDetail.getNoticeContent()}"/>
+                        </textarea></td>
                     </tr>
                    
                 </table>

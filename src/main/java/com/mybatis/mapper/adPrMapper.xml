@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adpr">
+  <select id="adPrList" parameterType = "adPrVo" resultType="adPrVo">
+      SELECT 
+    D.doctor_number,
+    D.doctor_name,
+    D.doctor_nickname,
+    P.precaution_number,
+    P.doctor_number AS precaution_doctor_number,
+    P.precaution_title,
+    P.precaution_content,
+    P.precaution_date
+	FROM MAMADOC_DOCTOR D
+	JOIN MAMADOC_PRECAUTION P ON D.doctor_number = P.doctor_number
+   </select>
+   
+  
+   <delete id="adPrDelete" parameterType="long">
+      delete from mamadoc_precaution where precaution_number = #{precautionNumber}
+   </delete>
+   
+
+   
+   
+   <!-- 
+   <select id="getTotal" resultType="_int">
+      select count(board_num) from tbl_board
+   </select> -->
+</mapper>
