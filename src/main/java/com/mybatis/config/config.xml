@@ -7,7 +7,8 @@
 	
 	<!-- 별칭 설정 -->
 	<typeAliases>
-		<typeAlias type="DTO경로" alias = "별칭설정"/>
+		<typeAlias type="com.mama.doc.dto.DoctorDTO" alias = "DoctorDTO"/>
+		<typeAlias type="com.mama.doc.dto.DofileDTO" alias = "DofileDTO"/>
 	</typeAliases>
 
 <environments default="oracle">
@@ -24,7 +25,7 @@
 
    
    	<mappers>
-		<mapper resource = "mapper.xml경로"></mapper>
+		<mapper resource = "com/mybatis/mapper/DoctorMapper.xml"></mapper>
 	</mappers>
 </configuration>
 

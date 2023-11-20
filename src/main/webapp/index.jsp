@@ -13,7 +13,12 @@
 <body>
 
 <!-- 헤더(로그아웃) -->
-<jsp:include page="include/header.jsp" />
+<c:if test="${sessionScope.doctorNumber == null && sessionScope.memberNumber == null}">
+	<jsp:include page="include/header.jsp" />
+</c:if>
+<c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
+	<jsp:include page="include/headerLogin.jsp" />
+</c:if>
 <main>
     <!-- 베너 영역(3개) -->
     <section class="main-section-banner">

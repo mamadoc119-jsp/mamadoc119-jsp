@@ -21,7 +21,7 @@
 	
 		<servlet>
 		<servlet-name>Doctor</servlet-name>
-		<servlet-class>com.mama.doc.do.DoctorFrontController</servlet-class>
+		<servlet-class>com.mama.doc.doc.DoctorFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Doctor</servlet-name>
