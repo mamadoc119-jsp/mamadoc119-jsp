@@ -70,7 +70,7 @@
                     <a href="${pageContext.request.contextPath}/join/memberJoin.me" class="main-hidden-tag">회원가입</a>
                 </li>
                 <li class="main-hidden-list">
-                    <a href="${pageContext.request.contextPath}/join/doctorJoin.jsp" class="main-hidden-tag">의료인가입</a>
+                    <a href="join.do" class="main-hidden-tag">의료인가입</a>
                 </li>
             </ul>
         </div>

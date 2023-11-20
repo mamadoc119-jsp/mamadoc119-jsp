@@ -41,6 +41,8 @@
 	
 		
 
+		<typeAlias type="com.mama.doc.dto.DoctorDTO" alias = "DoctorDTO"/>
+		<typeAlias type="com.mama.doc.dto.DofileDTO" alias = "DofileDTO"/>
 	</typeAliases>
 
 <environments default="oracle">
@@ -75,6 +77,7 @@
 
 		<mapper resource = "com/mybatis/mapper/ClinicMapper.xml"></mapper>
 
+		<mapper resource = "com/mybatis/mapper/DoctorMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>
