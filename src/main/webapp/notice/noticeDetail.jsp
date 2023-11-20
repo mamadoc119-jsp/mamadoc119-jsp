@@ -15,40 +15,27 @@
         <div style="width: 900px;display: flex;flex-direction: column;">
             <div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">공지사항</div>
             <!-- 제목/등록날짜 -->
-            <div style="display: flex;justify-content: space-between;border-bottom: 1px solid gray;padding: 10px;">
+            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid gray;padding: 10px;">
                 <!-- 제목 -->
-                <div style="font-size: 17px;font-weight: bold;">제목이 들어갑니다.</div>
+                <div style="font-size: 17px;font-weight: bold;"><c:out value="${noticeDetail.getNoticeTitle()}"/></div>
                 <!-- 등록날짜 -->
-                <div style="font-size: 15px;color: gray;">2023.11.09</div>
+                <div style="font-size: 15px;color: gray;"><c:out value="${noticeDetail.getNoticeDate()}"/></div>
             </div>
             <!-- 내용 -->
             <div style="padding: 10px;">
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.
+				<c:out value="${noticeDetail.getNoticeTitle()}"/>
             </div>
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
+            
                 <!-- 수정 -->
-                <form action="${pageContext.request.contextPath}/notice/noticeModify.jsp">
-                    <button class="modify-btn">수정</button>
-                </form>
+                <form action="noticeUpdate.adno">
+              <input type="hidden" name="noticeNumber" value="${noticeDetail.getNoticeNumber()}"/>
+                  <button class="modify-btn">수정</button>
+              </form>
+                    
                 <!-- 삭제 -->
-                <form action="${pageContext.request.contextPath}/notice/noticeList.jsp" onsubmit="return removeMsg();">
-                    <button class="remove-btn">삭제</button>
-                </form>
+                    <button class="remove-btn" onclick="location.href='${pageContext.request.contextPath}/admin/adNoticeDelete.adno?noticeNumber=${noticeDetail.getNoticeNumber()}'">삭제</button>
             </div>
         </div>
     </div>

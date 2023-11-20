@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+   <insert id="noticeWrite" parameterType="noticeDto">
+         INSERT INTO mamadoc_notice(notice_number,admin_number,notice_title,notice_content,notice_date)
+      VALUES(seq_mamadoc_notice.nextval,1,#{noticeTitle},#{noticeContent},SYSDATE)
+   </insert>
+   
+  <select id="noticeList" parameterType = "NoticeDto" resultType="NoticeDto">
+      SELECT notice_number, admin_number,notice_title,notice_content,notice_date
+       FROM mamadoc_notice order by notice_number desc 
+   </select>
+   
+     
+   <select id="noticeDetail"  resultType="noticeDto">
+      select notice_number, admin_number, notice_title, notice_content, notice_date
+      from mamadoc_notice where notice_number = #{noticeNumber}
+   </select>
+   
+   <delete id="noticeDelete" parameterType="long">
+      delete from mamadoc_notice where notice_number = #{noticeNumber}
+   </delete>
+   
+   <update id="noticeUpdate" parameterType="noticeDto">
+		update mamadoc_notice set notice_title = #{noticeTitle} , notice_content = #{noticeContent}, notice_date = SYSDATE, admin_number = 1 
+		where notice_number = #{noticeNumber} 
+	</update>
+   
+   
+   <!-- 
+   <select id="getTotal" resultType="_int">
+      select count(board_num) from tbl_board
+   </select> -->
+</mapper>

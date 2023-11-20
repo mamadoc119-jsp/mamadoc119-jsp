@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -56,22 +57,27 @@
                 <div class="sortation"></div>
             </div>
             <!-- 데이터가 들어오는 영역 -->
+            <c:choose>
+                   <c:when test="${not empty adPrList}">
+                   	<c:forEach var="adPr" items="${adPrList}" varStatus="status">
             <div class="member-list">
-                <div class="number">게시물 번호</div>
-                <div class="id">작성자 아이디</div>
-                <div class="title">예방상담 게시물 제목</div>
-                <div class="date">작성일자</div>
+                <div class="number"><c:out value="${adPr.precautionNumber}"/></div>
+                <div class="id"><c:out value="${adPr.doctorNickname}"/></div>
+                <div class="title"><c:out value="${adPr.precautionTitle}"/></div>
+                <div class="date"><c:out value="${adPr.precautionDate}"/></div>
                 <div class="sortation">
                     <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/precaution/precautionDetail.jsp'">보기</button> <!--클릭 시 예방상담 상세페이지로 이동-->
-                    <button class="remove-btn">삭제</button>
+                    <button class="remove-btn" onclick ="location.href='${pageContext.request.contextPath}/admin/adPrDelete.adpr?precautionNumber=${adPr.precautionNumber}'">삭제</button>
                 </div>
             </div>
+            </c:forEach>
+            </c:when>
+            </c:choose>
             <!-- 데이터가 끝나는 영역-->
 
         </div>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script th:src="@{/js/admin/adminClass.js}"></script>
 </body>
 </html>
