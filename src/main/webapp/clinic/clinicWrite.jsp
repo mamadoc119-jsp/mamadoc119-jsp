@@ -16,20 +16,22 @@
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
         <div style="width: 900px;display: flex;flex-direction: column;">
             <div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
-            <form action="${pageContext.request.contextPath}/clinic/clinicList.jsp" onsubmit="return registMsg();">
+           
+            <form action="clinicWriteOk.cl" method="post" onsubmit="return registMsg();">
                 <!-- 제목/등록날짜 -->
                 <div style="display: flex;">
                     <!-- 제목 -->
-                    <input type="text" class="title" id="title" placeholder="제목을 입력하세요.">
+                    <input type="text" class="title" name="clinicTitle" id="title" placeholder="제목을 입력하세요.">
+                    <input type="hidden" name="clinicNumber">
                 </div>
                 <!-- 내용 -->
-                <textarea id="summernote" class="summernote"></textarea>
+                <textarea id="summernote" class="summernote" name="clinicContent"></textarea>
                 <!-- 이전/수정 -->
                 <div style="display: flex;justify-content: space-between;margin-top: 10px;">
                     <!-- 이전 -->
                     <input type="button" class="previous-btn" onclick="history.back()" value="이전">
                     <!-- 수정 -->
-                    <button class="regist-btn">등록</button>
+                    <button type="submit" class="regist-btn">등록</button>
                 </div>
             </form>
         </div>

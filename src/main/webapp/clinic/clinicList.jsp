@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+   <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,15 @@
 </head>
 <body>
 	<jsp:include page="../include/header.jsp" />
-
+		<!-- c:set에서 내용으로 파라미터 값을 넣으면, 문자열로 변환된 후 저장된다. -->
+		<!-- c:set value속성에 값을 넣으면, 해당 값의 타입이 그대로 유지된다. -->
+		<c:set var="totalCount" value="${totalCount}"/>
+		<c:set var="realEndPage" value="${realEndPage}"/>
+		<c:set var="startPage" value="${startPage}"/>
+		<c:set var="endPage" value="${endPage}"/>
+		<c:set var="nowPage" value="${nowPage}"/>
+		<c:set var="boardList" value="${clinicList}"/>
+		
     <div class="counseling-full-container">
         <!--상담소 타이틀-->
         <div class="counseling-origin-box">
@@ -20,7 +29,7 @@
                 <div class="counseling-sub-title">상담이 필요하시면 언제든지 글을 써주세요</div>
             </div>
 
-    <form action="" onsubmit="serchCheck()"> <!--form 필요할까... 일단 넣어놨음-->
+    <form action="/clinicListOk.cl" onsubmit="serchCheck()"> <!--form 필요할까... 일단 넣어놨음-->
 
         <!--제목.작성자로 드롭다운 및 찾기 검색 부분-->
         <div class="counseling-search-full-container">
@@ -51,46 +60,75 @@
                     </tr>
                 </thead>
                 <tbody>
+                   <c:forEach var="clinic" items="${clinicList}">
                     <tr>
-                        <td class="counse-title-contents"><a href="">밥을 너무 안먹어요</a></td>
-                        <td align="center">윤이엄마</td>
-                        <td align="center">2023.07.12</td>
+                        <td class="counse-title-contents">
+                        	
+                        	
+                        			<a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">${clinic.clinicTitle}</a></td>
+                        
+                        	<!-- 
+                        	<c:choose>
+                        		<c:when test="${not empty sessionScope.memberNumber}">
+                        			<a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">${clinic.clinicTitle}</a></td>
+                        		</c:when>
+                        		<c:otherwise>
+                        			<a href="#" onclick ="showLoginAlert()">${clinic.clinicTitle}</a>
+                        		</c:otherwise>
+                        	</c:choose>	
+                        	
+                        	
+                        	
+                        	 -->
+                        	
+                        	
+                        
+                        <td align="center">${clinic.memberNickname}</td>
+                        <td align="center">${clinic.clinicDate}</td>
+                        
                     </tr>
-                    <!--아래는 반복되는 부분, 백단시 삭제하세요-->
-                    <tr>
-                        <td class="counse-title-contents"><a href=""> 어떻게 하나요.</a></td>
-                        <td align="center">맘마미아</td>
-                        <td align="center">2023.07.10</td>
-                    </tr>
-                    <tr>
-                        <td class="counse-title-contents"><a href="">애기가 갑자기 열이 납니다.</a></td>
-                        <td align="center">초보엄마</td>
-                        <td align="center">2023.06.13</td>
-                    </tr>
-                    <tr>
-                        <td class="counse-title-contents"><a href="">다리가 아프다는데 검사 받아야하나요</a></td>
-                        <td align="center">다둥이엄마</td>
-                        <td align="center">2023.05.22</td>
-                    </tr>
-                    <tr>
-                        <td class="counse-title-contents"><a href="">밥을 너무 안먹어요</a></td>
-                        <td align="center">윤이엄마</td>
-                        <td align="center">2023.07.12</td>
-                    </tr>
-                    <!--여기까지는 반복되는 부분, 백단시 삭제하세요-->
+                       </c:forEach>
                 </tbody>
+           
                
             </table>  
         </div>
-        <div class="write-down-div">
-            <button class="write-down">글쓰기</button>
-        </div>
+        
+	        <div class="write-down-div">
+		       <button class="write-down"><a href="${pageContext.request.contextPath}/clinic/clinicWrite.jsp">글쓰기</a></button>
+	        </div>
+
 
 
             <!--페이징 처리부분-->
-            <div class="paging-part">
-               
-            </div>
+    	<div style="display: flex;  justify-content: center;">
+    		<table style="font-size:1.3rem">
+							<tr align="center" valign="middle">
+									<td>
+									<c:if test="${nowPage > 1}">
+										<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${nowPage-1}">&lt;</a>
+									</c:if>
+									
+									<c:forEach var="i" begin="${startPage}" end="${endPage}">
+											<c:choose>
+												<c:when test="${i eq nowPage}">
+													<c:out value="[${i}]"/>&nbsp;
+												</c:when>
+												<c:otherwise>
+													<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${i}"><c:out value="${i}"/></a>
+												</c:otherwise>
+											</c:choose>
+									</c:forEach>
+									
+									<c:if test="${nowPage != realEndPage}">
+										<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${nowPage+1}">&gt;</a>
+									</c:if>
+									</td>
+								</tr>
+							</table>
+    </div>
+
+
 
         </div>
     </div>
@@ -99,6 +137,9 @@
 
 </body>
 
-
+<script>
+function showLoginAlert(){
+	alert("로그인이 필요합니다. 로그인 먼저 해주세요");
+}
 </script>
 </html>

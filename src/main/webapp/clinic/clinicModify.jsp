@@ -16,14 +16,17 @@
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
         <div style="width: 900px;display: flex;flex-direction: column;">
 			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
-            <form action="${pageContext.request.contextPath}/clinic/clinicDetail.jsp" onsubmit="return modifyMsg();">
+            <c:set var="clinic" value ="${clinic}"/>
+            <form action="${pageContext.request.contextPath}/clinic/clinicModifyOk.cl" onsubmit="return modifyMsg();">
+               <input type="hidden" name="clinicNumber" value="${clinic.getClinicNumber()}">
+               
                 <!-- 제목/등록날짜 -->
                 <div style="display: flex;">
                     <!-- 제목 -->
-                    <input type="text" class="title" id="title" placeholder="제목을 입력하세요." value="제목이 들어갑니다.">
+                    <input type="text" class="title" id="title" placeholder="제목을 입력하세요." name="clinicTitle" value="${clinic.getClinicTitle()}">
                 </div>
                 <!-- 내용 -->
-                <textarea id="summernote" class="summernote">원래 있던 내용을 그대로 불러옵니다.</textarea>
+                <textarea id="summernote" class="summernote" name="clinicContent" value="${clinic.getClinicContent()}"></textarea>
                 <!-- 이전/수정 -->
                 <div style="display: flex;justify-content: space-between;margin-top: 10px;">
                     <!-- 이전 -->
