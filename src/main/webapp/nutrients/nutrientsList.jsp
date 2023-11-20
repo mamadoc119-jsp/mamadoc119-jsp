@@ -48,190 +48,25 @@
     </form>
 
         <!--영양제 사진이랑 이름등등 들어가는 부분-->
+        
         <div class="supplements-list-full-container">
-            <div class="reco-supply-cotain-box">
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="${pageContext.request.contextPath}/resources/img/구미킹.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[종합비타민] Alive KIDS</p>
-                        <p>체리, 오렌지, 포도 60개</p>
-                    
-                        <div class="su-detail">
-                            아이들이 좋아하는 구미형 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-
-                <!--반복되는 부분 : 백단시 아래부분은 지우기-->
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[종합비타민] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="구미킹.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[종합비타민] GummiKing</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                        
-
-                        <div class="su-detail">
-                            아이들이 좋아하는 구미형 형태로 먹기 편하고 
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[종합비타민] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                      
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[오메가] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                  
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[면역력] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                     
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[비타민] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                       
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[유산균] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                      
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg">
-                    </div>
-                    <div>
-                        <p class="su-title">[종합비타민] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                      
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                    <div>
-                        <p class="su-title">[유산균] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                 
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box">
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg">
-                    </div>
-                    <div>
-                        <p class="su-title">[비타민] Alive KIDS</p>
-                        <p>오렌지, 베리, 포도 60개</p>
-                     
-
-                        <div class="su-detail">
-                            캔디류의 츄어블 형태이며 다양한 맛으로
-                            선호도가 높은 편입니다.
-                        </div>
-                    </div>
-                </div>
-                <div class="reco-supply-se-box"> 
-                    <div class="kindSuppImg-container">
-                        <img src="어린이영양제2.png" class="kindSuppImg"> 
-                    </div>
-                <div>
-                    <p class="su-title">[종합비타민] Alive KIDS</p>
-                    <p>오렌지, 베리, 포도 60개</p>
-                 
-
-                    <div class="su-detail">
-                        캔디류의 츄어블 형태이며 다양한 맛으로
-                        선호도가 높은 편입니다.
-                    </div>
-                </div>
-            </div>
-                <!-- 백단작업시 여기까지 지우세요~ -->
-
-            </div>
+	        <c:forEach var="list" items="${nuList}" begin="0" end="11" >
+	            <div class="reco-supply-cotain-box">
+	                <div class="reco-supply-se-box">
+	                    <div class="kindSuppImg-container">
+	                        <img src="${pageContext.request.contextPath}/resources/upload/${list.nufileUuid}${list.nufileType}"  class="kindSuppImg"> 
+	                    </div>
+	                    <div>
+	                        <p class="su-title">${list.nutrientsName}</p>
+	                        <p>${list.nutrientsInfo}</p>
+	                    
+	                        <div class="su-detail">
+	                            ${list.nutrientsEffect}
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </c:forEach>
         </div>
         
 

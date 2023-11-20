@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adnuFile">
+
+	<insert id="fileInsert" parameterType="AdNutrientsFileDTO">
+		INSERT INTO MAMADOC_NUFILE(nufile_number, nutrients_number, admin_number, nufile_path, nufile_uuid, nufile_name,nufile_type)
+		VALUES(SEQ_MAMADOC_NUFILE.NEXTVAL, #{nutrientsNumber}, #{adminNumber}, #{nufilePath}, #{nufileUuid}, #{nufileName}, #{nufileType})
+	</insert>
+	
+	<!-- 영양제 수정 페이지 이미지 불러오기  -->
+	<select id="selectImg" parameterType="int" resultType="AdNutrientsFileDTO">
+		SELECT nufile_number, nutrients_number, admin_number, nufile_path, nufile_uuid, nufile_name,nufile_type
+		FROM MAMADOC_NUFILE
+		WHERE nutrients_number = #{nutrients_number}
+	</select>
+	
+	<!-- 영양제 첨부파일 내용 수정 -->
+	<update id="updateNufile" parameterType="AdNutrientsDTO">
+		UPDATE MAMADOC_NUFILE
+		SET nufile_path = #{nufilePath},
+			nufile_uuid = #{nufileUuid},
+			nufile_name = #{nufileName},
+			nufile_type = #{nufileType}
+		WHERE nutrients_number = #{nutrientsNumber}
+	</update>
+	
+</mapper>

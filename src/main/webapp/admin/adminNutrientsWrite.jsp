@@ -15,41 +15,41 @@
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
-             <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
+             <a href="${pageContext.request.contextPath}/adminMain.adme">회원 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminDoctorApply.jsp">신청함 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
+            <a href="${pageContext.request.contextPath}/adminDoctorApply.addo">신청함 관리</a>
+            <a href="${pageContext.request.contextPath}/adminNutrientsWrite.adnu">게시판 등록</a>
           </nav>
         </div>
-        <a href="/admin/logout">Logout</a>
+        <a href="${pageContext.request.contextPath}/adminLogoutOk.ad">Logout</a>
       </header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">영양제 등록</a></div>
+        <div class="left-list check"><a href="${pageContext.request.contextPath}/adminNutrientsWrite.adnu">영양제 등록</a></div>
         <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminNoticeWrite.jsp">공지사항 등록</a></div>
     </div>
     <div class="right-container">
         <div class="all-container"> 
-            <form id="form" action="" method ="post" enctype="multipart/form-data"><!--서버에 보내기 위해 form 태그를 사용함--> 
+            <form id="form" action="${pageContext.request.contextPath}/adminNutrientsWriteOk.adnu" method ="post" enctype="multipart/form-data"><!--서버에 보내기 위해 form 태그를 사용함--> 
                 <table><!--테이블 이용 10행, 2열의 표를 만듬-->
                     <tr><!--tr은 하나의 행을 의미함-->
                         <th colspan="2">영양제 등록</th><!--th 제목의 셀을 의미함, colspan=2는 2칸의 셀은 가로로 병합을 의미-->
                     </tr>
                     <tr>
                         <th>영양제명</th>
-                        <td><input type="text" placeholder="시설명을 입력해주세요" id="nutrientsTitle" name="nutrientsTitle" required></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" placeholder="시설명을 입력해주세요" id="nutrientsTitle" name="nutrientsName" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                     
                     <tr>
                         <th>영양제사진</th>
-                        <td><input type="file" id="photo" name="photoName" accept="image/gif, image/jpeg, image/png" required/></td>
+                        <td><input type="file" id="photo" name="nufile" accept="image/gif, image/jpeg, image/png" required/></td>
                         <!--input file을 이용하여 파일을 업로드하여 사진을 불러올 수 있도록 함-->
                     </tr>
                     
                     <tr>
                         <th>효과</th>
-                        <td><input type="text" placeholder="효과를 입력해주세요" id="nutrientsPerf" name="nutrientsPerf" required></td><!--td는 하나의 셀을 의미-->
+                        <td><input type="text" placeholder="효과를 입력해주세요" id="nutrientsPerf" name="nutrientsEffect" required></td><!--td는 하나의 셀을 의미-->
                         <!--input text를 이용해 text를 받을 수 있고 placeholder를 이용해 작성 전 안내문구를 표시할 수 있다-->
                     </tr>
                     <tr>
