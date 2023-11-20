@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -55,16 +56,22 @@
                 <div class="sortation"></div>
             </div>
             <!-- 데이터가 들어오는 영역 -->
+            <c:choose>
+                   <c:when test="${not empty adNoticeList}">
+                   	<c:forEach var="adNotice" items="${adNoticeList}" varStatus="status">
             <div class="member-list">
-                <div class="number">공지사항 번호</div>
-                <div class="id">제목</div>
-                <div class="title">내용</div>
-                <div class="date">작성일자</div>
+                <div class="number"><c:out value="${adNotice.noticeNumber}"/></div>
+                <div class="id"><c:out value="${adNotice.noticeTitle}"/></div>
+                <div class="title"><c:out value="${adNotice.noticeContent}"/></div>
+                <div class="date"><c:out value="${adNotice.noticeDate}"/></div>
                 <div class="sortation">
-                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeDetail.jsp'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
-                    <button class="remove-btn">삭제</button>
+                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeDetail.adno?noticeNumber=${adNotice.noticeNumber}'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
+                    <button class="remove-btn" onclick="location.href='${pageContext.request.contextPath}/admin/adNoticeDelete.adno?noticeNumber=${adNotice.noticeNumber}'">삭제</button>
                 </div>
             </div>
+            	</c:forEach>
+            	</c:when>
+            </c:choose>
             <!-- 데이터가 끝나는 영역-->
             
         </div>

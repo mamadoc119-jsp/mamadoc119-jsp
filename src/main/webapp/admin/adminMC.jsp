@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 수업계획</title>
+    <title>상담소 관리</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMain.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminHeader.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMC.css"/>
@@ -27,9 +28,9 @@
 <div class="main-container">
     <div class="left-container">
         <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adminMC.jsp">상담소 관리</a></div>
-        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminPrevention.jsp">예방상담 관리</a></div>
+        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adPrList.adpr">예방상담 관리</a></div>
         <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminNutrients.jsp">영양제 관리</a></div>
-        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminNotice.jsp">공지사항 관리</a></div>
+        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adNoticeList.adno">공지사항 관리</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
@@ -57,16 +58,22 @@
                 <div class="sortation"></div>
             </div>
             <!-- 데이터가 들어오는 영역 -->
+            <c:choose>
+                   <c:when test="${not empty adClinicList}">
+                  	 	<c:forEach var="adClinic" items="${adClinicList}" varStatus="status">
             <div class="member-list">
-                <div class="number">게시물 번호</div>
-                <div class="id">작성자</div>
-                <div class="title">의료상담 게시판 제목</div>
-                <div class="date">작성일자</div>
+                <div class="number"><c:out value="${adClinic.clinicNumber}"/></div>
+                <div class="id"><c:out value="${adClinic.memberNickname}"/></div>
+                <div class="title"><c:out value="${adClinic.clinicTitle}"/></div>
+                <div class="date"><c:out value="${adClinic.clinicDate}"/></div>
                 <div class="sortation">
                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
-                    <button class="remove-btn">삭제</button>
+                    <button class="remove-btn" onclick ="location.href='${pageContext.request.contextPath}/admin/adClinicDelete.adcl?clinicNumber=${adClinic.clinicNumber}'">삭제</button>
                 </div>
             </div>
+					</c:forEach>
+				</c:when>
+			</c:choose>
             <!-- 데이터가 끝나는 영역-->
             <!-- 페이징 처리 -->
 

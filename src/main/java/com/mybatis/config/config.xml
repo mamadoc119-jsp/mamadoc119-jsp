@@ -5,9 +5,13 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	
+	
+   
 	<!-- 별칭 설정 -->
 	<typeAliases>
-		<typeAlias type="DTO경로" alias = "별칭설정"/>
+		<typeAlias type="com.mama.doc.dto.NoticeDto" alias = "noticeDto"/>
+		<typeAlias type="com.mama.doc.vo.AdPrVo" alias = "adPrVo"/>
+		<typeAlias type="com.mama.doc.vo.AdClinicVo" alias = "adClinicVo"/>
 	</typeAliases>
 
 <environments default="oracle">
@@ -24,7 +28,10 @@
 
    
    	<mappers>
-		<mapper resource = "mapper.xml경로"></mapper>
+   		<!-- commit할때 지워 -->
+		<mapper resource = "com/mybatis/mapper/adNoticeMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/adPrMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/adClinicMapper.xml"></mapper>
 	</mappers>
 </configuration>
 
