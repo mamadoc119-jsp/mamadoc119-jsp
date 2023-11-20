@@ -15,18 +15,18 @@
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
-             <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
+             <a href="${pageContext.request.contextPath}/adminMain.adme">회원 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminDoctorApply.jsp">신청함 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
+            <a href="${pageContext.request.contextPath}/adminDoctorApply.addo">신청함 관리</a>
+            <a href="${pageContext.request.contextPath}/adminNutrientsWrite.adnu">게시판 등록</a>
           </nav>
         </div>
-        <a href="/admin/logout">Logout</a>
+        <a href="${pageContext.request.contextPath}/adminLogoutOk.ad">Logout</a>
       </header>
 <div class="main-container">
     <div class="left-container">
         
-            <div class="left-list check"><a href="adminDoctorApply.html">의료인 신청함</a></div>
+            <div class="left-list check"><a href="${pageContext.request.contextPath}/adminDoctorApply.addo">의료인 신청함</a></div>
         
     </div>
     <div class="right-container">
@@ -75,7 +75,6 @@
             <div class="btn-box">
                 <button class="approval-detail-btn"  onclick="location.href(승인처리)">승 인</button><!--나중에 js파일로 숨길거임-->
                 <button class="refusal-detail-btn"   onclick="location.href(거부처리)">거 부</button><!--얘도 ㅋ-->
-                <button class="back-btn">뒤로가기</button>
             </div>
         </div>
     </div><!--"right-container" 끝-->
