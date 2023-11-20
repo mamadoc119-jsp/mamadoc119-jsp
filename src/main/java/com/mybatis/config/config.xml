@@ -20,6 +20,19 @@
 		<typeAlias type="com.mama.doc.dto.NoticeDto" alias = "noticeDto"/>
 		<typeAlias type="com.mama.doc.vo.AdPrVo" alias = "adPrVo"/>
 		<typeAlias type="com.mama.doc.vo.AdClinicVo" alias = "adClinicVo"/>
+
+		<!-- <typeAlias type="DTO경로" alias = "별칭설정"/> -->
+		<typeAlias type="com.mama.doc.dto.AdminDTO" alias="AdminDTO"/>
+		<typeAlias type="com.mama.doc.dto.AdNutrientsDTO" alias="AdNutrientsDTO"/>
+		<typeAlias type="com.mama.doc.dto.AdNutrientsFileDTO" alias="AdNutrientsFileDTO"/>
+		<typeAlias type="com.mama.doc.dto.AdMemberDTO" alias="AdMemberDTO"/>
+		<typeAlias type="com.mama.doc.dto.AdDoctorDTO" alias="AdDoctorDTO"/>
+		<typeAlias type="com.mama.doc.dto.AdDoctorFileDTO" alias="AdDoctorFileDTO"/>
+		
+		<typeAlias type="com.mama.doc.vo.AdNutrientsVO" alias ="AdNutrientsVO"/>
+		<typeAlias type="com.mama.doc.vo.AdDoctorVO" alias ="AdDoctorVO"/>
+		
+
 	</typeAliases>
 
 <environments default="oracle">
@@ -44,6 +57,12 @@
 		<mapper resource = "com/mybatis/mapper/adNoticeMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/adPrMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/adClinicMapper.xml"></mapper>
+		<!-- <mapper resource = "mapper.xml경로"></mapper>  -->
+		<mapper resource = "com/mybatis/mapper/AdminMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/AdNutrientsFileMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/AdNutrientsMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/AdMemberMapper.xml"/>
+
 	</mappers>
 	
 </configuration>

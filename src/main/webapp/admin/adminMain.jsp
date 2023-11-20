@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -14,18 +15,18 @@
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
-            <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
+            <a href="${pageContext.request.contextPath}/adminMain.adme">회원 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminDoctorApply.jsp">신청함 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
+            <a href="${pageContext.request.contextPath}/adminDoctorApply.addo">신청함 관리</a>
+            <a href="${pageContext.request.contextPath}/adminNutrientsWrite.adnu">게시판 등록</a>
           </nav>
         </div>
-        <a href="/admin/logout">Logout</a>
+        <a href="${pageContext.request.contextPath}/adminLogoutOk.ad">Logout</a>
       </header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adminMain.jsp">부모 회원</a></div>
-        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminDoctor.jsp">의료인 회원</a></div>
+        <div class="left-list check"><a href="${pageContext.request.contextPath}/adminMain.adme">부모 회원</a></div>
+        <div class="left-list"><a href="${pageContext.request.contextPath}/adminDoctor.addo">의료인 회원</a></div>
     </div>
     <div class="right-container">
         <div class="right-title">
@@ -56,24 +57,28 @@
                 <div class="sortation"></div>
             </div>
             <!-- 데이터가 들어오는 부분 -->
-            <div class="member-list"> 
-                <div class="number">유저 번호</div>
-                <div class="id">이메일</div>
-                <div class="name">이름</div>
-                <div class="birth">닉네임</div>
-                <div class="phone">주소</div>
-                <div class="sortation">
-                    <div>부모</div>
-                </div>
-                <div class="sortation">
-                    <button type="button" class="remove-btn">삭제</button>
-                </div>
-            </div>
+            <c:forEach var="list" items="${meList}" begin="0" end="19" >
+	            <div class="member-list"> 
+	                <div class="number">${list.memberNumber}</div>
+	                <div class="id">${list.memberEmail}</div>
+	                <div class="name">${list.memberName}</div>
+	                <div class="birth">${list.memberNickname}</div>
+	                <div class="phone">${list.memberAddress} ${list.memberDetailAddress} ${list.memberExtraAddress}</div>
+	                <div class="sortation">
+	                    <div>부모</div>
+	                </div>
+	                <div class="sortation">
+	                    <button class="remove-btn" onclick="deleteMe(${list.memberNumber})">삭제</button>
+	                </div>
+	            </div>
+            </c:forEach>
             <!-- 20개의 데이터가 들어왔다 -->
 
 
         </div>
     </div>
 </div>
+<script defer src="${pageContext.request.contextPath}/resources/js/adminMain.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </body>
 </html>

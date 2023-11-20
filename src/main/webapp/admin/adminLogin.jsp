@@ -11,14 +11,14 @@
 <body>
 <div class="login-container">
   <h1 class="login-title">관리자 로그인</h1>
-  <form class="login-form" action="로그인처리 경로" method="get">
+  <form class="login-form" action="${pageContext.request.contextPath}/adminLoginOk.ad">
     <div class="input-group">
       <label for="userId">아이디</label>
-      <input type="text" id="userId" name="userId" required />
+      <input type="text" id="userId" name="adminId" required />
     </div>
     <div class="input-group">
       <label for="userPassword">비밀번호</label>
-      <input type="password" id="userPassword" name="userPassword" required />
+      <input type="password" id="userPassword" name="adminPassword" required />
     </div>
     <button class="login-btn" type="submit">로그인</button>
   </form>

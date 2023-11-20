@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="adnu">
+
+	<!-- 영양제 글 작성 -->
+	<insert id="nuInsert" parameterType="AdNutrientsDTO">
+		INSERT INTO MAMADOC_NUTRIENTS(nutrients_number, admin_number, nutrients_name, nutrients_effect, nutrients_info)
+		VALUES(SEQ_MAMADOC_NUTRIENTS.NEXTVAL, #{adminNumber}, #{nutrientsName}, #{nutrientsEffect}, #{nutrientsInfo})
+	</insert>
+	
+	<!-- 최근 추가된 글 번호 가져오기 -->
+	<select id="findLast" resultType="int">
+		SELECT nutrients_number
+		FROM (
+		    SELECT nutrients_number
+		    FROM MAMADOC_NUTRIENTS
+		    ORDER BY nutrients_number DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
+	<!-- 영양제 게시글 삭제하기  -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM MAMADOC_NUTRIENTS
+		WHERE nutrients_number = #{nutrientsNumber}
+	</delete>
+	
+	<!-- 영양제 수정 페이지(디테일 페이지) -->
+	<select id="selectOne" parameterType="int" resultType="AdNutrientsDTO">
+		SELECT nutrients_number, admin_number, nutrients_name, nutrients_effect, nutrients_info, TO_CHAR(nutrients_date, 'YYYY.MM.DD') AS nutrients_date
+		FROM MAMADOC_NUTRIENTS
+		WHERE nutrients_number = #{nutrientsNumber}
+	</select>
+	
+	<!-- 영양제 정보 수정(관리자) -->
+	<update id="updateNu" parameterType="AdNutrientsDTO">
+		UPDATE MAMADOC_NUTRIENTS
+		SET nutrients_name = #{nutrientsName},
+			nutrients_effect = #{nutrientsEffect},
+			nutrients_info = #{nutrientsInfo}
+		WHERE nutrients_number = #{nutrientsNumber}
+	</update>
+	
+	<!-- 유저페이지 영양제 추천 페이지 이동 -->
+	<select id="selectUserAll" resultType="AdNutrientsVO">
+		SELECT N.nutrients_number, 
+	       N.admin_number, 
+	       N.nutrients_name, 
+	       N.nutrients_effect, 
+	       N.nutrients_info, 
+	       TO_CHAR(N.nutrients_date, 'YYYY.MM.DD') AS nutrients_date,
+	       F.nufile_number,
+	       F.nufile_path,
+	       F.nufile_uuid,
+	       F.nufile_name,
+	       F.nufile_type
+		FROM MAMADOC_NUTRIENTS N
+		JOIN MAMADOC_NUFILE F
+		ON N.nutrients_number = F.nutrients_number
+		ORDER BY N.nutrients_number DESC
+	</select>
+	
+	<!-- 영양제 전체 게시글 수 조회 -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM MAMADOC_NUTRIENTS
+	</select>
+	
+	<!-- 전체 영양제 정보 불러오기 -->
+	<select id="selectAll" parameterType="Map" resultType="AdNutrientsDTO">
+		SELECT *
+		FROM(
+			SELECT nutrients_number, admin_number, nutrients_name, 
+			nutrients_effect, nutrients_info, 
+			TO_CHAR(nutrients_date, 'YYYY.MM.DD') AS nutrients_date,
+			ROW_NUMBER() OVER (ORDER BY nutrients_number DESC) AS rnum
+			FROM MAMADOC_NUTRIENTS
+			<choose>
+				<when test="'name'.equals(searchVO.cate)">
+					WHERE nutrients_name LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY nutrients_number
+				</when>
+				<when test="'effect'.equals(searchVO.cate)">
+					WHERE nutrients_effect LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY nutrients_number
+				</when>
+				<otherwise>
+					ORDER BY nutrients_number
+				</otherwise>
+			</choose>
+		) temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+</mapper>
