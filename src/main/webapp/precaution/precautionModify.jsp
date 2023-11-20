@@ -16,14 +16,15 @@
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
         <div style="width: 900px;display: flex;flex-direction: column;">
 			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">예방알림</div>
-            <form action="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" onsubmit="return modifyMsg();">
+            <form action="${pageContext.request.contextPath}/precaution/precautionDetail.pr" onsubmit="return modifyMsg();">
                 <!-- 제목/등록날짜 -->
                 <div style="display: flex;">
                     <!-- 제목 -->
                     <input type="text" class="title" id="title" placeholder="제목을 입력하세요." value="제목이 들어갑니다.">
+                    ${precaution.precautionTitle}</input>
                 </div>
                 <!-- 내용 -->
-                <textarea id="summernote" class="summernote">원래 있던 내용을 그대로 불러옵니다.</textarea>
+                <textarea id="summernote" class="summernote">${precaution.precautionContent}</textarea>
                 <!-- 이전/수정 -->
                 <div style="display: flex;justify-content: space-between;margin-top: 10px;">
                     <!-- 이전 -->

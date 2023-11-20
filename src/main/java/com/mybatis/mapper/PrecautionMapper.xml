@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="precaution">
+
+	<!-- 나예은 : 예방알림(작성) -->
+	 <select id = "write" parameterType="PrecautionDTO">
+         insert into mamadoc_precaution(precaution_number, doctor_number, precaution_title, precaution_content)
+         value(seq_mamadoc_precaution.nextval, #{doctorNumber}, #{precautionTitle}, #{precautionContent});
+   </select>
+   
+   <!-- 나예은 : 예방알림(리스트) -->
+   <select id="bringPrecautionList" parameterType="int" resultType="PrecautionVO">
+		select * from mamadoc_precaution join mamadoc_doctor
+		order by precaution_number desc
+		limit #{firstList}, 6
+	</select>
+	
+	<!-- 나예은 : 예방알림(수정) -->
+   <update id = "edit" parameterType = "PrecautionDTO">
+   		update tbl_freeboard 
+   		set precaution_title = #{precautionTitle}, 
+   			precaution_content = #{precautionContent},
+   			precaution_date = #{precautionDate} where precaution_number = #{precautionNumber};
+   </update>
+   
+   <!-- 나예은 : 예방알림(삭제) -->
+   <delete id = "delete" parameterType = "PrecautionDTO">
+   		delete from mamadoc_precaution where precaution_number = #{precautionNumber};
+   </delete>
+   
+   <!-- 나예은 : 예방알림(디테일) -->
+   <select id = "selectOne" parameterType="int" resultType="PrecautionVO">
+   		select * from mamadoc_precaution join mamadoc_doctor
+   		where precaution_number = #{precautionNumber}
+   </select>
+	
+
+</mapper>

@@ -17,28 +17,12 @@
             <!-- 제목/등록날짜 -->
             <div style="display: flex;justify-content: space-between;border-bottom: 1px solid gray;padding: 10px;">
                 <!-- 제목 -->
-                <div style="font-size: 17px;font-weight: bold;">제목이 들어갑니다.</div>
+                <div style="font-size: 17px;font-weight: bold;">${precaution.precautionTitle}</div>
                 <!-- 등록날짜 -->
-                <div style="font-size: 15px;color: gray;">2023.11.09</div>
+                <div style="font-size: 15px;color: gray;">${precaution.precautionDate}</div>
             </div>
             <!-- 내용 -->
-            <div style="padding: 10px;">
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.
-            </div>
+            <div style="padding: 10px;">${precaution.precautionContent}</div>
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
                 <!-- 수정 -->
@@ -46,7 +30,7 @@
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionaryNoticeList.jsp" onsubmit="return removeMsg();">
+                <form action="${pageContext.request.contextPath}/precaution/precautionList.jsp" onsubmit="return removeMsg();">
                     <button class="remove-btn">삭제</button>
                 </form>
             </div>
