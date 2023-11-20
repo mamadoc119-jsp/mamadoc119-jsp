@@ -10,6 +10,7 @@
 	<!-- 별칭 설정 -->
 	
 	<typeAliases>
+
 		<!-- 나예은 : 일반회원DTO -->
 		<typeAlias type="com.mama.doc.dto.MemberDTO" alias="MemberDTO" />
 		<!-- 나예은 : 예방알림DTO -->
@@ -33,6 +34,13 @@
 		<typeAlias type="com.mama.doc.vo.AdDoctorVO" alias ="AdDoctorVO"/>
 		
 
+
+		<typeAlias type="com.mama.doc.dto.ClinicDTO" alias = "ClinicDTO"/>
+		<typeAlias type="com.mama.doc.dto.CommentDTO" alias = "CommentDTO"/>
+		<typeAlias type="com.mama.doc.cl.vo.ClinicVO" alias = "ClinicVO"/>
+	
+		
+
 	</typeAliases>
 
 <environments default="oracle">
@@ -49,6 +57,7 @@
 
 
    	<mappers>
+
    		<!-- 나예은 : 회원가입(일반회원) -->
 		<mapper resource="com/mybatis/mapper/MemberMapper.xml"></mapper>
 		<!-- 나예은 : 예방알림 -->
@@ -62,6 +71,9 @@
 		<mapper resource = "com/mybatis/mapper/AdNutrientsFileMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/AdNutrientsMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/AdMemberMapper.xml"/>
+
+
+		<mapper resource = "com/mybatis/mapper/ClinicMapper.xml"></mapper>
 
 	</mappers>
 	

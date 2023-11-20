@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="clinic">
+
+<insert id="clinicWrite" parameterType="ClinicDTO">
+
+	insert into mamadoc_clinic(clinic_number, member_number,clinic_title,clinic_content,clinic_date)
+	values(SEQ_MAMADOC_CLINIC.NEXTVAL,#{memberNumber},#{clinicTitle},#{clinicContent},sysdate)
+	
+</insert>
+
+
+<!-- 페이징을 지원하는 getClinicList -->
+<select id="getClinicListPaging" parameterType="Map" resultType="ClinicVO">
+    SELECT *
+    FROM (
+        SELECT 
+            C.clinic_number, C.clinic_title, C.clinic_content, C.clinic_date, C.member_number, M.member_nickname,
+            ROW_NUMBER() OVER (ORDER BY C.clinic_date DESC) AS rnum
+        FROM 
+            MAMADOC_CLINIC C
+        JOIN 
+            MAMADOC_MEMBER M ON C.member_number = M.member_number
+    ) tmp
+    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+</select>
+
+
+<!-- 전체 페이지 수를 계산하는 getCountClinicList -->
+<select id="getTotal" resultType="int">
+    SELECT COUNT(*) FROM MAMADOC_CLINIC
+</select>
+
+
+
+ <select id="getClinicDetail" parameterType="int" resultType="ClinicVO">
+        SELECT 
+            C.clinic_number, C.clinic_title, C.clinic_content, 
+            C.clinic_date, C.member_number, M.member_nickname
+        FROM 
+            MAMADOC_CLINIC C
+        JOIN 
+            MAMADOC_MEMBER M ON C.member_number = M.member_number
+        WHERE 
+            C.clinic_number = #{clinicNumber}
+ </select>
+
+ <update id="modifyClinic" parameterType="ClinicDTO">
+        UPDATE clinic
+        SET clinic_title = #{clinicTitle},
+            clinic_content = #{clinicContent}
+        WHERE clinic_number = #{clinicNumber}
+ </update>
+ 
+ <delete id="deleteClinic" parameterType="_int">
+ 		DELETE FROM MAMADOC_CLINIC
+ 		WHERE clinic_number = #{clinicNumber}
+ </delete>   
+    
+    
+  <!-- 댓글 부분 -->  
+  
+  <select id="getCommentList" parameterType="_int" resultType="CommentDTO">
+		 SELECT COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER, DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE
+		FROM MAMADOC_COMMENT
+		WHERE CLINIC_NUMBER = #{clinicNumber}
+		ORDER BY COMMENT_NUMBER DESC
+	</select>
+
+  
+  
+  <insert id="insertComment" parameterType="CommentDTO">
+  INSERT INTO MAMADOC_COMMENT
+	(COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER,  DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
+	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL,#{doctorNumber}, #{memberNumber}, #{clinicNumber},#{doctorNickname},#{memberNickname}, #{commentContent}, SYSDATE)
+  </insert>
+</mapper>
+

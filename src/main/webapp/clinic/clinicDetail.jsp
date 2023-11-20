@@ -15,48 +15,49 @@
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
         <div style="width: 900px;display: flex;flex-direction: column;">
 			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
+			
+	<!-- 완료후 주석 풀기 
+    <c:if test="${sessionId eq null}">
+		<script>
+			alert("로그인 후 이용하세요.");
+			location.replace("${pageContext.request.contextPath}/member/MemberLogin.me");
+		</script>
+	</c:if>
+      -->	
+           
             <!-- 제목/등록날짜 -->
             <div style="display: flex;justify-content: space-between;border-bottom: 1px solid gray;padding: 10px;">
                 <!-- 제목 -->
-                <div style="font-size: 17px;font-weight: bold;">제목이 들어갑니다.</div>
+                <div style="font-size: 17px;font-weight: bold;">${clinicDetail.clinicTitle}</div>
                 <!-- 등록날짜 -->
-                <div style="font-size: 15px;color: gray;">2023.11.09</div>
+                <div style="font-size: 15px;color: gray;">${clinicDetail.clinicDate}</div>
             </div>
             <!-- 내용 -->
             <div style="padding: 10px;">
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.<br>
-내용이 들어갑니다.
+				${clinicDetail.clinicContent}
             </div>
+            
+            
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
                 <!-- 수정 -->
-                <form action="${pageContext.request.contextPath}/clinic/clinicModify.jsp">
+                <form action="${pageContext.request.contextPath}/clinic/clinicModify.cl?clinicNumber=${clinic.getClinicNumber()}">
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->
-                <form action="" onsubmit="return removeMsg();">
+                <form action="${pageContext.request.contextPath}/clinic/clinicDeleteOk.cl?clinicNumber=${clinic.getClinicNumber()}" onsubmit="return removeMsg();">
                     <button class="remove-btn">삭제</button>
                 </form>
             </div>
-            <!-- 댓글작성/댓글리스트 -->
+            
+            
+            <!-- 댓글작성/댓글리스트-->
+            
             <div style="border-top: 1px solid gray;">
                 <div style="margin: 20px 10px 10px 10px;font-size: 17px;font-weight: bold;">댓글쓰기</div>
-                <!-- 로그인 안하면 보이기(고민중) -->
-                <!-- 로그인 하면 보이기 -->
-                <form action="" onsubmit="return registReply()">
+            
+              
+                <form action="" method="post" onsubmit="return registReply()">
                     <div style="display: flex;flex-direction: column;border: 1px solid gray;height: 150px;margin-bottom: 10px;">
                         <!-- 로그인된 닉네임 -->
                         <div style="margin-top: 10px;margin-left: 10px;font-size: 15px;font-weight: bold;">로그인닉네임</div>
@@ -68,6 +69,8 @@
                         </div>
                     </div>
                 </form>
+                
+                
                 <!-- 댓글반복시작 -->
                 <div style="border-bottom: 1px solid gray;padding: 10px;position: relative;">
                     <div style="display: flex;justify-content: space-between;">
@@ -93,6 +96,8 @@
                     </div>
                 </div>
                 <!-- 댓글반복끝 -->
+                
+               
             </div>
         </div>
     </div>
