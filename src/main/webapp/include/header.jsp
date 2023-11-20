@@ -54,7 +54,7 @@
                     <a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr" class="main-hidden-tag">예방 알림</a>
                 </li>
                 <li class="main-hidden-list">
-                    <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterList.jsp" class="main-hidden-tag">상담소</a>
+                    <a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl" class="main-hidden-tag">상담소</a>
                 </li>
             </ul>
             <ul class="main-hidden-ul2">
