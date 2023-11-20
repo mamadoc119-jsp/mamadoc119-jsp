@@ -15,7 +15,7 @@
 	<jsp:include page="../include/header.jsp" />
 	
 	<!-- 일반 회원가입 페이지 -->
-    <form class="join" action="${pageContext.request.contextPath}/login/login.jsp">
+    <form class="join" action="${pageContext.request.contextPath}/join/joinOk.me" method="post">
     <div class="join-container">
 
 	<!-- 회원가입 페이지 제목, 소제목 -->
@@ -27,31 +27,31 @@
     <h5 class="join-info">*표시는 필수항목입니다.</h5>
 
     <div class="join-name"><h5>성명*</h5>
-        <input type="text" class="input" id="bt-non" placeholder=" 이름 입력" required></div>
+        <input type="text" name="memberName" class="input" id="bt-non" placeholder=" 이름 입력" required></div>
 
     <div class="join-email"><h5>이메일*</h5>
-        <input type="email" class="input" id="bt-non" placeholder=" 이메일 입력" required></div>
+        <input type="email" name="memberEmail" class="input" id="bt-non" placeholder=" 이메일 입력" required></div>
 
     <div class="join-code"><h5>인증코드 입력*</h5>
         <input type="text" class="input" class="bt" placeholder=" 인증코드 입력" required>
         <button class="bt-sendcode" type="button">인증코드 발송</button></div>
 
     <div class="join-nickname"><h5>닉네임*</h5>
-        <input type="text" class="input" class="bt" placeholder=" 닉네임 입력" required>
+        <input type="text" name="memberNickname" class="input" class="bt" placeholder=" 닉네임 입력" required>
         <button class="bt-certification" type="button">인증하기</button></div>
 
     <div class="join-pw"><h5>비밀번호*</h5>
-        <input type="password" class="input" id="bt-non" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required></div>
+        <input type="password" name="memberPassword" class="input" id="bt-non" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required></div>
 
     <div class="join-ckpw"><h5>비밀번호 재입력*</h5>
         <input type="password" class="input" id="bt-non" placeholder=" 비밀번호를 한번 더 입력해주세요." required></div>
 
     <div class="join-zipcode"><h5>우편번호*</h5>
-        <input type="text" class="address-code" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
+        <input type="text" name="memberPostCode" class="address-code" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
         <button class="bt-findzipcode" type="button" onclick="sample6_execDaumPostcode()">주소찾기</button></div>
-        <input type="text" class="address-find" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." readonly>
-        <input type="text" class="address" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
-        <input type="text" class="address" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요."></div><br>
+        <input type="text" name="memberAddress" class="address-find" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." readonly>
+        <input type="text" name="memberDetailAddress" class="address" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
+        <input type="text" name="memberExtraAddress" class="address" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요."></div><br>
 
 	<!-- 이용약관 체크박스 -->
     <div class="join-agree-term-container">

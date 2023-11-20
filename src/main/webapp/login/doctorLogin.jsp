@@ -29,7 +29,7 @@
         	<input type="password" class="input" placeholder=" 비밀번호" required></div><br>
 
 		<!-- 로그인 및 회원가입 -->
-   	 	<div><button class="bt-login" type="button" onclick ="location.href ='${pageContext.request.contextPath}/login/login.jsp'">로그인</button></div>
+   	 	<div><button class="bt-login" type="button" onclick ="location.href ='${pageContext.request.contextPath}/index.jsp'">로그인</button></div>
     	<div><button class="bt-join" type="button" onclick ="location.href ='${pageContext.request.contextPath}/join/join.jsp'">회원가입</button></div>
 
 		<!-- 네이버 로그인 -->

@@ -11,8 +11,15 @@
 </head>
 <body>
 <!-- 헤더 -->
-<jsp:include page="../include/header.jsp" />
-<!-- 헤더 -->
+<c:choose>
+       <c:when test="${empty sessionScope}">
+           <jsp:include page="../include/header.jsp" />
+       </c:when>
+       <c:otherwise>
+       
+           <jsp:include page="../include/headerLogin.jsp" />
+       </c:otherwise>
+   </c:choose>
 
     <div class="precautionary-full-container">
         <!--예방알림 타이틀-->
@@ -44,49 +51,38 @@
 
         <!--테이블로 글제목 등등 리스트 부분-->
         <div class="precautionary-list-full-container">
+        
             <table>
                 <thead style="background-color:#999999;">
                     <tr>
-                      
                         <th width="500px" class="title">글제목</th>
                         <th width="200px">작성자</th>
                         <th width="150px">작성일자</th>
                     </tr>
                 </thead>
+                
                 <tbody>
+                <c:choose>
+				<c:when test = "${not empty precautionList}">
+				<c:forEach var = "precaution" items ="${precautionList}">
+				<input type = "hidden" value = "${precaution.precautionNumber}"/>
+					<a href="${pageContext.request.contextPath}/precaution/precautionDetail.pr?precautionNumber=${precaution.precautionNumber}">
                     <tr>
-                        <td class="pre-title-contents"><a href="">인플로엔자 유행주의보 발령</a></td>
-                        <td align="center">나는의사</td>
-                        <td align="center">2023.09.15</td>
+                        <td class="pre-title-contents">
+                        ${precaution.precautionTitle}</td>
+                        <td align="center">${precaution.doctorNickname}</td>
+                        <td align="center">${precaution.precautionDate}</td>
                     </tr>
-                    <!--아래는 반복되는 부분, 백단시 삭제하세요-->
-                    <tr>
+                    </a>
                     
-                        <td class="pre-title-contents">23-24절기 어린이 인플루엔자 국가예방접종 지원</td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.09.10</td>
-                    </tr>
-                    <tr>
-                      
-                    </tr>
-                    <tr>
-                     
-                        <td class="pre-title-contents">23-24절기 임산부 인플루엔자 국가예방접종 지원</td>
-                        <td align="center">경기도의사</td>
-                        <td align="center">2023.08.20</td>
-                    </tr>
-                    <tr>
-                    
-                        <td class="pre-title-contents">23-24절기 임산부 인플루엔자 국가예방접종 지원</td>
-                        <td align="center">관리자</td>
-                        <td align="center">2023.08.20</td>
-                    </tr>
-                    <!--여기까지는 반복되는 부분, 백단시 삭제하세요-->
+                </c:forEach>
+          		</c:when> 	
+        		</c:choose>
                 </tbody>
             </table>
         </div>
         <div class="write-down-div">
-            <button class="write-down">글쓰기</button>
+            <button class="write-down" type="button" onclick="location.href='./precautionWrite.jsp'">글쓰기</button>
         </div>
 
 
