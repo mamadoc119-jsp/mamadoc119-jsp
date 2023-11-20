@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="kor">
 <head>
@@ -41,10 +42,15 @@
         <nav class="main-header-member">
             <ul class="main-header-member-ul">
                 <li class="main-header-member-list">
-                    <a href="${pageContext.request.contextPath}/info/memberInfo.jsp" class="main-member-tag">마이페이지</a>
+                	<c:if test="${sessionScope.doctorNumber != null}">
+                    	<a href="informOk.do" class="main-member-tag">마이페이지</a>
+                    </c:if>
+                    <c:if test="${sessionScope.memberNumber != null}">
+                    	<a href="${pageContext.request.contextPath}/info/memberInfo.jsp" class="main-member-tag">마이페이지</a>
+                    </c:if>
                 </li>
                 <li class="main-header-member-list">
-                    <a href="${pageContext.request.contextPath}/index.jsp" class="main-member-tag">로그아웃</a>
+                    <a href="logoutOk.do" class="main-member-tag">로그아웃</a>
                 </li>
             </ul>
         </nav>

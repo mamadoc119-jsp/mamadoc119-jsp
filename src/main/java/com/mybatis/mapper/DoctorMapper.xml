@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="doctor">
+	<!-- 이메일 중복검사 -->
+	<select id="checkEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(doctor_number)
+		from mamadoc_doctor
+		where doctor_email = #{doctorEmail}
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="join" parameterType="DoctorDTO">
+		insert into mamadoc_doctor (doctor_number, doctor_name, doctor_email, doctor_password, doctor_nickname, doctor_post_code, doctor_address, doctor_extra_address, doctor_detail_address, doctor_license, doctor_major)
+		values (seq_mamadoc_doctor.nextval, #{doctorName}, #{doctorEmail}, #{doctorPassword}, #{doctorNickname}, #{doctorPostCode}, #{doctorAddress}, #{doctorExtraAddress}, #{doctorDetailAddress}, #{doctorLicense}, #{doctorMajor})
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="DoctorDTO" resultType="DoctorDTO">
+		select doctor_number
+		from mamadoc_doctor
+		where doctor_email = #{doctorEmail} and doctor_password = #{doctorPassword}
+	</select>
+	
+	<!-- 마이페이지 -->
+	<select id="inform" parameterType="java.lang.Integer" resultType="DoctorDTO">
+		select *
+		from mamadoc_doctor
+		where doctor_number = #{doctorNumber}
+	</select>
+	
+	<!-- 정보수정 -->
+	<update id="modifyInform" parameterType="DoctorDTO">
+		update mamadoc_doctor
+		set doctor_nickname = #{doctorNickname}, doctor_post_code = #{doctorPostCode}, doctor_address = #{doctorAddress}, doctor_extra_address = #{doctorExtraAddress}, doctor_detail_address = #{doctorDetailAddress}
+		where doctor_number = #{doctorNumber}
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="quit" parameterType="java.lang.Integer">
+		delete from mamadoc_doctor
+		where doctor_number = #{doctorNumber}
+	</delete>
+</mapper>
