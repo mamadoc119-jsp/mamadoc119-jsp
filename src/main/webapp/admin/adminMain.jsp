@@ -32,15 +32,16 @@
         <div class="right-title">
             <div class="right-title-sub">부모 회원</div> 
             <div>
-                <form action="검색처리" method="get">
+                <form action="" method="get">
                     <fieldset class="field">
                         <legend>회원 검색</legend>
                         <select name="cate" id="">
                             <option value="name">이름</option>
                             <option value="nickname">닉네임</option>
+                            <option value="email">이메일</option>
                         </select>
                         <input type="text" name="keyword">
-                        <button class="search-btn">검색</button>
+                        <button type="submit" class="search-btn">검색</button>
                     </fieldset>
                 </form>
             </div>
@@ -73,10 +74,37 @@
 	            </div>
             </c:forEach>
             <!-- 20개의 데이터가 들어왔다 -->
-
-
         </div>
+        <!--페이징 처리부분-->
+	   	<div style="display: flex;  justify-content: center;">
+	   		<table style="font-size:1.3rem">
+				<tr align="center" valign="middle">
+					<td>
+						<c:if test="${nowPage > 1}">
+							<a href="${pageContext.request.contextPath}/adminMain.adme?page=${nowPage-1}">&lt;</a>
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${i eq nowPage}">
+										<c:out value="[${i}]"/>&nbsp;
+									</c:when>
+									<c:otherwise>
+										<a href="${pageContext.request.contextPath}/adminMain.adme?page=${i}"><c:out value="${i}"/></a>
+									</c:otherwise>
+								</c:choose>
+						</c:forEach>
+						
+						<c:if test="${nowPage != realEndPage}">
+							<a href="${pageContext.request.contextPath}/adminMain.adme?page=${nowPage+1}">&gt;</a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		 </div>
+	 
     </div>
+    
 </div>
 <script defer src="${pageContext.request.contextPath}/resources/js/adminMain.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>

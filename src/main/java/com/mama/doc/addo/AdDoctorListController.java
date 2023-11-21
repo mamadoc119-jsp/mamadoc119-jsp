@@ -1,8 +1,7 @@
-package com.mama.doc.adnu;
+package com.mama.doc.addo;
 
 import java.io.IOException;
 import java.rmi.ServerException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,25 +9,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mama.doc.Execute;
 import com.mama.doc.Result;
-import com.mama.doc.dao.AdNutrientsDAO;
-import com.mama.doc.vo.AdNutrientsVO;
+import com.mama.doc.dao.AdDoctorDAO;
 import com.mama.doc.vo.SearchVO;
 
-public class AdNutrientsSelectUserAllController implements Execute{
+public class AdDoctorListController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
 		
-		AdNutrientsDAO adNutrientsDAO = new AdNutrientsDAO();
+		AdDoctorDAO adDoctorDAO = new AdDoctorDAO();
 		Result result = new Result();
 		SearchVO searchVO = new SearchVO();
+		
 		
 		// 페이징 처리
         String temp = request.getParameter("page");
 		int page = temp == null ? 1 : Integer.parseInt(temp);
-		int pageSize = 12;
-		int totalCount = adNutrientsDAO.getTotal();
+		int pageSize = 20;
+		int totalCount = adDoctorDAO.getTotal();
 		
 		int endRow = page * pageSize;
 		int startRow = endRow - (pageSize - 1);
@@ -36,7 +35,6 @@ public class AdNutrientsSelectUserAllController implements Execute{
 		int startPage = ((page - 1) / pageSize) * pageSize + 1;
 		int endPage = startPage + 9;
 		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
-		
 		
 		//검색		
 		String cate = request.getParameter("cate");
@@ -54,13 +52,13 @@ public class AdNutrientsSelectUserAllController implements Execute{
 		request.setAttribute("startPage", startPage);
 		request.setAttribute("endPage", endPage);
 		request.setAttribute("nowPage", page);
-		request.setAttribute("nuList", adNutrientsDAO.selectUserAll(startRow, endRow, searchVO));
+		request.setAttribute("doList", adDoctorDAO.selectAll(startRow, endRow, searchVO));
 		request.setAttribute("cate", cate);
 		request.setAttribute("keyword", keyword);
-
 		
 		result.setRedirect(false);
-		result.setPath("/nutrients/nutrientsList.jsp");
+		result.setPath("/admin/adminDoctor.jsp");
+		
 		
 		return result;
 	}

@@ -64,20 +64,47 @@ public class AdDoctorFrontController extends HttpServlet {
 //		관리자 의료인 회원 관리 페이지이동
 		case "/adminDoctor.addo":
 			System.out.println("adminMain!!");
-			request.getRequestDispatcher("/admin/adminDoctor.jsp").forward(request, response);
+			result = new AdDoctorListController().execute(request, response);
 			break;
-	
+			
+//		관리자 의료인 회원 상세 페이지이동
 		case "/adminDoctorDetail.addo":
-			System.out.println("adminMain!!");
-			request.getRequestDispatcher("/admin/adminDoctorDetail.jsp").forward(request, response);
+			System.out.println("adminDoctorDetail!!");
+			result = new AdDoctorSelectOneController().execute(request, response);
 			break;
-		
+			
+//		관리자 가입대기 의료인 회원 페이지이동		
 		case "/adminDoctorApply.addo":
 			System.out.println("adminMain!!");
-			request.getRequestDispatcher("/admin/adminDoctorApply.jsp").forward(request, response);
+			result = new AdDoctorApplyListController().execute(request, response);
+			break;
+			
+//		관리자 의료인 회원 정보 삭제(대기, 승인 비동기)
+		case "/adminDoctorDeleteOk.addo":
+			System.out.println("adminMain!!");
+			result = new AdDoctorDeleteOkController().execute(request, response);
+			break;
+			
+//		관리자 의료인 회원 정보 삭제(대기, 승인 동기)
+		case "/adminDoctorDelete.addo":
+			System.out.println("adminMain!!");
+			result = new AdDoctorDeleteController().execute(request, response);
+			break;
+		
+//		관리자 의료인 회원 가입 승인(비동기)
+		case "/adminDoctorApproveOk.addo":
+			System.out.println("adminMain!!");
+			result = new AdDoctorApproveOkController().execute(request, response);
+			break;
+		
+//		관리자 의료인 회원 가입 승인(동기)
+		case "/adminDoctorApprove.addo":
+			System.out.println("adminMain!!");
+			result = new AdDoctorApproveController().execute(request, response);
 			break;
 			
 		}
+
 		
 		if(result != null) {
 			if(result.isRedirect()) {
