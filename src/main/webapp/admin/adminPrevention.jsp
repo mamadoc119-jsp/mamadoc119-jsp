@@ -22,7 +22,7 @@
             <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
           </nav>
         </div>
-        <a href="/admin/logout">Logout</a>
+        <a href="${pageContext.request.contextPath}/adminLogoutOk.ad">Logout</a>
       </header>
 	<div class="main-container">
 		  <div class="left-container">
