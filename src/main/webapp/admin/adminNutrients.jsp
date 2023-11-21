@@ -17,20 +17,20 @@
         <div class="header-container">
           <nav class="header-nav">
              <a href="${pageContext.request.contextPath}/adminMain.adme">회원 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
+            <a href="${pageContext.request.contextPath}/admin/adClinicList.adcl">게시글 관리</a>
             <a href="${pageContext.request.contextPath}/adminDoctorApply.addo">신청함 관리</a>
-            <a href="${pageContext.request.contextPath}/adminNutrientsWrite.adnu">게시판 등록</a>
+            <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
           </nav>
         </div>
         <a href="${pageContext.request.contextPath}/adminLogoutOk.ad">Logout</a>
       </header>
 <div class="main-container">
-    <div class="left-container">
-        <div class="left-list "><a href="${pageContext.request.contextPath}/admin/adminMC.jsp">상담소 관리</a></div>
-        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminPrevention.jsp">예방상담 관리</a></div>
-        <div class="left-list check"><a href="${pageContext.request.contextPath}/adminNutrients.adnu">영양제 관리</a></div>
-        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminNotice.jsp">공지사항 관리</a></div>
-    </div>
+     <div class="left-container">
+	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adClinicList.adcl">상담소 관리</a></div>
+	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adPrList.adpr">예방상담 관리</a></div>
+	        <div class="left-list check"><a href="${pageContext.request.contextPath}/adminNutrients.adnu">영양제 관리</a></div>
+	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adNoticeList.adno">공지사항 관리</a></div>
+	    </div>
     <div class="right-container">
         <div class="right-title">
             <div class="right-title-sub">영양제 관리</div>
