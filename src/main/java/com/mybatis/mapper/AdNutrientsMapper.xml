@@ -42,22 +42,39 @@
 	</update>
 	
 	<!-- 유저페이지 영양제 추천 페이지 이동 -->
-	<select id="selectUserAll" resultType="AdNutrientsVO">
-		SELECT N.nutrients_number, 
-	       N.admin_number, 
-	       N.nutrients_name, 
-	       N.nutrients_effect, 
-	       N.nutrients_info, 
-	       TO_CHAR(N.nutrients_date, 'YYYY.MM.DD') AS nutrients_date,
-	       F.nufile_number,
-	       F.nufile_path,
-	       F.nufile_uuid,
-	       F.nufile_name,
-	       F.nufile_type
-		FROM MAMADOC_NUTRIENTS N
-		JOIN MAMADOC_NUFILE F
-		ON N.nutrients_number = F.nutrients_number
-		ORDER BY N.nutrients_number DESC
+	<select id="selectUserAll" parameterType="Map" resultType="AdNutrientsVO">
+		SELECT *
+		FROM(
+			SELECT N.nutrients_number, 
+		       N.admin_number, 
+		       N.nutrients_name, 
+		       N.nutrients_effect, 
+		       N.nutrients_info, 
+		       TO_CHAR(N.nutrients_date, 'YYYY.MM.DD') AS nutrients_date,
+		       F.nufile_number,
+		       F.nufile_path,
+		       F.nufile_uuid,
+		       F.nufile_name,
+		       F.nufile_type,
+		       ROW_NUMBER() OVER (ORDER BY N.nutrients_number DESC) AS rnum
+			FROM MAMADOC_NUTRIENTS N
+			JOIN MAMADOC_NUFILE F
+			ON N.nutrients_number = F.nutrients_number
+			<choose>
+				<when test="'name'.equals(searchVO.cate)">
+					WHERE N.nutrients_name LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY N.nutrients_number DESC
+				</when>
+				<when test="'effect'.equals(searchVO.cate)">
+					WHERE N.nutrients_effect LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY N.nutrients_number DESC
+				</when>
+				<otherwise>
+					ORDER BY N.nutrients_number DESC
+				</otherwise>
+			</choose>
+			) temp
+			WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<!-- 영양제 전체 게시글 수 조회 -->
@@ -77,14 +94,14 @@
 			<choose>
 				<when test="'name'.equals(searchVO.cate)">
 					WHERE nutrients_name LIKE '%' || #{searchVO.keyword} || '%'
-					ORDER BY nutrients_number
+					ORDER BY nutrients_number DESC
 				</when>
 				<when test="'effect'.equals(searchVO.cate)">
 					WHERE nutrients_effect LIKE '%' || #{searchVO.keyword} || '%'
-					ORDER BY nutrients_number
+					ORDER BY nutrients_number DESC
 				</when>
 				<otherwise>
-					ORDER BY nutrients_number
+					ORDER BY nutrients_number DESC
 				</otherwise>
 			</choose>
 		) temp
