@@ -32,7 +32,7 @@
                     <a href="" class="main-category-tag">야간진료병원</a>
                 </li>
                 <li class="main-header-category-list">
-                    <a href="" class="main-category-tag">정보놀이터</a>
+                    <a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr" class="main-category-tag">정보놀이터</a>
                 </li>
                 <li class="main-header-category-list">
                     <a href="" class="main-category-tag">공지사항</a>
@@ -57,7 +57,7 @@
         <div class="main-hidden-category">
             <ul class="main-hidden-ul">
                 <li class="main-hidden-list">
-                    <a href="" class="main-hidden-tag">예방 알림</a>
+                    <a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr" class="main-hidden-tag">예방 알림</a>
                 </li>
                 <li class="main-hidden-list">
                     <a href="" class="main-hidden-tag">상담소</a>

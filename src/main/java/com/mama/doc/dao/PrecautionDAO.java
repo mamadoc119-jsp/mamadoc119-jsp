@@ -20,8 +20,9 @@ public class PrecautionDAO {
 	}
 	
 	// 예방알림 글 작성
-	public void write(PrecautionDTO precautionDTO) {
-		sqlSession.insert("precaution.write", precautionDTO);
+	public boolean write(PrecautionDTO precautionDTO) {
+		boolean result = sqlSession.insert("precaution.write", precautionDTO) > 0;
+		return result; //1이상이면 true, 0 이하면 false;
 	}
 	
 	// 예방알림 글 수정
@@ -38,9 +39,11 @@ public class PrecautionDAO {
 	
 	// 예방알림 글 삭제
 	public void delete(int precautionNumber) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("precautionNumber", precautionNumber);
-		sqlSession.delete("precaution.delete", params);
+//		Map<String, Integer> params = new HashMap<>();
+//		params.put("precautionNumber", precautionNumber);
+//		sqlSession.delete("precaution.delete", params);
+		
+		sqlSession.delete("precaution.delete", precautionNumber);
 	}
 	
 	// 예방알림 글 상세보기
@@ -50,29 +53,21 @@ public class PrecautionDAO {
 		return sqlSession.selectOne("precaution.selectOne", params);
 	}
 		
-	// 예방알림 글 리스트 불러오기
-	public List<PrecautionVO> selectAll(){
-		return sqlSession.selectList("precaution.selectAll");
+//	// 예방알림 글 리스트 불러오기
+//	public List<PrecautionVO> selectAll(){
+//		return sqlSession.selectList("precaution.selectAll");
+//	}
+
+	// 예방알림 리스트 페이징 처리	
+	public List<PrecautionVO> getPrecautionListPaging(int startRow, int endRow) {
+	    Map<String, Integer> pageMap = new HashMap<>();
+	    pageMap.put("startRow", startRow);
+	    pageMap.put("endRow", endRow);
+	    return sqlSession.selectList("precaution.getPrecautionListPaging", pageMap);
 	}
 
-	public int countprecautionNumber(){
-			return sqlSession.selectOne("precaution.countprecautionNumber");
-		}
-		
-		public List<PrecautionDTO> bringPrecautionList(int firstList) {
-			List<PrecautionDTO> list = new ArrayList<>();
-			list = sqlSession.selectList("precaution.bringPrecautionList",firstList);
-			return list;
-		}
-		
-		
-		public PrecautionDTO getPrevView(int listNum) {
-			return sqlSession.selectOne("freeboard.getPrevView",listNum);
-		}
-		
-			
-		public PrecautionDTO bringContent(int listNum) {
-			return sqlSession.selectOne("freeboard.bringContent",listNum);
-		}
+	public int getTotal() {
+	    return sqlSession.selectOne("precaution.getTotal");
+	}
 		
 }

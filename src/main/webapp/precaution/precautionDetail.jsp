@@ -12,6 +12,7 @@
 <body>
 <jsp:include page="../include/header.jsp" />
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
+    <input type = "hidden" value = "${precaution.precautionNumber}"/>
         <div style="width: 900px;display: flex;flex-direction: column;">
             <div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">예방알림</div>
             <!-- 제목/등록날짜 -->
@@ -26,11 +27,11 @@
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
                 <!-- 수정 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionModify.jsp">
+                <form action="${pageContext.request.contextPath}/precaution/precautionModify.pr?precautionNumber=${precautionNumber}">
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionList.jsp" onsubmit="return removeMsg();">
+                <form action="${pageContext.request.contextPath}/precaution/precautionDeleteOk.pr?precautionNumber=${precautionNumber}" onsubmit="return removeMsg();">
                     <button class="remove-btn">삭제</button>
                 </form>
             </div>

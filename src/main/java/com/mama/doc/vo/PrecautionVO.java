@@ -1,6 +1,5 @@
 package com.mama.doc.vo;
 
-import java.util.Date;
 
 public class PrecautionVO {
     
@@ -10,7 +9,7 @@ public class PrecautionVO {
     private int doctorNumber;
     private String precautionTitle;
     private String precautionContent;
-    private Date precautionDate;
+    private String precautionDate;
     
     
     // Getter, Setter
@@ -51,10 +50,10 @@ public class PrecautionVO {
 	public void setPrecautionContent(String precautionContent) {
 		this.precautionContent = precautionContent;
 	}
-	public Date getPrecautionDate() {
+	public String getPrecautionDate() {
 		return precautionDate;
 	}
-	public void setPrecautionDate(Date precautionDate) {
+	public void setPrecautionDate(String precautionDate) {
 		this.precautionDate = precautionDate;
 	}
 	

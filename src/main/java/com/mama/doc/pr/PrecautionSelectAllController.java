@@ -1,96 +1,67 @@
 package com.mama.doc.pr;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mama.doc.Execute;
 import com.mama.doc.Result;
 import com.mama.doc.dao.PrecautionDAO;
 import com.mama.doc.dto.PrecautionDTO;
-import com.mama.doc.vo.PrecautionVO;
 
 public class PrecautionSelectAllController implements Execute{
 	
 	public Result execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		
-		PrecautionDAO precautionDAO = new PrecautionDAO();
-		PrecautionDTO precautionDTO = new PrecautionDTO();
-		
-		// 페이지네이션
-		
-				int totalPage = 10;
-				int totalList = 6;
-				int currentPage = 1;
-				int pageBlock = 1;
-				int lastPage = 1;
+//		 HttpSession session = request.getSession();
+//	        session.setAttribute("doctor_number", 1);
+//	        session.setAttribute("doctor_nickname", "소아과의사입니다");
+//	        int doctorNumber = (int) session.getAttribute("doctor_number");
 
-//				게시글 개수
-				int totalListNum = precautionDAO.countprecautionNumber();
-				int maxBlock = (totalListNum - 1) / 60 + 1;
-				int listLeftOver = totalListNum % 60;
-				int maxPage = listLeftOver / 6 + 1;
-				if (listLeftOver % 10 == 0) {
-					maxPage = listLeftOver / 6;
-				}
+	        PrecautionDTO precautionDTO = new PrecautionDTO();
+//	        precautionDTO.setDoctorNumber(doctorNumber);
 
-				System.out.println("게시글 총 개수!! : " + totalListNum);
-				
-				if (request.getParameter("page") != null) {
+	        Result result = new Result();
+	        PrecautionDAO precautionDAO = new PrecautionDAO();
 
-					if (Integer.parseInt(request.getParameter("page")) > 0) {
-						currentPage = Integer.parseInt(request.getParameter("page"));
-					}
-					if (Integer.parseInt(request.getParameter("page")) > maxPage) {
-						currentPage = Integer.parseInt(request.getParameter("page")) - 1;
-					}
-				}
+	        System.out.println("listOK컨트롤러 들어왔음");
 
-				// 첫 페이지번호 & 마지막 페이지번호
-				
-				lastPage= maxPage;
-				
-				if (currentPage > lastPage) {
-					currentPage = lastPage;
-				}
+	        // 페이징 처리
+	        String temp = request.getParameter("page");
+			int page = temp == null ? 1 : Integer.parseInt(temp);
+			int pageSize = 10;
+			int totalCount = precautionDAO.getTotal();
+			
+			int endRow = page * pageSize;
+			int startRow = endRow - (pageSize - 1);
+			
+			int startPage = ((page - 1) / pageSize) * pageSize + 1;
+			int endPage = startPage + 9;
+			int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
+			
+			endPage = endPage > realEndPage ? realEndPage : endPage;
+	        
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("realEndPage", realEndPage);
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("nowPage", page);
+			request.setAttribute("precautionList", precautionDAO.getPrecautionListPaging(startRow, endRow));
 
-				pageBlock = (currentPage - 1) / 10 + 1;
 
-				int firstPage = (pageBlock - 1) * 10 + 1;
+	        // 글 작성 후 목록 페이지 이동
+	        result.setRedirect(false);
+	        result.setPath("/precaution/precautionList.jsp");
 
-				List<Integer> pageList = new ArrayList<>();
-				for (int i = firstPage; i <= lastPage; i++) {
-					pageList.add(i);
-				}
-
-				int firstList = (currentPage - 1) * totalList;
-
-				// 리스트출력
-				List<PrecautionDTO> precautionList = null;
-				if(totalListNum != 0) {
-					System.out.println("조건문 진입!!");
-					System.out.println("firstList!! : " + firstList);
-					precautionList = precautionDAO.bringPrecautionList(firstList);
-					System.out.println(precautionList);
-				}
-				
-				System.out.println("precautionList!! : " + precautionList);
-				request.setAttribute("precautionList", precautionList);
-				request.setAttribute("currentPage", currentPage);
-				request.setAttribute("pageList", pageList);
-		
-		
-		System.out.println("check precautionNum : " + precautionDTO.getPrecautionNumber());
-		System.out.println("check precautionTitle : " + precautionDTO.getPrecautionTitle());
-		request.getRequestDispatcher("/precaution/precautionList.jsp").forward(request, response);
-		return null;
+	        return result;
+	    	
+	}
 		
 	}
 
 
-}
+

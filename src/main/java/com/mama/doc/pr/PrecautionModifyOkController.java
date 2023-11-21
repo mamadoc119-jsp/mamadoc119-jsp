@@ -2,7 +2,7 @@ package com.mama.doc.pr;
 
 import java.io.IOException;
 import java.rmi.ServerException;
-import java.util.Date;
+//import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import com.mama.doc.Execute;
 import com.mama.doc.Result;
+import com.mama.doc.cl.dao.ClinicDAO;
 import com.mama.doc.dao.PrecautionDAO;
+import com.mama.doc.dto.ClinicDTO;
 import com.mama.doc.dto.PrecautionDTO;
 
 public class PrecautionModifyOkController implements Execute {
@@ -19,25 +21,52 @@ public class PrecautionModifyOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
-
-		PrecautionDAO precautionDAO = new PrecautionDAO();
-		int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
 		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+
+//		PrecautionDAO precautionDAO = new PrecautionDAO();
+//		int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
+//		
+//		PrecautionDTO precautionDTO = new PrecautionDTO();
+////	      Date date = new Date(); precautionDate Date가 아닌 String으로 수정
+//	      HttpSession session = request.getSession();
+//	      
+//	      precautionDTO.setPrecautionNumber(precautionNumber);
+//	      precautionDTO.setDoctorNumber((Integer)session.getAttribute("doctorNumber"));
+//	      precautionDTO.setPrecautionTitle(request.getParameter("precautionTitle"));
+//	      precautionDTO.setPrecautionContent(request.getParameter("precautionContent"));
+//	      precautionDTO.setPrecautionDate("precautionDate");
+//	      
+//	      
+//	      System.out.println(precautionDTO);
+//	      precautionDAO.update(precautionDTO);
+//	      response.sendRedirect("/precaution/precautionModifyOk.pr?precautionNumber="+ precautionNumber);
+//	      return null;
+		Result result = new Result();
 		PrecautionDTO precautionDTO = new PrecautionDTO();
-	      Date date = new Date();
-	      HttpSession session = request.getSession();
+		PrecautionDAO precautionDAO = new PrecautionDAO();
+		try {
+			int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
+			precautionDTO.setPrecautionNumber(precautionNumber);
+			precautionDTO.setPrecautionTitle(request.getParameter("precautionTitle"));
+			precautionDTO.setPrecautionContent(request.getParameter("precautionContent"));
+			precautionDTO.setPrecautionDate(request.getParameter("precautionDate"));
+			precautionDAO.update(precautionDTO);
+		
+
+			result.setRedirect(false);
+			result.setPath("/precaution/precautionDetailOk.pr?precautionNumber=" + precautionNumber);
+						
+		}catch(NumberFormatException e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+
+		
+	}
 	      
-	      precautionDTO.setPrecautionNumber(precautionNumber);
-	      precautionDTO.setDoctorNumber((Integer)session.getAttribute("doctorNumber"));
-	      precautionDTO.setPrecautionTitle(request.getParameter("precautionTitle"));
-	      precautionDTO.setPrecautionContent(request.getParameter("precautionContent"));
-	      precautionDTO.setPrecautionDate(date);
-	      
-	      
-	      System.out.println(precautionDTO);
-	      precautionDAO.update(precautionDTO);
-	      response.sendRedirect("/precaution/precautionDetailOk.fr?freeboardNum="+ precautionNumber);
-	      return null;
 	}
 
-}
+

@@ -87,14 +87,14 @@ public class PrecautionFrontController extends HttpServlet {
 			// 예방알림 찾기 글 목록 불러오기
 			case "/precaution/precautionListOk.pr":
 				System.out.println("precautionListOk!!");
-				new PrecautionSelectAllController().execute(request, response);
+				result = new PrecautionSelectAllController().execute(request, response);
 				break;
 				
-			// 예방알림 글 상세 보기 화면 이동
-			case "/precaution/precautionDetail.pr" :
-				System.out.println("precautionDetail!!");
-				new PrecautionSelectOneController().execute(request, response);
-				break;
+//			// 예방알림 글 상세 보기 화면 이동
+//			case "/precaution/precautionDetail.pr" :
+//				System.out.println("precautionDetail!!");
+//				new PrecautionSelectOneController().execute(request, response);
+//				break;
 				
 			// 예방알림 특정 글 데이터 불러오기
 			case "/precaution/precautionDetailOk.pr" :
@@ -120,6 +120,16 @@ public class PrecautionFrontController extends HttpServlet {
 				new PrecautionDeleteController().execute(request, response);
 				break;
 		}
+	
+		if(result != null) {
+	        if(result.isRedirect()) {
+	           response.sendRedirect(result.getPath());
+	           //리다이렉션을 필요로 한다면 리다이렉션을 수행한다
+	        }else {
+	           request.getRequestDispatcher(result.getPath()).forward(request, response);
+	           //포워딩을 필요로 하면 result객체의 경로로 포워딩을 수행한다
+	        }
+	     }
     }
 
 }
