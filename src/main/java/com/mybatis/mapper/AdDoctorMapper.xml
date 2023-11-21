@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="addo">
+
+	<!-- 가입승인된 의료인 회원 리스트 -->
+	<select id="selectAll" parameterType="Map" resultType="AdDoctorDTO">
+		SELECT *
+		FROM(
+			SELECT doctor_number,
+				   doctor_name,
+				   doctor_email,
+				   doctor_password,
+				   doctor_nickname,
+				   doctor_post_code,
+				   doctor_address,
+				   doctor_detail_address,
+				   doctor_extra_address,
+				   doctor_license,
+				   doctor_major,
+				   doctor_status,
+				   TO_CHAR(doctor_join_date, 'YYYY.MM.DD') AS doctor_join_date,
+				   ROW_NUMBER() OVER (ORDER BY doctor_number DESC) AS rnum
+			FROM MAMADOC_DOCTOR
+			<choose>
+				<when test="'name'.equals(searchVO.cate)">
+					WHERE doctor_name LIKE '%' || #{searchVO.keyword} || '%'
+					AND doctor_status = 1
+					ORDER BY doctor_number DESC
+				</when>
+				<when test="'nickname'.equals(searchVO.cate)">
+					WHERE doctor_nickname LIKE '%' || #{searchVO.keyword} || '%'
+					AND doctor_status = 1
+					ORDER BY doctor_number DESC
+				</when>
+				<when test="'email'.equals(searchVO.cate)">
+					WHERE doctor_email LIKE '%' || #{searchVO.keyword} || '%'
+					AND doctor_status = 1
+					ORDER BY doctor_number DESC
+				</when>
+				<otherwise>
+					WHERE doctor_status = 1
+					ORDER BY doctor_number DESC
+				</otherwise>			
+			</choose>
+		)temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+
+	<!-- 가입승인전 의료인 회원 리스트 -->
+	<select id="selectApplyAll" parameterType="Map" resultType="AdDoctorDTO">
+		SELECT *
+		FROM(
+			SELECT doctor_number,
+				   doctor_name,
+				   doctor_email,
+				   doctor_password,
+				   doctor_nickname,
+				   doctor_post_code,
+				   doctor_address,
+				   doctor_detail_address,
+				   doctor_extra_address,
+				   doctor_license,
+				   doctor_major,
+				   doctor_status,
+				   TO_CHAR(doctor_join_date, 'YYYY.MM.DD') AS doctor_join_date,
+				   ROW_NUMBER() OVER (ORDER BY doctor_number DESC) AS rnum
+			FROM MAMADOC_DOCTOR
+			<choose>
+				<when test="'name'.equals(searchVO.cate)">
+					WHERE doctor_name LIKE '%' || #{searchVO.keyword} || '%'
+					AND doctor_status = 0
+					ORDER BY doctor_number DESC
+				</when>
+				<when test="'nickname'.equals(searchVO.cate)">
+					WHERE doctor_nickname LIKE '%' || #{searchVO.keyword} || '%'
+					AND doctor_status = 0
+					ORDER BY doctor_number DESC
+				</when>
+				<when test="'email'.equals(searchVO.cate)">
+					WHERE doctor_email LIKE '%' || #{searchVO.keyword} || '%'
+					AND doctor_status = 0
+					ORDER BY doctor_number DESC
+				</when>
+				<otherwise>
+					WHERE doctor_status = 0
+					ORDER BY doctor_number DESC
+				</otherwise>			
+			</choose>
+		)temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	
+	<!-- 가입승인전 의료인 회원 총수  -->
+	<select id="getApplyTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM MAMADOC_DOCTOR
+		WHERE doctor_status = 0
+	</select>
+	
+	<!-- 가입승인된 의료인 회원 총수  -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM MAMADOC_DOCTOR
+		WHERE doctor_status = 1
+	</select>
+	
+	<!-- 가입승인된 의료인 회원 상세보기 -->
+	<select id="selectOne" parameterType="Map" resultType="AdDoctorVO">
+		SELECT D.doctor_number,
+			   D.doctor_name,
+			   D.doctor_email,
+			   D.doctor_password,
+			   D.doctor_nickname,
+			   D.doctor_post_code,
+			   D.doctor_address,
+			   D.doctor_detail_address,
+			   D.doctor_extra_address,
+			   D.doctor_license,
+			   D.doctor_major,
+			   D.doctor_status,
+			   TO_CHAR(D.doctor_join_date, 'YYYY.MM.DD') AS doctor_join_date,
+			   F.dofile_number,
+			   F.dofile_path,
+			   F.dofile_uuid,
+			   F.dofile_name,
+			   F.dofile_type
+		FROM MAMADOC_DOCTOR D
+		JOIN MAMADOC_DOFILE F
+		ON D.doctor_number = F.doctor_number
+		WHERE D.doctor_status = #{doctorStatus}
+		AND D.doctor_number = #{doctorNumber}
+	</select>
+	
+	
+	<!-- 의료인 회원 정보 삭제  -->
+	<delete id="delete" parameterType="int">
+		DELETE FROM MAMADOC_DOCTOR
+		WHERE doctor_number = #{doctorNumber}
+	</delete>
+	
+	<!-- 의료인 회원가입 승인 -->
+	<update id="approve" parameterType="int">
+		UPDATE MAMADOC_DOCTOR
+		SET doctor_status = 1
+		WHERE doctor_number = #{doctorNumber}
+	</update>
+</mapper>
