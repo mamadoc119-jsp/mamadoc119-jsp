@@ -27,7 +27,7 @@
       </header>
 <div class="main-container">
     <div class="left-container">
-        <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adminMC.jsp">상담소 관리</a></div>
+        <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adminClinicList.adcl">상담소 관리</a></div>
         <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adPrList.adpr">예방상담 관리</a></div>
         <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminNutrients.jsp">영양제 관리</a></div>
         <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adNoticeList.adno">공지사항 관리</a></div>
@@ -40,8 +40,8 @@
                     <fieldset class="field">
                         <legend>게시글 검색</legend>
                         <select name="cate" id="">
-                            <option value="title">제목</option>
-                            <option value="nickname">닉네임</option>
+                            <option value="name">제목</option>
+                            <option value="effect">닉네임</option>
                         </select>
                         <input type="text" name="keyword">
                         <button class="search-btn">검색</button>
@@ -76,8 +76,33 @@
 			</c:choose>
             <!-- 데이터가 끝나는 영역-->
             <!-- 페이징 처리 -->
-
         </div>
+        <div style="display: flex;  justify-content: center;">
+    		<table style="font-size:1.3rem">
+				<tr align="center" valign="middle">
+					<td>
+						<c:if test="${nowPage > 1}">
+							<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${nowPage-1}">&lt;</a>
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${i eq nowPage}">
+										<c:out value="[${i}]"/>&nbsp;
+									</c:when>
+									<c:otherwise>
+										<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${i}"><c:out value="${i}"/></a>
+									</c:otherwise>
+								</c:choose>
+						</c:forEach>
+						
+						<c:if test="${nowPage != realEndPage}">
+							<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${nowPage+1}">&gt;</a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+   		 </div>
     </div>
 </div>
 </body>
