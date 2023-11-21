@@ -35,7 +35,7 @@ public class PrecautionSelectOneController implements Execute{
 		
 		request.setAttribute("precaution", precautionInfo);
 		System.out.println(precautionVO);
-		request.getRequestDispatcher("/precaution/precautionDetailOk.pr?precautionNumber=" + precautionNumber).forward(request, response);
+		request.getRequestDispatcher("/precaution/precautionDetail.pr?precautionNumber=" + precautionNumber).forward(request, response);
 		
 		return null;
 		

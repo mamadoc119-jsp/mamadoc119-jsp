@@ -90,11 +90,11 @@ public class PrecautionFrontController extends HttpServlet {
 				result = new PrecautionSelectAllController().execute(request, response);
 				break;
 				
-//			// 예방알림 글 상세 보기 화면 이동
-//			case "/precaution/precautionDetail.pr" :
-//				System.out.println("precautionDetail!!");
-//				new PrecautionSelectOneController().execute(request, response);
-//				break;
+			// 예방알림 글 상세 보기 화면 이동
+			case "/precaution/precautionDetail.pr" :
+				System.out.println("precautionDetail!!");
+				new PrecautionSelectOneController().execute(request, response);
+				break;
 				
 			// 예방알림 특정 글 데이터 불러오기
 			case "/precaution/precautionDetailOk.pr" :
