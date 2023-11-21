@@ -39,7 +39,7 @@
 	
 	    		<div class="join-code">
 	    			<h5>인증코드 입력*</h5>
-	        		<input type="text" class="input" class="bt" id="doctorEmail" placeholder=" 인증코드 입력" required>
+	        		<input type="text" class="input" class="bt" placeholder=" 인증코드 입력" required>
 	        		<button class="bt-certification" type="button">인증하기</button>
 	        	</div>
 	

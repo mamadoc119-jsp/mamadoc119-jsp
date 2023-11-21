@@ -21,7 +21,7 @@
 	</c:if>
 
 	<!-- 의료인 회원 정보 수정 -->
-    <form class="join" action="modifyInformOk.do" method="post">
+    <form class="join" action="/mamadoc/modifyInformOk.do" method="post">
     	<div class="join-container">
 
 			<!-- 의료인 회원 정보 수정 제목, 소제목 -->
@@ -48,7 +48,7 @@
 	        <div class="join-zipcode">
 	        	<h5>근무지 주소*</h5>
 	            <input type="text" class="join-zipcode" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" value="${inform.doctorPostCode}" name="doctorPostCode" readonly>
-	            <button class="bt-findzipcode" onclick="sample6_execDaumPostcode()">주소찾기</button>
+	            <button type="button" class="bt-findzipcode" onclick="sample6_execDaumPostcode()">주소찾기</button>
 	        </div>
 	        <input type="text" class="join-address" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." value="${inform.doctorAddress}" name="doctorAddress" readonly>
 	        <input type="text" class="join-addr-extra" id="sample6_extraAddress" placeholder=" 참고항목" value="${inform.doctorExtraAddress}" name="doctorExtraAddress" readonly>
@@ -70,7 +70,7 @@
 	        	<a href="${pageContext.request.contextPath}/password/ckMember.jsp" class="change-pw-tag">비밀번호 찾기</a>
 	        </span>
 	        <span class="withdrawal">
-	        	<a href="quitOk.do" class="withdrawal-tag">회원 탈퇴</a>
+	        	<a href="/mamadoc/quitOk.do" class="withdrawal-tag">회원 탈퇴</a>
 	        </span>
 	    </div>
 	</form>
