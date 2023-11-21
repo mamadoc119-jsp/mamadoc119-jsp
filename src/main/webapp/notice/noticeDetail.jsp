@@ -26,17 +26,19 @@
 				<c:out value="${noticeDetail.getNoticeTitle()}"/>
             </div>
             <!-- 수정/삭제 -->
-            <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
-            
-                <!-- 수정 -->
-                <form action="noticeUpdate.adno">
-              <input type="hidden" name="noticeNumber" value="${noticeDetail.getNoticeNumber()}"/>
-                  <button class="modify-btn">수정</button>
-              </form>
-                    
-                <!-- 삭제 -->
-                    <button class="remove-btn" onclick="location.href='${pageContext.request.contextPath}/admin/adNoticeDelete.adno?noticeNumber=${noticeDetail.getNoticeNumber()}'">삭제</button>
-            </div>
+            <c:if test="${not empty sessionScope.adminNumber}">
+			    <!-- 수정/삭제 태그들이 여기에 들어갑니다 -->
+			    <div style="display: flex; justify-content: end; margin: 0 10px 10px 10px;">
+			        <!-- 수정 -->
+			        <form action="noticeUpdate.adno">
+			            <input type="hidden" name="noticeNumber" value="${noticeDetail.getNoticeNumber()}"/>
+			            <button class="modify-btn">수정</button>
+			        </form>
+			
+			        <!-- 삭제 -->
+			        <button class="remove-btn" onclick="location.href='${pageContext.request.contextPath}/admin/adNoticeDelete.adno?noticeNumber=${noticeDetail.getNoticeNumber()}'">삭제</button>
+			    </div>
+			</c:if>
         </div>
     </div>
 <jsp:include page="../include/footer.jsp" />

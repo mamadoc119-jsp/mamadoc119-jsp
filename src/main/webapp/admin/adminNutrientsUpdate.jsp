@@ -17,9 +17,9 @@
         <div class="header-container">
           <nav class="header-nav">
              <a href="${pageContext.request.contextPath}/adminMain.adme">회원 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
+            <a href="${pageContext.request.contextPath}/admin/adClinicList.adcl">게시글 관리</a>
             <a href="${pageContext.request.contextPath}/adminDoctorApply.addo">신청함 관리</a>
-            <a href="${pageContext.request.contextPath}/adminNutrientsWrite.adnu">게시판 등록</a>
+            <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
           </nav>
         </div>
         <a href="${pageContext.request.contextPath}/adminLogoutOk.ad">Logout</a>

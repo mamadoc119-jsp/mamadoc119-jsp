@@ -3,7 +3,38 @@
 
 <mapper namespace="adcl">
   <select id="adClinicList" parameterType = "adClinicVo" resultType="adClinicVo">
-    SELECT 
+    SELECT *
+		FROM(
+			SELECT 
+			    C.clinic_number,
+			    C.member_number,
+			    C.clinic_title,
+			    C.clinic_content,
+			    C.clinic_date,
+			    M.member_name,
+			    M.member_nickname,
+			    ROW_NUMBER() OVER (ORDER BY clinic_number DESC) AS rnum
+				FROM MAMADOC_CLINIC C
+				JOIN MAMADOC_MEMBER M ON C.member_number = M.member_number
+			<choose>
+				<when test="'name'.equals(searchVO.cate)">
+					WHERE clinic_title LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY clinic_number
+				</when>
+				<when test="'effect'.equals(searchVO.cate)">
+					WHERE member_nickname LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY clinic_number
+				</when>
+				<otherwise>
+					ORDER BY clinic_number
+				</otherwise>
+			</choose>
+		) temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+
+   </select>
+   
+   <!-- SELECT 
     C.clinic_number,
     C.member_number,
     C.clinic_title,
@@ -12,20 +43,16 @@
     M.member_name,
     M.member_nickname
 	FROM MAMADOC_CLINIC C
-	JOIN MAMADOC_MEMBER M ON C.member_number = M.member_number
-
-   </select>
-   
+	JOIN MAMADOC_MEMBER M ON C.member_number = M.member_number -->
   
    <delete id="adClinicDelete" parameterType="long">
        delete from mamadoc_clinic where clinic_number = #{clinicNumber}
 	</delete>
    
+   <!-- 예방상담 전체 게시글 수 조회 -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM MAMADOC_CLINIC
+	</select>
 
-   
-   
-   <!-- 
-   <select id="getTotal" resultType="_int">
-      select count(board_num) from tbl_board
-   </select> -->
+  
 </mapper>
