@@ -16,20 +16,20 @@
         <span class="logo">똥강아지</span>
         <div class="header-container">
           <nav class="header-nav">
-            <a href="${pageContext.request.contextPath}/admin/adminMain.jsp">회원 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminMC.jsp">게시글 관리</a>
-            <a href="${pageContext.request.contextPath}/admin/adminDoctorApply.jsp">신청함 관리</a>
+             <a href="${pageContext.request.contextPath}/adminMain.adme">회원 관리</a>
+            <a href="${pageContext.request.contextPath}/admin/adClinicList.adcl">게시글 관리</a>
+            <a href="${pageContext.request.contextPath}/adminDoctorApply.addo">신청함 관리</a>
             <a href="${pageContext.request.contextPath}/admin/adminNutrientsWrite.jsp">게시판 등록</a>
           </nav>
         </div>
         <a href="/admin/logout">Logout</a>
       </header>
 <div class="main-container">
-	     <div class="left-container">
-	        <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adminClinicList.adcl">상담소 관리</a></div>
+	      <div class="left-container">
+	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adClinicList.adcl">상담소 관리</a></div>
 	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adPrList.adpr">예방상담 관리</a></div>
-	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adminNutrients.jsp">영양제 관리</a></div>
-	        <div class="left-list"><a href="${pageContext.request.contextPath}/admin/adNoticeList.adno">공지사항 관리</a></div>
+	        <div class="left-list"><a href="${pageContext.request.contextPath}/adminNutrients.adnu">영양제 관리</a></div>
+	        <div class="left-list check"><a href="${pageContext.request.contextPath}/admin/adNoticeList.adno">공지사항 관리</a></div>
 	    </div>
     <div class="right-container">
         <div class="right-title">
