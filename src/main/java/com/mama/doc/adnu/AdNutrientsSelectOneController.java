@@ -22,6 +22,7 @@ public class AdNutrientsSelectOneController implements Execute {
 		AdNutrientsDTO adNutrientsDTO = new AdNutrientsDTO();
 		AdNutrientsFileDTO adNutrientsFileDTO = new AdNutrientsFileDTO();
 		AdNutrientsDAO adNutrientsDAO = new AdNutrientsDAO();
+		Result result = new Result();
 		
 		int nutrientsNumber = Integer.parseInt(request.getParameter("nutrientsNumber"));
 		
@@ -36,9 +37,9 @@ public class AdNutrientsSelectOneController implements Execute {
 		
 		
 		
-		
-		request.getRequestDispatcher("/admin/adminNutrientsUpdate.jsp").forward(request, response);
-		return null;
+		result.setRedirect(false);
+		result.setPath("/admin/adminNutrientsUpdate.jsp");
+		return result;
 	}
 	
 	

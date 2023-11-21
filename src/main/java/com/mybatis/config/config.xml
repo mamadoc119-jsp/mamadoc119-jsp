@@ -72,7 +72,8 @@
 		<mapper resource = "com/mybatis/mapper/AdminMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/AdNutrientsFileMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/AdNutrientsMapper.xml"></mapper>
-		<mapper resource = "com/mybatis/mapper/AdMemberMapper.xml"/>
+		<mapper resource = "com/mybatis/mapper/AdMemberMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/AdDoctorMapper.xml"></mapper>
 
 
 		<mapper resource = "com/mybatis/mapper/ClinicMapper.xml"></mapper>

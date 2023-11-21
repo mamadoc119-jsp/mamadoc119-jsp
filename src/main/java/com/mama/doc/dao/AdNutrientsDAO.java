@@ -59,8 +59,12 @@ public class AdNutrientsDAO {
 	}
 
 //	유저페이지 영양제 추천 페이지 이동(파일, 영양제 정보 불러오기)
-	public List<AdNutrientsVO> selectUserAll() {
-		return sqlSession.selectList("adnu.selectUserAll");
+	public List<AdNutrientsVO> selectUserAll(int startRow, int endRow, SearchVO searchVO) {
+		Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("startRow", startRow);
+	    pageMap.put("endRow", endRow);
+	    pageMap.put("searchVO", searchVO);
+		return sqlSession.selectList("adnu.selectUserAll", pageMap);
 	}
 	
 //	관리자페이지에서 영양제 글 리스트

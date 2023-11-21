@@ -2,22 +2,49 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="adme">
 
-	<select id="selectMeAll" resultType="AdMemberDTO">
-		SELECT member_number,
-			   member_name,
-			   member_email,
-			   member_password,
-			   member_nickname,
-			   member_post_code,
-			   member_address,
-			   member_detail_address,
-			   member_extra_address,
-			   TO_CHAR(member_join_date, 'YYYY.MM.DD') AS member_join_date
-		FROM MAMADOC_MEMBER
+	<select id="selectMeAll" parameterType="Map" resultType="AdMemberDTO">
+		SELECT *
+		FROM(
+			SELECT member_number,
+				   member_name,
+				   member_email,
+				   member_password,
+				   member_nickname,
+				   member_post_code,
+				   member_address,
+				   member_detail_address,
+				   member_extra_address,
+				   TO_CHAR(member_join_date, 'YYYY.MM.DD') AS member_join_date,
+				   ROW_NUMBER() OVER (ORDER BY member_number DESC) AS rnum
+				   FROM MAMADOC_MEMBER
+				<choose>
+					<when test="'name'.equals(searchVO.cate)">
+						WHERE member_name LIKE '%' || #{searchVO.keyword} || '%'
+						ORDER BY member_number DESC
+					</when>
+					<when test="'nickname'.equals(searchVO.cate)">
+						WHERE member_nickname LIKE '%' || #{searchVO.keyword} || '%'
+						ORDER BY member_number DESC
+					</when>
+					<when test="'email'.equals(searchVO.cate)">
+						WHERE member_email LIKE '%' || #{searchVO.keyword} || '%'
+						ORDER BY member_number DESC
+					</when>
+					<otherwise>
+						ORDER BY member_number DESC
+					</otherwise>			
+				</choose>
+			)temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
 	<delete id="delete" parameterType="int">
 		DELETE FROM MAMADOC_MEMBER
 		WHERE member_number = #{memberNumber}
-	</delete>	
+	</delete>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*)
+		FROM MAMADOC_MEMBER
+	</select>
 </mapper>
