@@ -53,10 +53,10 @@ public class PrecautionDAO {
 		return sqlSession.selectOne("precaution.selectOne", params);
 	}
 		
-//	// 예방알림 글 리스트 불러오기
-//	public List<PrecautionVO> selectAll(){
-//		return sqlSession.selectList("precaution.selectAll");
-//	}
+	// 예방알림 글 리스트 불러오기
+	public List<PrecautionVO> selectAll(){
+		return sqlSession.selectList("precaution.selectAll");
+	}
 
 	// 예방알림 리스트 페이징 처리	
 	public List<PrecautionVO> getPrecautionListPaging(int startRow, int endRow) {

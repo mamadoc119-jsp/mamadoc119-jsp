@@ -27,7 +27,7 @@
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
                 <!-- 수정 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionModify.pr?precautionNumber=${precautionNumber}">
+                <form action="${pageContext.request.contextPath}/precaution/precautionModifyOk.pr?precautionNumber=${precautionNumber}">
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->

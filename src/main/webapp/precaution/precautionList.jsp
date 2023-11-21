@@ -90,7 +90,7 @@
             </table>
         </div>
         <div class="write-down-div">
-            <button class="write-down" type="button" onclick="location.href='./precautionWrite.jsp'">글쓰기</button>
+            <button class="write-down" type="button" onclick="location.href='./precautionWrite.pr'">글쓰기</button>
         </div>
 
 
@@ -109,13 +109,13 @@
 													<c:out value="[${i}]"/>&nbsp;
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/precaution/precautionListOk.cl?page=${i}"><c:out value="${i}"/></a>
+													<a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr?page=${i}"><c:out value="${i}"/></a>
 												</c:otherwise>
 											</c:choose>
 									</c:forEach>
 									
 									<c:if test="${nowPage != realEndPage}">
-										<a href="${pageContext.request.contextPath}/precaution/precautionListOk.cl?page=${nowPage+1}">&gt;</a>
+										<a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr?page=${nowPage+1}">&gt;</a>
 									</c:if>
 									</td>
 								</tr>

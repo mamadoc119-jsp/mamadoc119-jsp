@@ -25,7 +25,7 @@ public class PrecautionModifyController implements Execute {
 		
 		request.setAttribute("precaution", precautionDAO.selectWrite(precautionNumber));
 		result.setRedirect(false);
-		result.setPath("/precaution/precautionModify.jsp");	
+		result.setPath("/precaution/precautionModify.pr");	
 		
 		return result;
 	}
