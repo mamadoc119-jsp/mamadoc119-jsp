@@ -25,10 +25,10 @@ public class ClinicListOkController implements Execute {
             throws IOException, ServletException, ServerException {
 
     	// test용 임의로 지정///////
-    	HttpSession session = request.getSession();
-    	session.setAttribute("member_number", 2);
-    	session.setAttribute("member_nickname", "비이이");
-        int memberNumber = (int) session.getAttribute("member_number");
+//    	HttpSession session = request.getSession();
+//    	session.setAttribute("member_number", 2);
+//    	session.setAttribute("member_nickname", "비이이");
+//        int memberNumber = (int) session.getAttribute("member_number");
 
 //        ClinicDTO clinicDTO = new ClinicDTO();
 //        clinicDTO.setMemberNumber(memberNumber);

@@ -21,45 +21,52 @@ public class CommentWriteOkController implements Execute{
 	
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
 		System.out.println("*******들어오와아아ㅗㅘㅇ");
 		CommentDTO commentDTO = new CommentDTO();
 		CommentDAO commentDAO = new CommentDAO();
 		
-		// test용 임의로 지정///////
-    	HttpSession session = request.getSession();
-    	session.setAttribute("memberNumber", 2);
-    	session.setAttribute("memberNickname", "비이이");
-        //여기까지 지우기
-
     	System.out.println("*******들어오와아아ㅗㅘㅇ2222222");
 		int clinicNumber =  Integer.parseInt(request.getParameter("clinicNumber"));
 		String commentContent = request.getParameter("commentContent");
 		
-		String memberNickname = null;
-		String doctorNickname = null;
-		
-		
-		System.out.println("*******들어오와아아ㅗㅘㅇ33333333");
-		int memberNumber = (int) request.getSession().getAttribute("memberNumber");
-		int doctorNumber = (int)request.getSession().getAttribute("doctorNumber");
-		
-		// 사용자가 로그인한 경우에만 닉네임 가져오기
-		if (request.getSession().getAttribute("memberNumber") != null) {
-		    memberNickname = request.getSession().getAttribute("memberNickname").toString();
-		} else if (request.getSession().getAttribute("doctorNumber") != null) {
-		    doctorNickname = request.getSession().getAttribute("doctorNickname").toString();
+		if(request.getSession().getAttribute("doctorStatus") == null) {
+			System.out.println("닥터로 댓글작성 완료");
+			String memberNickname = (String) request.getSession().getAttribute("memberNickname");
+			int memberNumber = (int) request.getSession().getAttribute("memberNumber");
+			
+			commentDTO.setClinicNumber(clinicNumber);
+			commentDTO.setMemberNumber(memberNumber);
+			commentDTO.setCommentContent(commentContent);
+		    commentDTO.setMemberNickname(memberNickname);
+		    
+		    commentDAO.insertComment(commentDTO);
+		}else {
+
+			System.out.println("닥터로 댓글작성 완료");
+			int doctorNumber = (int)request.getSession().getAttribute("doctorNumber") ;
+			String doctorNickname = (String)request.getSession().getAttribute("doctorNickname");
+			
+			commentDTO.setClinicNumber(clinicNumber);
+			commentDTO.setDoctorNumber(doctorNumber);
+			commentDTO.setCommentContent(commentContent);
+			commentDTO.setDoctorNickname(doctorNickname);
+			
+			commentDAO.insertCommentDo(commentDTO);
 		}
+		
+
+
+		
+		
+		System.out.println("오니마니!!!!");
+	
 		
 		System.out.println("*******들어오와아아ㅗㅘㅇ444444444");
 		
-		commentDTO.setClinicNumber(clinicNumber);
-		commentDTO.setMemberNumber(memberNumber);
-		commentDTO.setDoctorNumber(doctorNumber);
-		commentDTO.setCommentContent(commentContent);
-		commentDTO.setDoctorNickname(doctorNickname);
-	    commentDTO.setMemberNickname(memberNickname);
+
 	       
-		commentDAO.insertComment(commentDTO);
+		
 		
 		System.out.println("*******들어오와아아ㅗㅘㅇ55555555555");
 		

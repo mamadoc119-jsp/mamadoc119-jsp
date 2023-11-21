@@ -96,9 +96,16 @@
   
   <insert id="insertComment" parameterType="CommentDTO">
   INSERT INTO MAMADOC_COMMENT
-	(COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER,  DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
-	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL,#{doctorNumber}, #{memberNumber}, #{clinicNumber},#{doctorNickname},#{memberNickname}, #{commentContent}, SYSDATE)
+	(COMMENT_NUMBER,MEMBER_NUMBER, CLINIC_NUMBER, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
+	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL, #{memberNumber}, #{clinicNumber},#{memberNickname}, #{commentContent}, SYSDATE)
   </insert>
+  
+    <insert id="insertCommentDo" parameterType="CommentDTO">
+  INSERT INTO MAMADOC_COMMENT
+	(COMMENT_NUMBER,DOCTOR_NUMBER, CLINIC_NUMBER, DOCTOR_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
+	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL, #{doctorNumber}, #{clinicNumber},#{doctorNickname}, #{commentContent}, SYSDATE)
+  </insert>
+  
   
   
 </mapper>

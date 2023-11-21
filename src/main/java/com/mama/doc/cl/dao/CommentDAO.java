@@ -25,4 +25,9 @@ public class CommentDAO {
 			sqlSession.insert("clinic.insertComment", commentDTO);
 		}
 	
+	
+	public void insertCommentDo(CommentDTO commentDTO) {
+		sqlSession.insert("clinic.insertCommentDo", commentDTO);
+	}
+	
 }
