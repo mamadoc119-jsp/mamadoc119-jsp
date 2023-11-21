@@ -43,14 +43,19 @@
             <ul class="main-header-member-ul">
                 <li class="main-header-member-list">
                 	<c:if test="${sessionScope.doctorNumber != null}">
-                    	<a href="informOk.do" class="main-member-tag">마이페이지</a>
+                    	<a href="/mamadoc/informOk.do" class="main-member-tag">마이페이지</a>
                     </c:if>
                     <c:if test="${sessionScope.memberNumber != null}">
-                    	<a href="${pageContext.request.contextPath}/info/memberInfo.jsp" class="main-member-tag">마이페이지</a>
+                    	<a href="/mamadoc/informOk.me" class="main-member-tag">마이페이지</a>
                     </c:if>
                 </li>
                 <li class="main-header-member-list">
-                    <a href="logoutOk.do" class="main-member-tag">로그아웃</a>
+                	<c:if test="${sessionScope.doctorNumber != null}">
+                    	<a href="/mamadoc/logoutOk.do" class="main-member-tag">로그아웃</a>
+                    </c:if>
+                    <c:if test="${sessionScope.memberNumber != null}">
+                    	<a href="/mamadoc/logoutOk.me" class="main-member-tag">로그아웃</a>
+                    </c:if>
                 </li>
             </ul>
         </nav>

@@ -15,7 +15,16 @@ public class DoctorDAO {
 	
 //	이메일 중복검사
 	public int checkEmail(String doctorEmail) {
-		return (Integer)sqlSession.selectOne("doctor.checkEmail", doctorEmail);
+		int countDoctor = (Integer)sqlSession.selectOne("doctor.checkDoctorEmail", doctorEmail);
+		int countMember = (Integer)sqlSession.selectOne("doctor.checkMemberEmail", doctorEmail);
+		return countDoctor + countMember;
+	}
+	
+//	닉네임 중복검사
+	public int checkNickname(String doctorNickname) {
+		int countDoctor = (Integer)sqlSession.selectOne("doctor.checkDoctorNickname", doctorNickname);
+		int countMember = (Integer)sqlSession.selectOne("doctor.checkMemberNickname", doctorNickname);
+		return countDoctor + countMember;
 	}
 	
 //	회원가입

@@ -72,6 +72,10 @@ public class DoctorFrontController extends HttpServlet {
 			result = new JoinOkController().execute(request, response);
 			request.getRequestDispatcher("/login/doctorLogin.jsp").forward(request, response);
 			break;
+		case "/login.do":
+			System.out.println("로그인 페이지");
+			request.getRequestDispatcher("/login/doctorLogin.jsp").forward(request, response);
+			break;
 		case "/loginOk.do":
 			System.out.println("의료인 로그인 성공");
 			result = new LoginOkController().execute(request, response);
