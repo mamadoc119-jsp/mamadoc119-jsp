@@ -24,13 +24,17 @@ public class ClinicConmmentListOkController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
 		request.setCharacterEncoding("UTF-8");
-		request.setCharacterEncoding("UTF-8");
+
 		
 		CommentDAO commentDAO = new CommentDAO();
-		
+		//게시글 번호를 받는다 
 		int clinicNumber = Integer.parseInt(request.getParameter("clinicNumber"));
+		
+		//list를 받는다
 		List<CommentDTO> commentList = commentDAO.getCommentList(clinicNumber);
 		
+		response.setCharacterEncoding("UTF-8");
+		//바디테크 안에서 쓸수 있음
 		PrintWriter out = response.getWriter();
 		
 		JSONArray comments = new JSONArray();
@@ -38,12 +42,14 @@ public class ClinicConmmentListOkController implements Execute{
 		for(CommentDTO comment : commentList) {
 			JSONObject obj = new JSONObject();
 			obj.put("commentNumber", comment.getCommentNumber());
-			obj.put("memberNumber", comment.getMemberNumber());
+			obj.put("memberNickname", comment.getMemberNickname());
+			obj.put("doctorNickname", comment.getDoctorNickname());
 			obj.put("commentContent", comment.getCommentContent());
 			comments.add(obj);
 		}
 		
-		out.println(comments.toJSONString());
+		//System.out.println("comments는!!!!! "+comments);
+		out.println(comments.toJSONString()); 
 		out.close();
 		
 		

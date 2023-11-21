@@ -53,7 +53,7 @@ public class ClinicWriteOkController implements Execute{
 		if(success) {
 			//저장성공이 되면
 			result.setRedirect(true);
-			 result.setPath(request.getContextPath() + "/clinic/clinicListOk.cl");
+			result.setPath("/clinic/clinicListOk.cl");
 			 //저장하면 정보를 가지고 목록으로 이동
 		} else {
 			result.setRedirect(false);

@@ -29,19 +29,19 @@
                 <div class="counseling-sub-title">상담이 필요하시면 언제든지 글을 써주세요</div>
             </div>
 
-    <form action="/clinicListOk.cl" onsubmit="serchCheck()"> <!--form 필요할까... 일단 넣어놨음-->
+    <form action="" method="get"> <!--form 필요할까... 일단 넣어놨음-->
 
         <!--제목.작성자로 드롭다운 및 찾기 검색 부분-->
         <div class="counseling-search-full-container">
             <div> <!--드롭다운-->
-                <select class="drop-div">
+                <select class="drop-div" name="cate" id="">
                     <option value="title">제목</option>
                     <option value="writer">작성자</option>
                 </select>
             </div>
 
            <!--인풋 검색창-->
-                <input type="text" placeholder="검색어 입력" name="coun-search" size="80px">
+                <input type="text" placeholder="검색어 입력" name="keyword" size="80px">
         
             <div>
                 <button type="submit" class="search-button">검색</button>
@@ -63,9 +63,7 @@
                    <c:forEach var="clinic" items="${clinicList}">
                     <tr>
                         <td class="counse-title-contents">
-                        	
-                        	
-                        			<a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">${clinic.clinicTitle}</a></td>
+                        <a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">${clinic.clinicTitle}</a></td>
                         
                         	<!-- 
                         	<c:choose>
@@ -77,10 +75,7 @@
                         		</c:otherwise>
                         	</c:choose>	
                         	
-                        	
-                        	
                         	 -->
-                        	
                         	
                         
                         <td align="center">${clinic.memberNickname}</td>

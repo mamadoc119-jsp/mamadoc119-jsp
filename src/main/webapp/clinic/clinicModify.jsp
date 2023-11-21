@@ -26,7 +26,7 @@
                     <input type="text" class="title" id="title" placeholder="제목을 입력하세요." name="clinicTitle" value="${clinic.getClinicTitle()}">
                 </div>
                 <!-- 내용 -->
-                <textarea id="summernote" class="summernote" name="clinicContent" value="${clinic.getClinicContent()}"></textarea>
+                <textarea id="summernote" class="summernote" name="clinicContent">${clinic.getClinicContent()}</textarea>
                 <!-- 이전/수정 -->
                 <div style="display: flex;justify-content: space-between;margin-top: 10px;">
                     <!-- 이전 -->

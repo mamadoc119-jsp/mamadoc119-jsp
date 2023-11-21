@@ -100,10 +100,10 @@ public class ClinicFrontController extends HttpServlet {
 			result = new ClinicDeleteOkController().execute(request, response);
 			break;
 			
-		/****댓글 부분*****************************************************/
+		/******************댓글 부분*****************************************************/
 			
 		case "/clinic/ClinicConmmentListOk.cl" :
-			System.out.println("댓글리스트로갑니다");
+			System.out.println("댓글리스트로 갑니다");
 			result = new ClinicConmmentListOkController().execute(request, response);
 			break;
 			

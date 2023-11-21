@@ -17,17 +17,17 @@ public class ClinicModifyController implements Execute{
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
 		System.out.println("여기까지 오나?");
+	
+
+		ClinicDAO clinicDAO = new ClinicDAO();
 		int clinicNumber = Integer.parseInt(request.getParameter("clinicNumber"));
 		
-		Result result = new Result();
-		
-		ClinicDAO clinicDAO = new ClinicDAO();
 		
 		request.setAttribute("clinic", clinicDAO.getClinicDetail(clinicNumber));
-		result.setRedirect(false);
-		result.setPath("/clinic/clinicModify.jsp");
+		request.getRequestDispatcher("/clinic/clinicModify.jsp?clinicNumber="+ clinicNumber).forward(request, response);
 		
-		return result;
+		
+		return null;
 	}
 
 }

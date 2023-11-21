@@ -52,6 +52,8 @@
     border: none;
     padding: 5px 10px;
     border: 2px solid #f9bb00;
+    margin-top: 10px;
+    float: right;
 }
 
 .regist-btn:hover{

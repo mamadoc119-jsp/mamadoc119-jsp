@@ -7,7 +7,9 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.mama.doc.cl.vo.ClinicVO;
+import com.mama.doc.dto.AdNutrientsDTO;
 import com.mama.doc.dto.ClinicDTO;
+import com.mama.doc.vo.SearchVO;
 import com.mybatis.config.MyBatisConfig;
 
 public class ClinicDAO {
@@ -26,19 +28,28 @@ public class ClinicDAO {
 	
 
 	//페이징 처리
-	public List<ClinicVO> getClinicListPaging(int startRow, int endRow) {
-	    Map<String, Integer> pageMap = new HashMap<>();
-	    pageMap.put("startRow", startRow);
-	    pageMap.put("endRow", endRow);
-	    return sqlSession.selectList("clinic.getClinicListPaging", pageMap);
-	}
+//	public List<ClinicVO> getClinicListPaging(int startRow, int endRow) {
+//	    Map<String, Integer> pageMap = new HashMap<>();
+//	    pageMap.put("startRow", startRow);
+//	    pageMap.put("endRow", endRow);
+//	    return sqlSession.selectList("clinic.getClinicListPaging", pageMap);
+//	}
 
 	public int getTotal() {
 	    return sqlSession.selectOne("clinic.getTotal");
 	}
 	
 	
-
+//	검색
+	public List<ClinicVO> getClinicListPaging(int startRow, int endRow, SearchVO searchVO){
+		Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("startRow", startRow);
+	    pageMap.put("endRow", endRow);
+	    pageMap.put("searchVO", searchVO);
+	    return sqlSession.selectList("clinic.getClinicListPaging", pageMap);
+	}
+	
+	
 	
 	//게시글 목록
 	public List<ClinicVO> getClinicList(){

@@ -11,20 +11,6 @@
 </insert>
 
 
-<!-- 페이징을 지원하는 getClinicList -->
-<select id="getClinicListPaging" parameterType="Map" resultType="ClinicVO">
-    SELECT *
-    FROM (
-        SELECT 
-            C.clinic_number, C.clinic_title, C.clinic_content, C.clinic_date, C.member_number, M.member_nickname,
-            ROW_NUMBER() OVER (ORDER BY C.clinic_date DESC) AS rnum
-        FROM 
-            MAMADOC_CLINIC C
-        JOIN 
-            MAMADOC_MEMBER M ON C.member_number = M.member_number
-    ) tmp
-    WHERE rnum BETWEEN #{startRow} AND #{endRow}
-</select>
 
 
 <!-- 전체 페이지 수를 계산하는 getCountClinicList -->
@@ -46,23 +32,61 @@
             C.clinic_number = #{clinicNumber}
  </select>
 
+
+
  <update id="modifyClinic" parameterType="ClinicDTO">
-        UPDATE clinic
-        SET clinic_title = #{clinicTitle},
-            clinic_content = #{clinicContent}
-        WHERE clinic_number = #{clinicNumber}
- </update>
+   
+    UPDATE MAMADOC_CLINIC
+    SET clinic_title = #{clinicTitle},
+        clinic_content = #{clinicContent}
+    WHERE clinic_number = #{clinicNumber}
+</update>
+
+ 
+ 
+ 
  
  <delete id="deleteClinic" parameterType="_int">
  		DELETE FROM MAMADOC_CLINIC
  		WHERE clinic_number = #{clinicNumber}
  </delete>   
+ 
+
+<!-- getClinicListPaging 쿼리 -->
+<select id="getClinicListPaging" parameterType="Map" resultType="ClinicVO">
+    SELECT *
+    FROM (
+        SELECT 
+            C.clinic_number, C.member_number, C.clinic_title, M.member_nickname,
+            C.clinic_content, TO_CHAR(C.clinic_date, 'YYYY.MM.DD') AS clinic_date,
+            ROW_NUMBER() OVER (ORDER BY C.clinic_number DESC) AS rnum
+        FROM mamadoc_clinic C
+        JOIN mamadoc_member M ON C.member_number = M.member_number
+        <where>
+            <if test="'title'.equals(searchVO.cate)">
+                AND C.clinic_title LIKE '%' || #{searchVO.keyword} || '%'
+            </if>
+            <if test="'writer'.equals(searchVO.cate)">
+                AND M.member_nickname LIKE '%' || #{searchVO.keyword} || '%'
+            </if>
+        </where>
+        ORDER BY C.clinic_number DESC
+    ) temp
+    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+</select>
+
+
+ 
+ 
+ 
+ 
+ 
     
     
   <!-- 댓글 부분 -->  
   
   <select id="getCommentList" parameterType="_int" resultType="CommentDTO">
-		 SELECT COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER, DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE
+		SELECT COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER, DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE
 		FROM MAMADOC_COMMENT
 		WHERE CLINIC_NUMBER = #{clinicNumber}
 		ORDER BY COMMENT_NUMBER DESC
@@ -75,5 +99,7 @@
 	(COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER,  DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
 	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL,#{doctorNumber}, #{memberNumber}, #{clinicNumber},#{doctorNickname},#{memberNickname}, #{commentContent}, SYSDATE)
   </insert>
+  
+  
 </mapper>
 
