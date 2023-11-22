@@ -23,9 +23,10 @@ public class PrecautionModifyController implements Execute {
 		System.out.println(request.getParameter("precautionNumber"));
 		int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
 		
-		request.setAttribute("precaution", precautionDAO.selectWrite(precautionNumber));
+		request.setAttribute("precaution", precautionDAO.selectOne(precautionNumber));
+		
 		result.setRedirect(false);
-		result.setPath("/precaution/precautionModify.pr");	
+		result.setPath("/precaution/precautionModify.jsp");	
 		
 		return result;
 	}

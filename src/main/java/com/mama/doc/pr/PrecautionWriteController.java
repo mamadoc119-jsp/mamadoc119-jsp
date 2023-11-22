@@ -64,11 +64,11 @@ public class PrecautionWriteController implements Execute{
 		if(success) {
 			//저장성공이 되면
 			result.setRedirect(true);
-			result.setPath("precaution/precautionListOk.pr");
+			result.setPath("/mamadoc/precaution/precautionListOk.pr");
 			//저장하면 정보를 가지고 목록으로 이동
 		} else {
 			result.setRedirect(false);
-			result.setPath("/precaution/precautionWrite.pr");
+			result.setPath("/precautionWrite.pr");
 		}
 		
 		

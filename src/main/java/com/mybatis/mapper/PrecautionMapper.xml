@@ -12,8 +12,8 @@
    <update id = "edit" parameterType = "PrecautionDTO">
    		update mamadoc_precaution
    		set precaution_title = #{precautionTitle}, 
-   			precaution_content = #{precautionContent},
-   			precaution_date = #{precautionDate} where precaution_number = #{precautionNumber}
+   			precaution_content = #{precautionContent}
+   			where precaution_number = #{precautionNumber}
    </update>
    
    <!-- 나예은 : 예방알림(삭제) -->
@@ -31,7 +31,7 @@
         where p.precaution_number = #{precautionNumber}
    </select>
    
-   <!-- 나예은 : 예방알림(리스트) -->
+   <!--  나예은 : 예방알림(리스트)
 	<select id="getPrecautionListPaging" parameterType="Map" resultType="PrecautionVO">
 	    SELECT *
 	    FROM (
@@ -47,11 +47,55 @@
 	</select>
 	
 
-	<!-- 전체 페이지 수를 계산하는 getCountPrecautionList -->
+	전체 페이지 수를 계산하는 getCountPrecautionList
 	<select id="getTotal" resultType="int">
 	    SELECT COUNT(*) FROM MAMADOC_PRECAUTION
-	</select>
+	</select> -->
+	
    
+   <!-- 예방알림 전체 게시글 수 조회 -->
+	<select id="getTotal" parameterType="searchVO"  resultType="int">
+		SELECT COUNT(*) FROM MAMADOC_PRECAUTION
+		<choose>
+				<when test="'title'.equals(cate)">
+					WHERE precaution_name LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<when test="'writer'.equals(cate)">
+					WHERE doctor_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<otherwise>
+				</otherwise>
+		</choose>
+	</select>
+	
+	
+	<!-- 전체 예방알림 정보 불러오기 -->
+	<select id="selectAll" parameterType="Map" resultType="PrecautionVO">
+		SELECT *
+		FROM(
+			SELECT 
+	            P.precaution_number, P.precaution_title, P.precaution_content, to_char(P.precaution_date, 'YYYY.MM.DD')AS precaution_date, P.doctor_number, D.doctor_nickname,
+	            ROW_NUMBER() OVER (ORDER BY P.precaution_date DESC) AS rnum
+			FROM
+			 	MAMADOC_precaution p
+	        JOIN 
+	            mamadoc_doctor D on P.doctor_number = D.doctor_number
+			<choose>
+				<when test="'title'.equals(searchVO.cate)">
+					WHERE precaution_title LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY precaution_number DESC
+				</when>
+				<when test="'writer'.equals(searchVO.cate)">
+					WHERE doctor_name LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY precaution_number DESC
+				</when>
+				<otherwise>
+					ORDER BY precaution_number DESC
+				</otherwise>
+			</choose>
+		) temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
 	
 
 </mapper>

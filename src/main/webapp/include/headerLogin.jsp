@@ -23,7 +23,7 @@
         <nav class="main-header-category">
             <ul class="main-header-category-ul">
                 <li class="main-header-category-list">
-                    <a href="" class="main-category-tag">소아영양제</a>
+                    <a href="${pageContext.request.contextPath}/nutrients/nutrientsList.adnu" class="main-category-tag">소아영양제</a>
                 </li>
                 <li class="main-header-category-list">
                     <a href="${pageContext.request.contextPath}/findHp/findHp.jsp" class="main-category-tag">병원찾기</a>

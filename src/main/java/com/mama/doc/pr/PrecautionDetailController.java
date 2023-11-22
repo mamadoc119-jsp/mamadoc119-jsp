@@ -15,29 +15,23 @@ import com.mama.doc.cl.vo.ClinicVO;
 import com.mama.doc.dao.PrecautionDAO;
 import com.mama.doc.vo.PrecautionVO;
 
-public class PrecautionSelectOneController implements Execute{
+public class PrecautionDetailController implements Execute{
 	
 	public Result execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		Result result = new Result();
+		
 		PrecautionDAO precautionDAO = new PrecautionDAO();
 		int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
 		PrecautionVO precautionVO = precautionDAO.selectOne(precautionNumber);
-		
-		Map<String, Object> precautionInfo = new HashMap<>();
-		precautionInfo.put("precautionNumber", precautionNumber);
-		precautionInfo.put("doctorNumber", precautionVO.getDoctorNumber());
-		precautionInfo.put("doctorNickName", precautionVO.getDoctorNickname());
-		precautionInfo.put("precautionTitle", precautionVO.getPrecautionTitle());
-		precautionInfo.put("precautionContent", precautionVO.getPrecautionContent());
-		precautionInfo.put("precautionDate", precautionVO.getPrecautionDate());
-		
-		
-		request.setAttribute("precaution", precautionInfo);
+
 		System.out.println(precautionVO);
-		request.getRequestDispatcher("/precaution/precautionDetail.pr?precautionNumber=" + precautionNumber).forward(request, response);
 		
-		return null;
+		request.setAttribute("precaution", precautionVO);
+		result.setRedirect(false);
+		result.setPath("/precaution/precautionDetail.jsp");	
+		
+		return result;
 		
 		
 //		request.setAttribute("precautionVO", precautionVO);

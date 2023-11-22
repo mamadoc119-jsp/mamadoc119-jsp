@@ -42,25 +42,31 @@ public class PrecautionModifyOkController implements Execute {
 //	      System.out.println(precautionDTO);
 //	      precautionDAO.update(precautionDTO);
 //	      response.sendRedirect("/precaution/precautionModifyOk.pr?precautionNumber="+ precautionNumber);
+		
 //	      return null;
+		
 		Result result = new Result();
+		
 		PrecautionDTO precautionDTO = new PrecautionDTO();
 		PrecautionDAO precautionDAO = new PrecautionDAO();
-		try {
-			int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
-			precautionDTO.setPrecautionNumber(precautionNumber);
-			precautionDTO.setPrecautionTitle(request.getParameter("precautionTitle"));
-			precautionDTO.setPrecautionContent(request.getParameter("precautionContent"));
-			precautionDTO.setPrecautionDate(request.getParameter("precautionDate"));
-			precautionDAO.update(precautionDTO);
 		
+		
+		int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
+		
+		System.out.println("check precautionNumber = " + precautionNumber );
+		
+		precautionDTO.setPrecautionNumber(precautionNumber);
+		precautionDTO.setPrecautionTitle(request.getParameter("precautionTitle"));
+		precautionDTO.setPrecautionContent(request.getParameter("precautionContent"));
+		precautionDTO.setPrecautionDate(request.getParameter("precautionDate"));
+		precautionDAO.update(precautionDTO);
+		
+	
 
-			result.setRedirect(false);
-			result.setPath("/precaution/precautionDetailOk.pr?precautionNumber=" + precautionNumber);
+		result.setRedirect(false);
+		result.setPath("/precaution/precautionDetailOk.pr?precautionNumber=" + precautionNumber);
 						
-		}catch(NumberFormatException e) {
-			e.printStackTrace();
-		}
+		
 		
 		return result;
 

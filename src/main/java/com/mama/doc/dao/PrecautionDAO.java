@@ -1,6 +1,5 @@
 package com.mama.doc.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.mama.doc.dto.PrecautionDTO;
 import com.mama.doc.vo.PrecautionVO;
+import com.mama.doc.vo.SearchVO;
 import com.mybatis.config.MyBatisConfig;
 
 public class PrecautionDAO {
@@ -29,13 +29,7 @@ public class PrecautionDAO {
 	   public int update(PrecautionDTO precautionDTO) {
 	       return sqlSession.update("precaution.edit", precautionDTO);
 	   }
-	
-	// 예방알림 글 수정 불러오기
-	public PrecautionDTO selectWrite(int precautionNumber) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("precautionNumber", precautionNumber);
-		return sqlSession.selectOne("precaution.selectWrite", params);
-	}
+
 	
 	// 예방알림 글 삭제
 	public void delete(int precautionNumber) {
@@ -47,15 +41,22 @@ public class PrecautionDAO {
 	}
 	
 	// 예방알림 글 상세보기
-	public PrecautionVO selectOne(int precautionNumber) {
-		Map<String, Integer> params = new HashMap<>();
-		params.put("precautionNumber", precautionNumber);
-		return sqlSession.selectOne("precaution.selectOne", params);
+	public PrecautionVO selectOne(int precautionNumber) {		
+		return sqlSession.selectOne("precaution.selectOne", precautionNumber);
 	}
 		
 	// 예방알림 글 리스트 불러오기
-	public List<PrecautionVO> selectAll(){
-		return sqlSession.selectList("precaution.selectAll");
+	public List<PrecautionVO> selectList(int startRow, int endRow, SearchVO searchVO){
+		Map<String, Object> pageMap = new HashMap<>();
+	    pageMap.put("startRow", startRow);
+	    pageMap.put("endRow", endRow);
+	    pageMap.put("searchVO", searchVO);
+	    return sqlSession.selectList("precaution.selectAll", pageMap);
+	}
+	
+	//	예방알림 전체 게시글 수 조회
+	public int getTotal(SearchVO searchVO) {
+	    return sqlSession.selectOne("precaution.getTotal",searchVO);
 	}
 
 	// 예방알림 리스트 페이징 처리	

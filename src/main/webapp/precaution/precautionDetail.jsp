@@ -26,12 +26,17 @@
             <div style="padding: 10px;">${precaution.precautionContent}</div>
             <!-- 수정/삭제 -->
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
+            
                 <!-- 수정 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionModifyOk.pr?precautionNumber=${precautionNumber}">
+                <form action="${pageContext.request.contextPath}/precaution/precautionModify.pr?precautionNumber=${precautionNumber}">
+                <input type = "hidden" value = "${precaution.precautionNumber}" name="precautionNumber"/>
+				
                     <button class="modify-btn">수정</button>
                 </form>
                 <!-- 삭제 -->
                 <form action="${pageContext.request.contextPath}/precaution/precautionDeleteOk.pr?precautionNumber=${precautionNumber}" onsubmit="return removeMsg();">
+                <input type = "hidden" value = "${precaution.precautionNumber}" name="precautionNumber"/>
+				
                     <button class="remove-btn">삭제</button>
                 </form>
             </div>
