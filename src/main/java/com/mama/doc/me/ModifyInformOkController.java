@@ -1,40 +1,36 @@
 package com.mama.doc.me;
 
 import java.io.IOException;
-import java.util.Date;
+import java.rmi.ServerException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.mama.doc.Execute;
 import com.mama.doc.Result;
 import com.mama.doc.dao.MemberDAO;
 import com.mama.doc.dto.MemberDTO;
 
-public class JoinOkController implements Execute{
-	public Result execute(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
+public class ModifyInformOkController implements Execute {
+
+	@Override
+	public Result execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServerException {
+		HttpSession session = request.getSession();
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = new MemberDTO();
-		Date date = new Date();
 		
-		System.out.println("컨트롤러");
-		
-		memberDTO.setMemberName(request.getParameter("memberName"));
-		memberDTO.setMemberEmail(request.getParameter("memberEmail"));
-		memberDTO.setMemberPassword(request.getParameter("memberPassword"));
+		memberDTO.setMemberNumber((Integer)session.getAttribute("memberNumber"));
 		memberDTO.setMemberNickname(request.getParameter("memberNickname"));
 		memberDTO.setMemberPostCode(request.getParameter("memberPostCode"));
 		memberDTO.setMemberAddress(request.getParameter("memberAddress"));
-		memberDTO.setMemberDetailAddress(request.getParameter("memberDetailAddress"));
 		memberDTO.setMemberExtraAddress(request.getParameter("memberExtraAddress"));
-		memberDTO.setUserJoindate(date);
+		memberDTO.setMemberDetailAddress(request.getParameter("memberDetailAddress"));
 		
-		System.out.println(memberDTO);
-		
-		memberDAO.join(memberDTO);
-		response.sendRedirect("/mamadoc/login.me");
+		memberDAO.modifyInform(memberDTO);
 		
 		return null;
 	}
+
 }

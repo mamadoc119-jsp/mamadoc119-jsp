@@ -59,18 +59,18 @@
             </ul>
             <ul class="main-hidden-ul2">
                 <li class="main-hidden-list">
-                    <a href="${pageContext.request.contextPath}/login/memberLogin.jsp" class="main-hidden-tag">일반 로그인</a>
+                    <a href="/mamadoc/login.me" class="main-hidden-tag">일반 로그인</a>
                 </li>
                 <li class="main-hidden-list">
-                    <a href="${pageContext.request.contextPath}/login/doctorLogin.jsp" class="main-hidden-tag">의료인 로그인</a>
+                    <a href="/mamadoc/login.do" class="main-hidden-tag">의료인 로그인</a>
                 </li>
             </ul>
             <ul class="main-hidden-ul3">
                 <li class="main-hidden-list">
-                    <a href="${pageContext.request.contextPath}/join/memberJoin.me" class="main-hidden-tag">회원가입</a>
+                    <a href="/mamadoc/join.me" class="main-hidden-tag">회원가입</a>
                 </li>
                 <li class="main-hidden-list">
-                    <a href="join.do" class="main-hidden-tag">의료인가입</a>
+                    <a href="/mamadoc/join.do" class="main-hidden-tag">의료인가입</a>
                 </li>
             </ul>
         </div>

@@ -21,14 +21,14 @@
 
 	<!-- 회원 가입 이미지 -->
     <div class="login-img">
-        <a href="${pageContext.request.contextPath}/login/memberLogin.jsp"><img class="member-img" src="${pageContext.request.contextPath}/resources/img/member.png" alt="member"></a>
-        <a href="${pageContext.request.contextPath}/login/doctorLogin.jsp"><img class="doctor-img" src="${pageContext.request.contextPath}/resources/img/doctor.png" alt="doctor"></a>
+        <a href="/mamadoc/login.me"><img class="member-img" src="${pageContext.request.contextPath}/resources/img/member.png" alt="member"></a>
+        <a href="/mamadoc/login.do"><img class="doctor-img" src="${pageContext.request.contextPath}/resources/img/doctor.png" alt="doctor"></a>
     </div>
 
 	<!-- 회원 가입 텍스트 -->
     <div class="login-text">
-        <a href="${pageContext.request.contextPath}/login/memberLogin.jsp"><span class="member">일반 회원 로그인</span></a>
-        <a href="${pageContext.request.contextPath}/login/doctorLogin.jsp"><span class="doctor">의료인 로그인</span></a>
+        <a href="/mamadoc/login.me"><span class="member">일반 회원 로그인</span></a>
+        <a href="/mamadoc/login.do"><span class="doctor">의료인 로그인</span></a>
     </div>
     </div>
 </form>
