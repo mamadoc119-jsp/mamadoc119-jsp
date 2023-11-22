@@ -24,18 +24,6 @@ public class AdNutrientsSelectUserAllController implements Execute{
 		Result result = new Result();
 		SearchVO searchVO = new SearchVO();
 		
-		// 페이징 처리
-        String temp = request.getParameter("page");
-		int page = temp == null ? 1 : Integer.parseInt(temp);
-		int pageSize = 12;
-		int totalCount = adNutrientsDAO.getTotal();
-		
-		int endRow = page * pageSize;
-		int startRow = endRow - (pageSize - 1);
-		
-		int startPage = ((page - 1) / pageSize) * pageSize + 1;
-		int endPage = startPage + 9;
-		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
 		
 		
 		//검색		
@@ -46,6 +34,20 @@ public class AdNutrientsSelectUserAllController implements Execute{
 		
 		searchVO.setCate(cate);
 		searchVO.setKeyword(keyword);
+		
+		
+		// 페이징 처리
+        String temp = request.getParameter("page");
+		int page = temp == null ? 1 : Integer.parseInt(temp);
+		int pageSize = 12;
+		int totalCount = adNutrientsDAO.getTotal(searchVO);
+		
+		int endRow = page * pageSize;
+		int startRow = endRow - (pageSize - 1);
+		
+		int startPage = ((page - 1) / pageSize) * pageSize + 1;
+		int endPage = startPage + 9;
+		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
 		
 		endPage = endPage > realEndPage ? realEndPage : endPage;
 		

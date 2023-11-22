@@ -19,6 +19,7 @@ public class AdLoginOkController implements Execute{
 		// TODO Auto-generated method stub
 		AdminDAO adminDAO = new AdminDAO();
 		AdminDTO adminDTO = new AdminDTO();
+		Result result = new Result();
 		
 		adminDTO.setAdminId(request.getParameter("adminId"));
 		adminDTO.setAdminPassWord(request.getParameter("adminPassword"));
@@ -34,9 +35,10 @@ public class AdLoginOkController implements Execute{
 		System.out.println("관리자 번호 : "+adminDTO.getAdminNumber());
 		System.out.println("관리자 아이디 : "+adminDTO.getAdminId());
 		
-		response.sendRedirect("/mamadoc/adminMain.adme");
+		result.setRedirect(true);
+		result.setPath("adminMain.adme");
 		
-		return null;
+		return result;
 		
 	}
 	

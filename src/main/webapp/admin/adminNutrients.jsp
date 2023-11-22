@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 수업계획</title>
+    <title>관리자 추천영양제 관리</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMain.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminHeader.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMC.css"/>
@@ -42,7 +42,7 @@
                             <option value="name">영양제명</option>
                             <option value="effect">효과</option>
                         </select>
-                        <input type="text" name="keyword">
+                        <input type="text" name="keyword" value="${keyword}">
                         <button class="search-btn">검색</button>
                     </fieldset>
                 </form>
@@ -58,7 +58,7 @@
                 <div class="sortation"></div>
             </div>
             <!-- 데이터가 들어오는 영역 -->
-            <c:forEach var="list" items="${nuList}" begin="0" end="9" >
+            <c:forEach var="list" items="${nuList}" begin="0" end="19" >
             <div class="member-list">
                 <div class="number" name="nutrientsNumber">${list.nutrientsNumber}</div>
                 <div class="id">${list.nutrientsName}</div>

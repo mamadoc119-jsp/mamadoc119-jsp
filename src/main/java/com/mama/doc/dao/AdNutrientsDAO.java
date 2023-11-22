@@ -77,8 +77,8 @@ public class AdNutrientsDAO {
 	}
 	
 //	영양제 전체 게시글 수 조회
-	public int getTotal() {
-	    return sqlSession.selectOne("adnu.getTotal");
+	public int getTotal(SearchVO searchVO) {
+	    return sqlSession.selectOne("adnu.getTotal",searchVO);
 	}
 	
 	

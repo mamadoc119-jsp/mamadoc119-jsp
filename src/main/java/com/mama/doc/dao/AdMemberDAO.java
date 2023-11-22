@@ -33,8 +33,8 @@ public class AdMemberDAO {
 	}
 	
 //	관리자 일반회원 총원 조회
-	public int getTotal() {
-		return sqlSession.selectOne("adme.getTotal");
+	public int getTotal(SearchVO searchVO) {
+		return sqlSession.selectOne("adme.getTotal",searchVO);
 	}
 
 }
