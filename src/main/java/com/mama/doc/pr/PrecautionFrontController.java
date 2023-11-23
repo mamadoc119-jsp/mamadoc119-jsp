@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mama.doc.Result;
-import com.mama.doc.me.JoinOkController;
 
 /**
  * Servlet implementation class PrecautionFrontController
