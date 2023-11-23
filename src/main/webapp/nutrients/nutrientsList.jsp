@@ -91,7 +91,7 @@
 						</c:forEach>
 						
 						<c:if test="${nowPage != realEndPage}">
-							<a href="${pageContext.request.contextPath}/nutrientsList.adnu?page=${nowPage+1}"&cate=${cate}&keyword=${keyword}>&gt;</a>
+							<a href="${pageContext.request.contextPath}/nutrientsList.adnu?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
 						</c:if>
 					</td>
 				</tr>

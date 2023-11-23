@@ -19,11 +19,11 @@
 		from mamadoc_doctor
 		where doctor_nickname = #{doctorNickname}
 	</select>
-	<select id="checkMemberEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+	<!-- <select id="checkMemberEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select count(member_nickname)
 		from mamadoc_member
 		where member_nickname = #{doctorNickname}
-	</select>
+	</select> -->
 	
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="DoctorDTO">
