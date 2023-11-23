@@ -4,35 +4,98 @@
 
 	<!-- 나예은 : 예방알림(작성) -->
 	 <select id = "write" parameterType="PrecautionDTO">
-         insert into mamadoc_precaution(precaution_number, doctor_number, precaution_title, precaution_content)
-         value(seq_mamadoc_precaution.nextval, #{doctorNumber}, #{precautionTitle}, #{precautionContent});
+         insert into mamadoc_precaution(precaution_number,doctor_number,precaution_title,precaution_content,precaution_date)
+         values(seq_mamadoc_precaution.nextval,#{doctorNumber},#{precautionTitle},#{precautionContent},SYSDATE)
    </select>
-   
-   <!-- 나예은 : 예방알림(리스트) -->
-   <select id="bringPrecautionList" parameterType="int" resultType="PrecautionVO">
-		select * from mamadoc_precaution join mamadoc_doctor
-		order by precaution_number desc
-		limit #{firstList}, 6
-	</select>
 	
 	<!-- 나예은 : 예방알림(수정) -->
    <update id = "edit" parameterType = "PrecautionDTO">
-   		update tbl_freeboard 
+   		update mamadoc_precaution
    		set precaution_title = #{precautionTitle}, 
-   			precaution_content = #{precautionContent},
-   			precaution_date = #{precautionDate} where precaution_number = #{precautionNumber};
+   			precaution_content = #{precautionContent}
+   			where precaution_number = #{precautionNumber}
    </update>
    
    <!-- 나예은 : 예방알림(삭제) -->
    <delete id = "delete" parameterType = "PrecautionDTO">
-   		delete from mamadoc_precaution where precaution_number = #{precautionNumber};
+   		delete from mamadoc_precaution where precaution_number = #{precautionNumber}
    </delete>
    
    <!-- 나예은 : 예방알림(디테일) -->
    <select id = "selectOne" parameterType="int" resultType="PrecautionVO">
-   		select * from mamadoc_precaution join mamadoc_doctor
-   		where precaution_number = #{precautionNumber}
+   		select 
+            p.precaution_number, p.precaution_title, p.precaution_content, 
+            to_char(p.precaution_date, 'YYYY.MM.DD')as precaution_date, d.doctor_number, d.doctor_nickname
+        from mamadoc_precaution p join mamadoc_doctor d
+        on p.doctor_number = d.doctor_number
+        where p.precaution_number = #{precautionNumber}
    </select>
+   
+   <!--  나예은 : 예방알림(리스트)
+	<select id="getPrecautionListPaging" parameterType="Map" resultType="PrecautionVO">
+	    SELECT *
+	    FROM (
+	        SELECT 
+	            P.precaution_number, P.precaution_title, P.precaution_content, to_char(P.precaution_date, 'YYYY.MM.DD')AS precaution_date, P.doctor_number, D.doctor_nickname,
+	            ROW_NUMBER() OVER (ORDER BY P.precaution_date DESC) AS rnum
+	        FROM 
+	            mamadoc_precaution P
+	        JOIN 
+	            mamadoc_doctor D on P.doctor_number = D.doctor_number
+	    ) tmp
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+
+	전체 페이지 수를 계산하는 getCountPrecautionList
+	<select id="getTotal" resultType="int">
+	    SELECT COUNT(*) FROM MAMADOC_PRECAUTION
+	</select> -->
+	
+   
+   <!-- 예방알림 전체 게시글 수 조회 -->
+	<select id="getTotal" parameterType="searchVO"  resultType="int">
+		SELECT COUNT(*) FROM MAMADOC_PRECAUTION
+		<choose>
+				<when test="'title'.equals(cate)">
+					WHERE precaution_name LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<when test="'writer'.equals(cate)">
+					WHERE doctor_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<otherwise>
+				</otherwise>
+		</choose>
+	</select>
+	
+	
+	<!-- 전체 예방알림 정보 불러오기 -->
+	<select id="selectAll" parameterType="Map" resultType="PrecautionVO">
+		SELECT *
+		FROM(
+			SELECT 
+	            P.precaution_number, P.precaution_title, P.precaution_content, to_char(P.precaution_date, 'YYYY.MM.DD')AS precaution_date, P.doctor_number, D.doctor_nickname,
+	            ROW_NUMBER() OVER (ORDER BY P.precaution_date DESC) AS rnum
+			FROM
+			 	MAMADOC_precaution p
+	        JOIN 
+	            mamadoc_doctor D on P.doctor_number = D.doctor_number
+			<choose>
+				<when test="'title'.equals(searchVO.cate)">
+					WHERE precaution_title LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY precaution_number DESC
+				</when>
+				<when test="'writer'.equals(searchVO.cate)">
+					WHERE doctor_name LIKE '%' || #{searchVO.keyword} || '%'
+					ORDER BY precaution_number DESC
+				</when>
+				<otherwise>
+					ORDER BY precaution_number DESC
+				</otherwise>
+			</choose>
+		) temp
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
 	
 
 </mapper>

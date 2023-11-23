@@ -19,7 +19,17 @@
        
            <jsp:include page="../include/headerLogin.jsp" />
        </c:otherwise>
- </c:choose>
+   </c:choose>
+   
+   <!-- c:set에서 내용으로 파라미터 값을 넣으면, 문자열로 변환된 후 저장된다. -->
+		<!-- c:set value속성에 값을 넣으면, 해당 값의 타입이 그대로 유지된다. -->
+		<c:set var="totalCount" value="${totalCount}"/>
+		<c:set var="realEndPage" value="${realEndPage}"/>
+		<c:set var="startPage" value="${startPage}"/>
+		<c:set var="endPage" value="${endPage}"/>
+		<c:set var="nowPage" value="${nowPage}"/>
+		<c:set var="boardList" value="${clinicList}"/>
+
 
     <div class="precautionary-full-container">
         <!--예방알림 타이틀-->
@@ -34,17 +44,17 @@
         <!--제목.작성자로 드롭다운 및 찾기 검색 부분-->
         <div class="precautionary-search-full-container">
             <div> <!--드롭다운-->
-                <select class="drop-div">
+                <select class="drop-div" name="cate">
                     <option value="title">제목</option>
                     <option value="writer">작성자</option>
                 </select>
             </div>
 
             
-                <input type="text" placeholder="검색어 입력" name="pre-search" size="80px">
+                <input type="text" placeholder="검색어 입력" name="keyword" size="80px">
            
             <div>
-                <button type="button" class="search-button">검색</button>
+                <button type="submit" class="search-button">검색</button>
             </div>
         </div>
     </form>
@@ -61,19 +71,18 @@
                     </tr>
                 </thead>
                 
+                
                 <tbody>
                 <c:choose>
 				<c:when test = "${not empty precautionList}">
-				<c:forEach var = "precaution" items ="${precautionList}">
+				<c:forEach var = "precaution" items ="${precautionList}" begin="0" end="10">
 				<input type = "hidden" value = "${precaution.precautionNumber}"/>
-					<a href="${pageContext.request.contextPath}/precaution/precautionDetail.pr?precautionNumber=${precaution.precautionNumber}">
+					
                     <tr>
-                        <td class="pre-title-contents">
-                        ${precaution.precautionTitle}</td>
+                        <td class="pre-title-contents"><a href="${pageContext.request.contextPath}/precaution/precautionDetailOk.pr?precautionNumber=${precaution.precautionNumber}">${precaution.precautionTitle}</a></td>
                         <td align="center">${precaution.doctorNickname}</td>
                         <td align="center">${precaution.precautionDate}</td>
                     </tr>
-                    </a>
                     
                 </c:forEach>
           		</c:when> 	
@@ -82,14 +91,36 @@
             </table>
         </div>
         <div class="write-down-div">
-            <button class="write-down" type="button" onclick="location.href='./precautionWrite.jsp'">글쓰기</button>
+            <button class="write-down" type="button" onclick="location.href='./precautionWrite.pr'">글쓰기</button>
         </div>
 
 
-          <!--페이징 처리부분-->
-          <div class="paging-part">
-
-          </div>
+          <div style="display: flex;  justify-content: center;">
+	   		<table style="font-size:1.3rem">
+				<tr align="center" valign="middle">
+					<td>
+						<c:if test="${nowPage > 1}">
+							<a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr?page=${nowPage-1}&cate=${cate}&keyword=${keyword}">&lt;</a>
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:choose>
+									<c:when test="${i eq nowPage}">
+										<c:out value="[${i}]"/>&nbsp;
+									</c:when>
+									<c:otherwise>
+										<a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr?page=${i}&cate=${cate}&keyword=${keyword}"><c:out value="${i}"/></a>
+									</c:otherwise>
+								</c:choose>
+						</c:forEach>
+						
+						<c:if test="${nowPage != realEndPage}">
+							<a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
+						</c:if>
+					</td>
+				</tr>
+			</table>
+		 </div>
 
           
         </div>
