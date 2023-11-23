@@ -38,6 +38,14 @@ public class MemberDAO {
 		return member;
 	}
 	
+//	본인인증
+	public int checkMember(MemberDTO memberDTO) {
+		if (sqlSession.selectOne("member.checkMember", memberDTO) == null) {
+			return 0;
+		}
+		return (Integer)sqlSession.selectOne("member.checkMember", memberDTO);
+	}
+	
 //	마이페이지
 	public MemberDTO inform(int memberNumber) {
 		MemberDTO member = sqlSession.selectOne("member.inform", memberNumber);
@@ -47,6 +55,11 @@ public class MemberDAO {
 //	정보수정
 	public void modifyInform(MemberDTO memberDTO) {
 		sqlSession.update("member.modifyInform", memberDTO);
+	}
+	
+//	비밀번호 변경
+	public void modifyPw(MemberDTO memberDTO) {
+		sqlSession.update("member.modifyPw", memberDTO);
 	}
 	
 //	회원탈퇴

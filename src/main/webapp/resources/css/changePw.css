@@ -1,10 +1,16 @@
-body{
-    width: 1515px;
-}
-
 form{
     margin-bottom: 170px;
     margin-top: 200px;
+}
+
+.wrong-container{
+    width: 420px;
+    height: auto;
+    position: relative;
+    left: 30px;
+    padding: 50px;
+    box-shadow: 3px 3px 10px grey;
+    /* border: solid 1px black; */
 }
 
 .changePw-container{
@@ -27,7 +33,7 @@ form{
 }
 
 .input{
-   width: 410px;
+   width: 416px;
    height: 40px;
    margin: 10px 0px 30px 0px;
 }
@@ -39,12 +45,13 @@ button{
     width: 110px;
     height: 45px;
     margin-left: -4px;
+    cursor: pointer;
 } 
 
 
 .bt-pw{
-    width: 420px;
-    height: 60px;
+    width: 419px;
+    height: 55px;
     margin-top: 15px;
     background-color: rgb(255, 200, 0);
     border: solid 1px rgb(255, 200, 0);
@@ -59,4 +66,21 @@ button{
 
 button:hover{
     background-color: rgb(247, 185, 0);
+}
+
+.back{
+	cursor: pointer;
+}
+
+.go-join{
+	text-decoration: none;
+	color: black;
+}
+
+.back:hover{
+	color: rgb(255, 200, 0);
+}
+
+.go-join:hover{
+	color: rgb(255, 200, 0);
 }

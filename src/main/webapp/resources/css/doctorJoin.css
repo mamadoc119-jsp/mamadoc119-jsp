@@ -1,7 +1,3 @@
-body{
-    width: 1520px;
-}
-
 form{
     margin-bottom: 170px;
     margin-top: 200px;
@@ -9,9 +5,8 @@ form{
 
 .join-container{
     width: 420px;
-    height: 2130px;
+    height: 2050px;
     position: relative;
-    left: 30px;
     padding: 50px;
     box-shadow: 3px 3px 10px grey;
     /* border: solid 1px black; */
@@ -32,14 +27,15 @@ form{
 }
 
 .input{
-   width: 300px;
+   width: 304px;
    height: 40px;
    margin: 10px 0px 30px 0px;
 }
 
-#bt-non{
-    width: 410px;
+.bt-non{
+    width: 416px;
     height: 40px;
+    margin: 10px 0px 30px 0px;
 }
 
 button{
@@ -48,23 +44,28 @@ button{
     color: white;
     width: 110px;
     height: 45px;
-    margin-left: -4px;
-} 
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:not(.bt-join){
+	margin-left: -4px;
+}
 
 .address-code{
-	width: 300px;
+	width: 304px;
    	height: 40px;
    	margin: 10px 0px 10px 0px;
 }
 
 .address {
     margin-bottom: 10px;
-    width: 410px;
+    width: 416px;
    	height: 40px;
 }
 
 .address-find{
-	width: 410px;
+	width: 416px;
    	height: 40px;
    	margin-bottom: 10px;
 }
@@ -75,7 +76,7 @@ button{
 
 .scroll-box{
     height: 200px;
-    width: 400px;
+    width: 402px;
     border: solid 1px lightslategray;
     overflow: scroll;                       
     margin: 10px 0px 10px 0px;
@@ -94,8 +95,8 @@ button{
 }
 
 .bt-join{
-    width: 420px;
-    height: 60px;
+    width: 419px;
+    height: 55px;
     margin-top: 15px;
     background-color: rgb(255, 200, 0);
     border: solid 1px rgb(255, 200, 0);
