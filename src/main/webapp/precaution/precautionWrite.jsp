@@ -21,6 +21,7 @@
                 <div style="display: flex;">
                     <!-- 제목 -->
                     <input type="text" class="title" name="precautionTitle" id="title" placeholder="제목을 입력하세요.">
+                	<input type="hidden" name="precautionNumber">
                 </div>
                 <!-- 내용 -->
                 <textarea id="summernote" class="summernote" name="precautionContent"></textarea>
@@ -30,6 +31,7 @@
                     <input type="button" class="previous-btn" onclick="history.back()" value="이전">
                     <!-- 수정 -->
                     <button class="regist-btn">등록</button>
+                    
                 </div>
             </form>
         </div>

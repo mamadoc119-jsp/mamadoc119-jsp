@@ -1,26 +1,18 @@
 package com.mama.doc.vo;
 
-import java.util.Date;
 
 public class PrecautionVO {
     
-    private String doctorName;
 	private String doctorNickname;
 	private int precautionNumber;
     private int doctorNumber;
     private String precautionTitle;
     private String precautionContent;
-    private Date precautionDate;
+    private String precautionDate;
     
     
     // Getter, Setter
     
-    public String getDoctorName() {
-		return doctorName;
-	}
-	public void setDoctorName(String doctorName) {
-		this.doctorName = doctorName;
-	}
 	public String getDoctorNickname() {
 		return doctorNickname;
 	}
@@ -51,17 +43,17 @@ public class PrecautionVO {
 	public void setPrecautionContent(String precautionContent) {
 		this.precautionContent = precautionContent;
 	}
-	public Date getPrecautionDate() {
+	public String getPrecautionDate() {
 		return precautionDate;
 	}
-	public void setPrecautionDate(Date precautionDate) {
+	public void setPrecautionDate(String precautionDate) {
 		this.precautionDate = precautionDate;
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "PrecautionVO [doctorName=" + doctorName + ", doctorNickname=" + doctorNickname + ", precautionNumber="
+		return "PrecautionVO [doctorNickname=" + doctorNickname + ", precautionNumber="
 				+ precautionNumber + ", doctorNumber=" + doctorNumber + ", precautionTitle=" + precautionTitle
 				+ ", precautionContent=" + precautionContent + ", precautionDate=" + precautionDate + "]";
 	}  

@@ -17,14 +17,18 @@ public class PrecautionModifyController implements Execute {
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
 		
+		Result result = new Result();
 		PrecautionDAO precautionDAO = new PrecautionDAO();
 		
 		System.out.println(request.getParameter("precautionNumber"));
 		int precautionNumber = Integer.parseInt(request.getParameter("precautionNumber"));
 		
-		request.setAttribute("precaution", precautionDAO.selectWrite(precautionNumber));
-		request.getRequestDispatcher("/precaution/precautionModify.jsp?precautionNumber=" + precautionNumber).forward(request, response);		
-		return null;
+		request.setAttribute("precaution", precautionDAO.selectOne(precautionNumber));
+		
+		result.setRedirect(false);
+		result.setPath("/precaution/precautionModify.jsp");	
+		
+		return result;
 	}
 
 }
