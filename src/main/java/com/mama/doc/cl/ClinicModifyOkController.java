@@ -32,7 +32,9 @@ public class ClinicModifyOkController implements Execute{
 		
 
 			result.setRedirect(false);
-			result.setPath("/clinic/clinicDetailOk.cl?clinicNumber=" + clinicNumber);
+			result.setPath("/clinic/clinicListOk.cl?");
+			
+			//result.setPath("/clinic/clinicListOk.cl?clinicNumber=" + clinicNumber);
 						
 		}catch(NumberFormatException e) {
 			e.printStackTrace();
