@@ -23,7 +23,7 @@
             </div>
             <!-- 내용 -->
             <div style="padding: 10px;">
-				<c:out value="${noticeDetail.getNoticeTitle()}"/>
+				<c:out value="${noticeDetail.getNoticeContent()}"  escapeXml='false'/>
             </div>
             <!-- 수정/삭제 -->
             <c:if test="${not empty sessionScope.adminNumber}">

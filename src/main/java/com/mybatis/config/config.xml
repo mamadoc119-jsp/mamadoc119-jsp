@@ -37,6 +37,7 @@
 		<typeAlias type="com.mama.doc.dto.ClinicDTO" alias = "ClinicDTO"/>
 		<typeAlias type="com.mama.doc.dto.CommentDTO" alias = "CommentDTO"/>
 		<typeAlias type="com.mama.doc.cl.vo.ClinicVO" alias = "ClinicVO"/>
+		<typeAlias type="com.mama.doc.vo.SearchVO" alias = "SearchVO"/>
 	
 		
 
@@ -67,7 +68,7 @@
 		<mapper resource = "com/mybatis/mapper/adNoticeMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/adPrMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/adClinicMapper.xml"></mapper>
-		
+
 		<mapper resource = "com/mybatis/mapper/AdminMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/AdNutrientsFileMapper.xml"></mapper>
 		<mapper resource = "com/mybatis/mapper/AdNutrientsMapper.xml"></mapper>

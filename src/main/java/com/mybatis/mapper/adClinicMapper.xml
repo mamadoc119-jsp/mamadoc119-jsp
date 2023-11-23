@@ -19,14 +19,14 @@
 			<choose>
 				<when test="'name'.equals(searchVO.cate)">
 					WHERE clinic_title LIKE '%' || #{searchVO.keyword} || '%'
-					ORDER BY clinic_number
+					ORDER BY clinic_number desc
 				</when>
 				<when test="'effect'.equals(searchVO.cate)">
 					WHERE member_nickname LIKE '%' || #{searchVO.keyword} || '%'
-					ORDER BY clinic_number
+					ORDER BY clinic_number desc
 				</when>
 				<otherwise>
-					ORDER BY clinic_number
+					ORDER BY clinic_number desc
 				</otherwise>
 			</choose>
 		) temp
@@ -50,8 +50,19 @@
 	</delete>
    
    <!-- 예방상담 전체 게시글 수 조회 -->
-	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM MAMADOC_CLINIC
+	<select id="getTotal" parameterType="SearchVO"  resultType="int">
+		SELECT COUNT(*) FROM MAMADOC_CLINIC C
+				JOIN MAMADOC_MEMBER M ON C.member_number = M.member_number
+		<choose>
+				<when test="'name'.equals(cate)">
+					WHERE clinic_title LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<when test="'effect'.equals(cate)">
+					WHERE member_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<otherwise>
+				</otherwise>
+		</choose>
 	</select>
 
   

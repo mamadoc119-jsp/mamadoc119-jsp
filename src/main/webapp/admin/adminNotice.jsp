@@ -62,11 +62,11 @@
             <div class="member-list">
                 <div class="number"><c:out value="${adNotice.noticeNumber}"/></div>
                 <div class="id"><c:out value="${adNotice.noticeTitle}"/></div>
-                <div class="title"><c:out value="${adNotice.noticeContent}"/></div>
+                <div class="title"><c:out value="${adNotice.noticeContent}" escapeXml='false'/></div>
                 <div class="date"><c:out value="${adNotice.noticeDate}"/></div>
                 <div class="sortation">
                     <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/notice/noticeDetail.adno?noticeNumber=${adNotice.noticeNumber}'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
-                    <button class="remove-btn" onclick="location.href='${pageContext.request.contextPath}/admin/adNoticeDelete.adno?noticeNumber=${adNotice.noticeNumber}'">삭제</button>
+                    <button class="remove-btn" onclick="deleteDo(${adNotice.noticeNumber})">삭제</button>
                 </div>
             </div>
             	</c:forEach>
@@ -74,13 +74,13 @@
             </c:choose>
             <!-- 데이터가 끝나는 영역-->
         </div>
-                <!--페이징 처리부분-->
-    	<div style="display: flex;  justify-content: center;">
-    		<table style="font-size:1.3rem">
+       <!--페이징 처리부분-->
+	   	<div style="display: flex;  justify-content: center;">
+	   		<table style="font-size:1.3rem">
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage > 1}">
-							<a href="${pageContext.request.contextPath}/admin/adNoticeList.adno?page=${nowPage-1}">&lt;</a>
+							<a href="${pageContext.request.contextPath}/admin/adNoticeList.adno?page=${nowPage-1}&cate=${cate}&keyword=${keyword}">&lt;</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -89,19 +89,21 @@
 										<c:out value="[${i}]"/>&nbsp;
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/admin/adNoticeList.adno?page=${i}"><c:out value="${i}"/></a>
+										<a href="${pageContext.request.contextPath}/admin/adNoticeList.adno?page=${i}&cate=${cate}&keyword=${keyword}"><c:out value="${i}"/></a>
 									</c:otherwise>
 								</c:choose>
 						</c:forEach>
 						
 						<c:if test="${nowPage != realEndPage}">
-							<a href="${pageContext.request.contextPath}/admin/adNoticeList.adno?page=${nowPage+1}">&gt;</a>
+							<a href="${pageContext.request.contextPath}/admin/adNoticeList.adno?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
 						</c:if>
 					</td>
 				</tr>
 			</table>
-   		 </div>
+		 </div>
     </div>
 </div>
 </body>
+<script defer src="${pageContext.request.contextPath}/resources/js/adminNotice.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </html>
