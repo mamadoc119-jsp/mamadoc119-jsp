@@ -20,14 +20,14 @@ public class ClinicWriteOkController implements Execute{
 		Result result =  new Result();
 		
 		try {
-
-			//test용 임의로 지정///////
+//
+//			//test용 임의로 지정///////
 			HttpSession session = request.getSession();
-			session.setAttribute("memberNumber", 2);
-			session.setAttribute("memberNickname", "비이이");
-			
-		
-			
+//			session.setAttribute("memberNumber", 2);
+//			session.setAttribute("memberNickname", "비이이");
+//			
+//		
+//			
 			
 		String clinicTitle = request.getParameter("clinicTitle");
 		String clinicContent = request.getParameter("clinicContent");
@@ -53,7 +53,7 @@ public class ClinicWriteOkController implements Execute{
 		if(success) {
 			//저장성공이 되면
 			result.setRedirect(true);
-			 result.setPath(request.getContextPath() + "/clinic/clinicListOk.cl");
+			result.setPath("/clinic/clinicListOk.cl");
 			 //저장하면 정보를 가지고 목록으로 이동
 		} else {
 			result.setRedirect(false);

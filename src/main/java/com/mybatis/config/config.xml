@@ -38,12 +38,15 @@
 		<typeAlias type="com.mama.doc.dto.ClinicDTO" alias = "ClinicDTO"/>
 		<typeAlias type="com.mama.doc.dto.CommentDTO" alias = "CommentDTO"/>
 		<typeAlias type="com.mama.doc.cl.vo.ClinicVO" alias = "ClinicVO"/>
+
+		<typeAlias type="com.mama.doc.cl.vo.CommentVO" alias = "CommentVO"/>
 		<typeAlias type="com.mama.doc.vo.SearchVO" alias = "SearchVO"/>
-	
-		
+
 
 		<typeAlias type="com.mama.doc.dto.DoctorDTO" alias = "DoctorDTO"/>
 		<typeAlias type="com.mama.doc.dto.DofileDTO" alias = "DofileDTO"/>
+		
+		
 	</typeAliases>
 
 <environments default="oracle">
