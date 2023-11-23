@@ -33,7 +33,7 @@ public class AdClinicDAO {
 	   }   
 	   
 //		상담소 전체 게시글 수 조회
-		public int getTotal() {
-		    return sqlSession.selectOne("adcl.getTotal");
+		public int getTotal(SearchVO searchVO) {
+		    return sqlSession.selectOne("adcl.getTotal",searchVO);
 		}
 }

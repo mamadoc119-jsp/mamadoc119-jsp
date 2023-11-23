@@ -48,7 +48,7 @@ public class NoticeDAO {
 			sqlSession.update("notice.noticeUpdate", noticeDto);
 		}
 //		공지사항 전체 게시글 수 조회
-		public int getTotal() {
-		    return sqlSession.selectOne("notice.getTotal");
+		public int getTotal(SearchVO searchVO) {
+		    return sqlSession.selectOne("notice.getTotal",searchVO);
 		}
 }
