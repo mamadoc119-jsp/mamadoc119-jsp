@@ -43,8 +43,21 @@
 		WHERE member_number = #{memberNumber}
 	</delete>
 	
-	<select id="getTotal" resultType="int">
+	<select id="getTotal" parameterType="SearchVO" resultType="int">
 		SELECT COUNT(*)
 		FROM MAMADOC_MEMBER
+		<choose>
+			<when test="'name'.equals(cate)">
+				WHERE member_name LIKE '%' ||COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+			</when>
+			<when test="'nickname'.equals(cate)">
+				WHERE member_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+			</when>
+			<when test="'email'.equals(cate)">
+				WHERE member_email LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+			</when>
+			<otherwise>
+			</otherwise>			
+		</choose>
 	</select>
 </mapper>

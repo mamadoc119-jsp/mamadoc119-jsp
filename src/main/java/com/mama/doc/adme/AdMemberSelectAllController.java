@@ -24,18 +24,6 @@ public class AdMemberSelectAllController implements Execute {
 		Result result = new Result();
 		SearchVO searchVO = new SearchVO();
 		
-		// 페이징 처리
-        String temp = request.getParameter("page");
-		int page = temp == null ? 1 : Integer.parseInt(temp);
-		int pageSize = 20;
-		int totalCount = adMemberDAO.getTotal();
-		
-		int endRow = page * pageSize;
-		int startRow = endRow - (pageSize - 1);
-		
-		int startPage = ((page - 1) / pageSize) * pageSize + 1;
-		int endPage = startPage + 9;
-		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
 		
 		//검색		
 		String cate = request.getParameter("cate");
@@ -45,6 +33,20 @@ public class AdMemberSelectAllController implements Execute {
 		
 		searchVO.setCate(cate);
 		searchVO.setKeyword(keyword);
+		
+		// 페이징 처리
+        String temp = request.getParameter("page");
+		int page = temp == null ? 1 : Integer.parseInt(temp);
+		int pageSize = 20;
+		int totalCount = adMemberDAO.getTotal(searchVO);
+		
+		int endRow = page * pageSize;
+		int startRow = endRow - (pageSize - 1);
+		
+		int startPage = ((page - 1) / pageSize) * pageSize + 1;
+		int endPage = startPage + 9;
+		int realEndPage = (int)(Math.ceil((double)totalCount / pageSize));
+		
 		
 		endPage = endPage > realEndPage ? realEndPage : endPage;
 		

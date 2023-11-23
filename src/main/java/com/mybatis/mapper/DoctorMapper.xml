@@ -19,12 +19,7 @@
 		from mamadoc_doctor
 		where doctor_nickname = #{doctorNickname}
 	</select>
-<!-- 	<select id="checkMemberEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
-		select count(member_nickname)
-		from mamadoc_member
-		where member_nickname = #{doctorNickname}
-	</select> -->
-	
+
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="DoctorDTO">
 		insert into mamadoc_doctor (doctor_number, doctor_name, doctor_email, doctor_password, doctor_nickname, doctor_post_code, doctor_address, doctor_extra_address, doctor_detail_address, doctor_license, doctor_major)

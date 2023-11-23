@@ -25,6 +25,7 @@
 		<typeAlias type="com.mama.doc.dto.AdDoctorFileDTO" alias="AdDoctorFileDTO"/>
 		<typeAlias type="com.mama.doc.vo.AdNutrientsVO" alias ="AdNutrientsVO"/>
 		<typeAlias type="com.mama.doc.vo.AdDoctorVO" alias ="AdDoctorVO"/>
+
 		<typeAlias type="com.mama.doc.dto.ClinicDTO" alias = "ClinicDTO"/>
 		<typeAlias type="com.mama.doc.dto.CommentDTO" alias = "CommentDTO"/>
 		<typeAlias type="com.mama.doc.cl.vo.ClinicVO" alias = "ClinicVO"/>

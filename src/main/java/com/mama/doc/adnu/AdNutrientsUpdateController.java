@@ -27,6 +27,7 @@ public class AdNutrientsUpdateController implements Execute {
 		AdNutrientsDTO adNutrientsDTO = new AdNutrientsDTO();
         AdNutrientsFileDTO adNutrientsFileDTO = new AdNutrientsFileDTO();
         AdNutrientsDAO adNutrientsDAO = new AdNutrientsDAO();
+        Result result = new Result();
 
         int nutrientsNumber = Integer.parseInt(request.getParameter("nutrientsNumber"));
         
@@ -97,8 +98,9 @@ public class AdNutrientsUpdateController implements Execute {
         // 영양제 내용 DB에 보내기
         adNutrientsDAO.update(adNutrientsDTO);
 
-        response.sendRedirect("/mamadoc/adminNutrients.adnu");
-        return null;
+        result.setRedirect(true);
+        result.setPath("adminNutrients.adnu");
+        return result;
 	}
 	
 }

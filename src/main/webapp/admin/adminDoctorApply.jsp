@@ -79,7 +79,7 @@
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage > 1}">
-							<a href="${pageContext.request.contextPath}/adminDoctorApply.addo?page=${nowPage-1}">&lt;</a>
+							<a href="${pageContext.request.contextPath}/adminDoctorApply.addo?page=${nowPage-1}&cate=${cate}&keyword=${keyword}">&lt;</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -88,13 +88,13 @@
 										<c:out value="[${i}]"/>&nbsp;
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/adminDoctorApply.addo?page=${i}"><c:out value="${i}"/></a>
+										<a href="${pageContext.request.contextPath}/adminDoctorApply.addo?page=${i}&cate=${cate}&keyword=${keyword}"><c:out value="${i}"/></a>
 									</c:otherwise>
 								</c:choose>
 						</c:forEach>
 						
 						<c:if test="${nowPage != realEndPage}">
-							<a href="${pageContext.request.contextPath}/adminDoctorApply.addo?page=${nowPage+1}">&gt;</a>
+							<a href="${pageContext.request.contextPath}/adminDoctorApply.addo?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
 						</c:if>
 					</td>
 				</tr>

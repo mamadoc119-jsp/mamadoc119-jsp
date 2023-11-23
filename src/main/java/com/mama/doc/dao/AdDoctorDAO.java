@@ -37,13 +37,13 @@ public SqlSession sqlSession;
 	}
 	
 //	가입승인전 의료인 회원 인원수 조회
-	public int getApplyTotal() {
-		return sqlSession.selectOne("addo.getApplyTotal");
+	public int getApplyTotal(SearchVO searchVO) {
+		return sqlSession.selectOne("addo.getApplyTotal",searchVO);
 	}
 	
 //	가입승인된 의료인 회원 인원수 조회
-	public int getTotal() {
-		return sqlSession.selectOne("addo.getTotal");
+	public int getTotal(SearchVO searchVO) {
+		return sqlSession.selectOne("addo.getTotal", searchVO);
 	}
 	
 //	의료인 회원 상세보기

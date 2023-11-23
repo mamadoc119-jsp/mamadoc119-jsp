@@ -16,20 +16,17 @@ public class AdLogoutOkController implements Execute {
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
-		// TODO Auto-generated method stub
+		
+		Result result = new Result();
+		
 		HttpSession session = request.getSession();
 		session.invalidate();
 		System.out.println("실행");
-		try {
-			request.getRequestDispatcher("/adminLogin.ad").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		
+		result.setRedirect(false);
+		result.setPath("/admin/adminLogin.ad");
+			
+		return result;
 		
 	}
 

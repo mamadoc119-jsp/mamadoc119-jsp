@@ -92,17 +92,49 @@
 	
 	
 	<!-- 가입승인전 의료인 회원 총수  -->
-	<select id="getApplyTotal" resultType="int">
+	<select id="getApplyTotal" parameterType="SearchVO" resultType="int">
 		SELECT COUNT(*)
 		FROM MAMADOC_DOCTOR
-		WHERE doctor_status = 0
+		<choose>
+			<when test="'name'.equals(cate)">
+					WHERE doctor_name LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+					AND doctor_status = 0
+				</when>
+				<when test="'nickname'.equals(cate)">
+					WHERE doctor_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+					AND doctor_status = 0
+				</when>
+				<when test="'email'.equals(cate)">
+					WHERE doctor_email LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+					AND doctor_status = 0
+				</when>
+				<otherwise>
+					WHERE doctor_status = 0
+				</otherwise>		
+		</choose>
 	</select>
 	
 	<!-- 가입승인된 의료인 회원 총수  -->
-	<select id="getTotal" resultType="int">
+	<select id="getTotal" parameterType="SearchVO" resultType="int">
 		SELECT COUNT(*)
 		FROM MAMADOC_DOCTOR
-		WHERE doctor_status = 1
+		<choose>
+			<when test="'name'.equals(cate)">
+					WHERE doctor_name LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+					AND doctor_status = 1
+				</when>
+				<when test="'nickname'.equals(cate)">
+					WHERE doctor_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+					AND doctor_status = 1
+				</when>
+				<when test="'email'.equals(cate)">
+					WHERE doctor_email LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+					AND doctor_status = 1
+				</when>
+				<otherwise>
+					WHERE doctor_status = 1
+				</otherwise>		
+		</choose>
 	</select>
 	
 	<!-- 가입승인된 의료인 회원 상세보기 -->

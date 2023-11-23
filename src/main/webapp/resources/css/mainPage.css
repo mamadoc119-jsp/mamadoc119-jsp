@@ -470,6 +470,9 @@ main{
 .main-detail-title{
     width: 60%;
     margin-right: 5%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .main-detail-nick{
     width: 25%;

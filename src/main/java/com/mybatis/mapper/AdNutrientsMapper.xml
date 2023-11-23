@@ -78,9 +78,20 @@
 	</select>
 	
 	<!-- 영양제 전체 게시글 수 조회 -->
-	<select id="getTotal" resultType="int">
+	<select id="getTotal" parameterType="searchVO"  resultType="int">
 		SELECT COUNT(*) FROM MAMADOC_NUTRIENTS
+		<choose>
+				<when test="'name'.equals(cate)">
+					WHERE nutrients_name LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<when test="'effect'.equals(cate)">
+					WHERE nutrients_effect LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<otherwise>
+				</otherwise>
+		</choose>
 	</select>
+	
 	
 	<!-- 전체 영양제 정보 불러오기 -->
 	<select id="selectAll" parameterType="Map" resultType="AdNutrientsDTO">

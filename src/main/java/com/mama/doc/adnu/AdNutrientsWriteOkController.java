@@ -29,6 +29,7 @@ public class AdNutrientsWriteOkController implements Execute {
         AdNutrientsFileDTO adNutrientsFileDTO = new AdNutrientsFileDTO();
         AdNutrientsDAO adNutrientsDAO = new AdNutrientsDAO();
         HttpSession session = request.getSession();
+        Result result= new Result();
 
         // 파일업로드 경로 설정
         String location = "C:\\mamadoc119\\mamadoc\\src\\main\\webapp\\resources\\upload";
@@ -96,8 +97,8 @@ public class AdNutrientsWriteOkController implements Execute {
 	}
         
         
-
-        response.sendRedirect("/mamadoc/adminNutrients.adnu");
-        return null;
+    	result.setRedirect(true);
+    	result.setPath("adminNutrients.adnu");
+        return result;
     }
 }
