@@ -11,7 +11,15 @@
      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/counselingCenterList.css">
 </head>
 <body>
-	<jsp:include page="../include/header.jsp" />
+
+<!-- 헤더(로그아웃) -->
+<c:if test="${sessionScope.doctorNumber == null && sessionScope.memberNumber == null}">
+	<jsp:include page="/include/header.jsp" />
+</c:if> -
+<c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
+	<jsp:include page="/include/headerLogin.jsp" />
+</c:if>
+
 		<!-- c:set에서 내용으로 파라미터 값을 넣으면, 문자열로 변환된 후 저장된다. -->
 		<!-- c:set value속성에 값을 넣으면, 해당 값의 타입이 그대로 유지된다. -->
 		<c:set var="totalCount" value="${totalCount}"/>
@@ -63,20 +71,17 @@
                    <c:forEach var="clinic" items="${clinicList}">
                     <tr>
                         <td class="counse-title-contents">
-                        <a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">${clinic.clinicTitle}</a></td>
-                        
-                        	<!-- 
-                        	<c:choose>
-                        		<c:when test="${not empty sessionScope.memberNumber}">
-                        			<a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">${clinic.clinicTitle}</a></td>
-                        		</c:when>
-                        		<c:otherwise>
-                        			<a href="#" onclick ="showLoginAlert()">${clinic.clinicTitle}</a>
-                        		</c:otherwise>
-                        	</c:choose>	
-                        	
-                        	 -->
-                        	
+                       
+                        	<c:if test="${not empty sessionScope.memberNumber || not empty sessionScope.doctorNumber}">
+							    <a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clinic.clinicNumber}">
+							        ${clinic.clinicTitle}
+							    </a>
+							</c:if>
+							<c:if test="${empty sessionScope.memberNumber && empty sessionScope.doctorNumber}">
+							    <a href="#" onclick="showLoginAlert()">
+							        ${clinic.clinicTitle}
+							    </a>
+							</c:if>              
                         
                         <td align="center">${clinic.memberNickname}</td>
                         <td align="center">${clinic.clinicDate}</td>
@@ -89,10 +94,11 @@
             </table>  
         </div>
         
+        	<c:if test="${not empty sessionScope.memberNumber}">
 	        <div class="write-down-div">
-		       <button class="write-down"><a href="${pageContext.request.contextPath}/clinic/clinicWrite.jsp">글쓰기</a></button>
+		       	<button class="write-down"><a href="${pageContext.request.contextPath}/clinic/clinicWrite.jsp">글쓰기</a></button>
 	        </div>
-
+ 			 </c:if>
 
 
             <!--페이징 처리부분-->
@@ -101,7 +107,7 @@
 							<tr align="center" valign="middle">
 									<td>
 									<c:if test="${nowPage > 1}">
-										<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${nowPage-1}">&lt;</a>
+										<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${nowPage-1}&cate=${cate}&keyword=${keyword}">&lt;</a>
 									</c:if>
 									
 									<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -110,13 +116,13 @@
 													<c:out value="[${i}]"/>&nbsp;
 												</c:when>
 												<c:otherwise>
-													<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${i}"><c:out value="${i}"/></a>
+													<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${i}&cate=${cate}&keyword=${keyword}"><c:out value="${i}"/></a>
 												</c:otherwise>
 											</c:choose>
 									</c:forEach>
 									
 									<c:if test="${nowPage != realEndPage}">
-										<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${nowPage+1}">&gt;</a>
+										<a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
 									</c:if>
 									</td>
 								</tr>

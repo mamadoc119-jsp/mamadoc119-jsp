@@ -20,14 +20,14 @@ public class ClinicWriteOkController implements Execute{
 		Result result =  new Result();
 		
 		try {
-
-			//test용 임의로 지정///////
+//
+//			//test용 임의로 지정///////
 			HttpSession session = request.getSession();
-			session.setAttribute("memberNumber", 2);
-			session.setAttribute("memberNickname", "비이이");
-			
-		
-			
+//			session.setAttribute("memberNumber", 2);
+//			session.setAttribute("memberNickname", "비이이");
+//			
+//		
+//			
 			
 		String clinicTitle = request.getParameter("clinicTitle");
 		String clinicContent = request.getParameter("clinicContent");

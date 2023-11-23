@@ -26,21 +26,13 @@ public class ClinicDAO {
 		return result; //1이상이면 true, 0 이하면 false;
 	}
 	
-
-	//페이징 처리
-//	public List<ClinicVO> getClinicListPaging(int startRow, int endRow) {
-//	    Map<String, Integer> pageMap = new HashMap<>();
-//	    pageMap.put("startRow", startRow);
-//	    pageMap.put("endRow", endRow);
-//	    return sqlSession.selectList("clinic.getClinicListPaging", pageMap);
-//	}
-
-	public int getTotal() {
-	    return sqlSession.selectOne("clinic.getTotal");
+	//전체 게시글 수 
+	public int getTotal(SearchVO searchVO) {
+	    return sqlSession.selectOne("clinic.getTotal",searchVO);
 	}
 	
 	
-//	검색
+	//	검색 및 게시글 목록
 	public List<ClinicVO> getClinicListPaging(int startRow, int endRow, SearchVO searchVO){
 		Map<String, Object> pageMap = new HashMap<>();
 	    pageMap.put("startRow", startRow);
@@ -51,13 +43,13 @@ public class ClinicDAO {
 	
 	
 	
-	//게시글 목록
-	public List<ClinicVO> getClinicList(){
-		System.out.println("게시글 목록dao입니다.");
-	   return sqlSession.selectList("clinic.getClinicList");
-		
-		
-	}
+//	//게시글 목록
+//	public List<ClinicVO> getClinicList(){
+//		System.out.println("게시글 목록dao입니다.");
+//	   return sqlSession.selectList("clinic.getClinicList");
+//		
+//		
+//	}
 	
 	//상세페이지
 	public ClinicVO getClinicDetail(int clinicNumber) {

@@ -13,17 +13,30 @@
 
 
 
-<!-- 전체 페이지 수를 계산하는 getCountClinicList -->
-<select id="getTotal" resultType="int">
-    SELECT COUNT(*) FROM MAMADOC_CLINIC
+<!-- getTotal 쿼리 -->
+<select id="getTotal" parameterType="searchVO" resultType="int">
+    SELECT COUNT(*) FROM MAMADOC_CLINIC C
+    JOIN mamadoc_member M ON C.member_number = M.member_number
+    <choose>
+        <when test="'title'.equals(cate)">
+            WHERE C.clinic_title LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+        </when>
+        <when test="'writer'.equals(cate)">
+            WHERE M.member_nickname LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+        </when>
+        <otherwise>
+            <!-- No additional condition -->
+        </otherwise>
+    </choose>
 </select>
+
 
 
 
  <select id="getClinicDetail" parameterType="int" resultType="ClinicVO">
         SELECT 
             C.clinic_number, C.clinic_title, C.clinic_content, 
-            C.clinic_date, C.member_number, M.member_nickname
+            TO_CHAR(C.clinic_date, 'YYYY-MM-DD') AS clinic_date, C.member_number, M.member_nickname
         FROM 
             MAMADOC_CLINIC C
         JOIN 
@@ -31,7 +44,6 @@
         WHERE 
             C.clinic_number = #{clinicNumber}
  </select>
-
 
 
  <update id="modifyClinic" parameterType="ClinicDTO">
@@ -42,9 +54,7 @@
     WHERE clinic_number = #{clinicNumber}
 </update>
 
- 
- 
- 
+
  
  <delete id="deleteClinic" parameterType="_int">
  		DELETE FROM MAMADOC_CLINIC
@@ -62,15 +72,19 @@
             ROW_NUMBER() OVER (ORDER BY C.clinic_number DESC) AS rnum
         FROM mamadoc_clinic C
         JOIN mamadoc_member M ON C.member_number = M.member_number
-        <where>
-            <if test="'title'.equals(searchVO.cate)">
-                AND C.clinic_title LIKE '%' || #{searchVO.keyword} || '%'
-            </if>
-            <if test="'writer'.equals(searchVO.cate)">
-                AND M.member_nickname LIKE '%' || #{searchVO.keyword} || '%'
-            </if>
-        </where>
-        ORDER BY C.clinic_number DESC
+        <choose>
+            <when test="'title'.equals(searchVO.cate)">
+            	WHERE C.clinic_title LIKE '%' || #{searchVO.keyword} || '%'
+                ORDER BY C.clinic_number DESC
+            </when>
+            <when test="'writer'.equals(searchVO.cate)">
+            	WHERE M.member_nickname LIKE '%' || #{searchVO.keyword} || '%'
+                ORDER BY C.clinic_number DESC
+            </when>
+            <otherwise>
+            	 ORDER BY C.clinic_number DESC
+            </otherwise>
+        </choose>
     ) temp
     WHERE rnum BETWEEN #{startRow} AND #{endRow}
 </select>
@@ -80,33 +94,59 @@
  
  
  
- 
     
     
   <!-- 댓글 부분 -->  
   
-  <select id="getCommentList" parameterType="_int" resultType="CommentDTO">
-		SELECT COMMENT_NUMBER, DOCTOR_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER, DOCTOR_NICKNAME, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE
-		FROM MAMADOC_COMMENT
-		WHERE CLINIC_NUMBER = #{clinicNumber}
-		ORDER BY COMMENT_NUMBER DESC
-	</select>
+ <select id="getCommentList" parameterType="_int" resultType="CommentVO">
+  	SELECT
+    MC.comment_number,
+    MC.doctor_number,
+    MD.doctor_nickname,
+    MC.member_number,
+    MM.member_nickname,
+    MC.clinic_number,
+    MC.comment_content,
+    MC.comment_date
+FROM
+    MAMADOC_COMMENT MC
+LEFT JOIN
+    MAMADOC_DOCTOR MD ON MC.doctor_number = MD.doctor_number
+LEFT JOIN
+    MAMADOC_MEMBER MM ON MC.member_number = MM.member_number
+WHERE CLINIC_NUMBER = #{clinicNumber}
+ORDER BY COMMENT_NUMBER DESC
+   
+		
+</select>
 
   
-  
-  <insert id="insertComment" parameterType="CommentDTO">
+ <!-- 댓글 입력 -->
+ <insert id="insertComment" parameterType="CommentDTO">
   INSERT INTO MAMADOC_COMMENT
-	(COMMENT_NUMBER,MEMBER_NUMBER, CLINIC_NUMBER, MEMBER_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
-	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL, #{memberNumber}, #{clinicNumber},#{memberNickname}, #{commentContent}, SYSDATE)
-  </insert>
+  				(COMMENT_NUMBER, MEMBER_NUMBER, CLINIC_NUMBER, COMMENT_CONTENT, COMMENT_DATE)
+  VALUES (SEQ_MAMADOC_COMMENT.NEXTVAL, #{memberNumber}, #{clinicNumber},#{commentContent}, SYSDATE)
+</insert>
   
-    <insert id="insertCommentDo" parameterType="CommentDTO">
-  INSERT INTO MAMADOC_COMMENT
-	(COMMENT_NUMBER,DOCTOR_NUMBER, CLINIC_NUMBER, DOCTOR_NICKNAME, COMMENT_CONTENT, COMMENT_DATE)
-	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL, #{doctorNumber}, #{clinicNumber},#{doctorNickname}, #{commentContent}, SYSDATE)
-  </insert>
+<insert id="insertCommentDo" parameterType="CommentDTO">
+	INSERT INTO MAMADOC_COMMENT
+	(COMMENT_NUMBER,DOCTOR_NUMBER, CLINIC_NUMBER,  COMMENT_CONTENT, COMMENT_DATE)
+	VALUES(SEQ_MAMADOC_COMMENT.NEXTVAL, #{doctorNumber}, #{clinicNumber}, #{commentContent}, SYSDATE)
+ </insert>
   
   
+<!-- 댓글 수정 -->
+<update id="updateComment" parameterType="CommentDTO">
+		UPDATE MAMADOC_COMMENT
+		SET COMMENT_CONTENT = #{commentContent}
+		WHERE COMMENT_NUMBER = #{commentNumber}
+</update>
+  
+<!-- 댓글 삭제 -->
+<delete id="deleteComment" parameterType="_int">
+	DELETE FROM MAMADOC_COMMENT
+	WHERE COMMENT_NUMBER = #{commentNumber}
+</delete>
   
 </mapper>
 

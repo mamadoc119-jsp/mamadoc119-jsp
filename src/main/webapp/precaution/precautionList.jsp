@@ -19,7 +19,7 @@
        
            <jsp:include page="../include/headerLogin.jsp" />
        </c:otherwise>
-   </c:choose>
+ </c:choose>
 
     <div class="precautionary-full-container">
         <!--예방알림 타이틀-->

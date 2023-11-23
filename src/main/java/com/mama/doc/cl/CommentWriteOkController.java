@@ -26,19 +26,26 @@ public class CommentWriteOkController implements Execute{
 		CommentDTO commentDTO = new CommentDTO();
 		CommentDAO commentDAO = new CommentDAO();
 		
+
+        // 세션에서 사용자의 닉네임 가져오기
+        HttpSession session = request.getSession();
+    
     	System.out.println("*******들어오와아아ㅗㅘㅇ2222222");
 		int clinicNumber =  Integer.parseInt(request.getParameter("clinicNumber"));
+		
+		
+		//게시글번호 들어옴 확인
+		System.out.println("clinicNumber******-----::: " + clinicNumber);
+		
 		String commentContent = request.getParameter("commentContent");
 		
-		if(request.getSession().getAttribute("doctorStatus") == null) {
-			System.out.println("닥터로 댓글작성 완료");
-			String memberNickname = (String) request.getSession().getAttribute("memberNickname");
+		if(request.getSession().getAttribute("doctorNumber") == null) {
+			System.out.println("회원 댓글작성 완료");
 			int memberNumber = (int) request.getSession().getAttribute("memberNumber");
 			
 			commentDTO.setClinicNumber(clinicNumber);
 			commentDTO.setMemberNumber(memberNumber);
 			commentDTO.setCommentContent(commentContent);
-		    commentDTO.setMemberNickname(memberNickname);
 		    
 		    commentDAO.insertComment(commentDTO);
 		}else {
@@ -50,7 +57,6 @@ public class CommentWriteOkController implements Execute{
 			commentDTO.setClinicNumber(clinicNumber);
 			commentDTO.setDoctorNumber(doctorNumber);
 			commentDTO.setCommentContent(commentContent);
-			commentDTO.setDoctorNickname(doctorNickname);
 			
 			commentDAO.insertCommentDo(commentDTO);
 		}
@@ -61,14 +67,6 @@ public class CommentWriteOkController implements Execute{
 		
 		System.out.println("오니마니!!!!");
 	
-		
-		System.out.println("*******들어오와아아ㅗㅘㅇ444444444");
-		
-
-	       
-		
-		
-		System.out.println("*******들어오와아아ㅗㅘㅇ55555555555");
 		
 		return null;
 	}
