@@ -10,6 +10,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMain.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminHeader.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMC.css"/>
+    <style>
+  @font-face {
+    font-family: 'Giants-Inline';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+	     font-family: 'Giants-Inline';
+}
+    </style>
+    
 
 </head>
 <body>
@@ -60,7 +72,7 @@
             <!-- 데이터가 들어오는 영역 -->
             <c:choose>
                    <c:when test="${not empty adClinicList}">
-                  	 	<c:forEach var="adClinic" items="${adClinicList}" varStatus="status">
+                  	 	<c:forEach var="adClinic" items="${adClinicList}" varStatus="status" begin='0' end='19'>
             <div class="member-list">
                 <div class="number"><c:out value="${adClinic.clinicNumber}"/></div>
                 <div class="id"><c:out value="${adClinic.memberNickname}"/></div>
@@ -68,21 +80,21 @@
                 <div class="date"><c:out value="${adClinic.clinicDate}"/></div>
                 <div class="sortation">
                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
-                    <button class="remove-btn" onclick ="location.href='${pageContext.request.contextPath}/admin/adClinicDelete.adcl?clinicNumber=${adClinic.clinicNumber}'">삭제</button>
+                    <button class="remove-btn" onclick="deleteDo(${adClinic.clinicNumber})">삭제</button>
                 </div>
             </div>
 					</c:forEach>
 				</c:when>
 			</c:choose>
             <!-- 데이터가 끝나는 영역-->
-            <!-- 페이징 처리 -->
         </div>
-        <div style="display: flex;  justify-content: center;">
-    		<table style="font-size:1.3rem">
+		<!--페이징 처리부분-->
+	   	<div style="display: flex;  justify-content: center;">
+	   		<table style="font-size:1.3rem">
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage > 1}">
-							<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${nowPage-1}">&lt;</a>
+							<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${nowPage-1}&cate=${cate}&keyword=${keyword}">&lt;</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -91,19 +103,22 @@
 										<c:out value="[${i}]"/>&nbsp;
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${i}"><c:out value="${i}"/></a>
+										<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${i}&cate=${cate}&keyword=${keyword}"><c:out value="${i}"/></a>
 									</c:otherwise>
 								</c:choose>
 						</c:forEach>
 						
 						<c:if test="${nowPage != realEndPage}">
-							<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${nowPage+1}">&gt;</a>
+							<a href="${pageContext.request.contextPath}/admin/adClinicList.adcl?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
 						</c:if>
 					</td>
 				</tr>
 			</table>
-   		 </div>
+		 </div>
+
     </div>
 </div>
 </body>
+<script defer src="${pageContext.request.contextPath}/resources/js/adminClinic.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </html>

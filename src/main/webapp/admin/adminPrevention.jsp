@@ -67,7 +67,7 @@
                 <div class="date"><c:out value="${adPr.precautionDate}"/></div>
                 <div class="sortation">
                     <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/precaution/precautionDetail.jsp'">보기</button> <!--클릭 시 예방상담 상세페이지로 이동-->
-                    <button class="remove-btn" onclick ="location.href='${pageContext.request.contextPath}/admin/adPrDelete.adpr?precautionNumber=${adPr.precautionNumber}'">삭제</button>
+                    <button class="remove-btn" onclick="deleteDo(${adPr.precautionNumber})">삭제</button>
                 </div>
             </div>
             </c:forEach>
@@ -76,12 +76,12 @@
             <!-- 데이터가 끝나는 영역-->
         </div>
 		                <!--페이징 처리부분-->
-    	<div style="display: flex;  justify-content: center;">
-    		<table style="font-size:1.3rem">
+    		<div style="display: flex;  justify-content: center;">
+	   		<table style="font-size:1.3rem">
 				<tr align="center" valign="middle">
 					<td>
 						<c:if test="${nowPage > 1}">
-							<a href="${pageContext.request.contextPath}/admin/adPrList.adpr?page=${nowPage-1}">&lt;</a>
+							<a href="${pageContext.request.contextPath}/admin/adPrList.adpr?page=${nowPage-1}&cate=${cate}&keyword=${keyword}">&lt;</a>
 						</c:if>
 						
 						<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -90,20 +90,21 @@
 										<c:out value="[${i}]"/>&nbsp;
 									</c:when>
 									<c:otherwise>
-										<a href="${pageContext.request.contextPath}/admin/adPrList.adpr?page=${i}"><c:out value="${i}"/></a>
+										<a href="${pageContext.request.contextPath}/admin/adPrList.adpr?page=${i}&cate=${cate}&keyword=${keyword}"><c:out value="${i}"/></a>
 									</c:otherwise>
 								</c:choose>
 						</c:forEach>
 						
 						<c:if test="${nowPage != realEndPage}">
-							<a href="${pageContext.request.contextPath}/admin/adPrList.adpr?page=${nowPage+1}">&gt;</a>
+							<a href="${pageContext.request.contextPath}/admin/adPrList.adpr?page=${nowPage+1}&cate=${cate}&keyword=${keyword}">&gt;</a>
 						</c:if>
 					</td>
 				</tr>
 			</table>
-   		 </div>
+		 </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script defer src="${pageContext.request.contextPath}/resources/js/adminPrecaution.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </body>
 </html>

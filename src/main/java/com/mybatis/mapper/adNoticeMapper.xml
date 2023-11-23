@@ -13,13 +13,13 @@
 			SELECT notice_number, admin_number,notice_title,notice_content,notice_date,
 			ROW_NUMBER() OVER (ORDER BY notice_number DESC) AS rnum
       		 FROM mamadoc_notice
-			<choose>
+			<choose> 
 				<when test="'name'.equals(searchVO.cate)">
 					WHERE notice_title LIKE '%' || #{searchVO.keyword} || '%'
-					ORDER BY notice_number
+					ORDER BY notice_number desc
 				</when>
 				<otherwise>
-					ORDER BY notice_number
+					ORDER BY notice_number desc
 				</otherwise>
 			</choose>
 		) temp
@@ -42,13 +42,17 @@
 	</update>
 	
 	<!-- 공지사항 전체 게시글 수 조회 -->
-	<select id="getTotal" resultType="int">
-		SELECT COUNT(*) FROM MAMADOC_NOTICE
+	<select id="getTotal" parameterType="SearchVO"  resultType="int">
+		SELECT COUNT(*) FROM MAMADOC_NOTICE 
+			<choose>
+				<when test="'name'.equals(cate)">
+					WHERE notice_title LIKE '%' || COALESCE(#{keyword, jdbcType=VARCHAR}, '') || '%'
+				</when>
+				<otherwise>
+				</otherwise>
+		</choose>
 	</select>
    
    
-   <!-- 
-   <select id="getTotal" resultType="_int">
-      select count(board_num) from tbl_board
-   </select> -->
+   
 </mapper>

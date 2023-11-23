@@ -99,7 +99,7 @@ public class AdNoticeFrontController extends HttpServlet {
 		case "/notice/AdNoticeUpdateOk.adno":
 			System.out.println("AdNoticeUpdate.adno 실행");
 			new NoticeUpdateOkController().execute(request,response);
-			//request.getRequestDispatcher("/admin/adminNoticeUpdate.jsp").forward(request, response);
+			request.getRequestDispatcher("/admin/adminNoticeUpdate.jsp").forward(request, response);
 			break;	
 			
 			

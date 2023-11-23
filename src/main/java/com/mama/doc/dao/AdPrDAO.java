@@ -33,7 +33,7 @@ public class AdPrDAO {
 	   }   
 	   
 //		예방상담 전체 게시글 수 조회
-		public int getTotal() {
-		    return sqlSession.selectOne("adpr.getTotal");
+		public int getTotal(SearchVO searchVO) {
+		    return sqlSession.selectOne("adpr.getTotal",searchVO);
 		}
 }
