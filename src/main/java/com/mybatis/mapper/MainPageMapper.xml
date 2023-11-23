@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mainPage">
+
+	<!-- 나예은 : 예방알림(작성) -->
+	<!--  <select id = "selectPrecautionList" parameterType="MainPageVO">
+        SELECT p.precaution_title, d.doctor_nickname, to_char(p.precaution_date, 'YYYY.MM.DD') as precaution_date
+    		FROM mamadoc_precaution p
+    		JOIN mamadoc_doctor d 
+    		ON p.doctor_number = d.doctor_number
+    	WHERE p.precaution_number = #{precautionNumber}
+   	</select> -->
+   	
+ 
+    <select id="selectPrecautionList"  resultType="PrecautionVO">
+		SELECT *
+		FROM(
+			SELECT 
+	            P.precaution_number, P.precaution_title, P.precaution_content, to_char(P.precaution_date, 'YYYY.MM.DD')AS precaution_date, P.doctor_number, D.doctor_nickname,
+	            ROW_NUMBER() OVER (ORDER BY P.precaution_date DESC) AS row_num
+			FROM
+			 	MAMADOC_precaution p
+	        JOIN 
+	            mamadoc_doctor D on P.doctor_number = D.doctor_number
+            ) temp
+		WHERE row_num &lt;= 3
+	</select>
+   	
+   	
+   	<select id="selectClinicList" resultType="ClinicVO">
+		SELECT *
+			FROM (
+			    SELECT 
+			        c.clinic_number, c.clinic_title, c.clinic_content, TO_CHAR(c.clinic_date, 'YYYY.MM.DD') as clinic_date, c.member_number, m.member_nickname,
+			        ROW_NUMBER() OVER (ORDER BY c.clinic_date DESC) as row_num
+			    FROM 
+			    	MAMADOC_clinic c
+			    JOIN 
+			    	mamadoc_member m ON c.member_number = m.member_number
+			) temp
+			WHERE row_num &lt;= 3
+	</select>
+	
+	<select id="selectNutrientsList" resultType="AdNutrientsVO">
+		SELECT *
+		FROM (
+			SELECT N.nutrients_number, 
+		       N.admin_number, 
+		       N.nutrients_name, 
+		       N.nutrients_effect, 
+		       N.nutrients_info, 
+		       TO_CHAR(N.nutrients_date, 'YYYY.MM.DD') AS nutrients_date,
+		       F.nufile_number,
+		       F.nufile_path,
+		       F.nufile_uuid,
+		       F.nufile_name,
+		       F.nufile_type,
+		       ROW_NUMBER() OVER (ORDER BY N.nutrients_date DESC) as row_num
+			FROM MAMADOC_NUTRIENTS N
+			JOIN MAMADOC_NUFILE F
+			ON N.nutrients_number = F.nutrients_number
+		) temp
+		WHERE row_num &lt;= 12		
+	</select>
+	
+	
+   	
+   	
+   
+</mapper>

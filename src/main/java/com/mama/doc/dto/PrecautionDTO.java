@@ -1,14 +1,12 @@
 package com.mama.doc.dto;
 
-import java.util.Date;
-
 public class PrecautionDTO {
 	
 	private int precautionNumber;
     private int doctorNumber;
     private String precautionTitle;
     private String precautionContent;
-    private Date precautionDate;
+    private String precautionDate;
     
     
     // Getter, Setter
@@ -37,10 +35,10 @@ public class PrecautionDTO {
 	public void setPrecautionContent(String precautionContent) {
 		this.precautionContent = precautionContent;
 	}
-	public Date getPrecautionDate() {
+	public String getPrecautionDate() {
 		return precautionDate;
 	}
-	public void setPrecautionDate(Date precautionDate) {
+	public void setPrecautionDate(String precautionDate) {
 		this.precautionDate = precautionDate;
 	}
 	
