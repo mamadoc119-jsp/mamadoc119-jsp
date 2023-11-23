@@ -1,4 +1,4 @@
-package com.mama.doc.doc;
+package com.mama.doc.me;
 
 import java.io.IOException;
 import java.rmi.ServerException;
@@ -11,15 +11,15 @@ import org.json.simple.JSONObject;
 
 import com.mama.doc.Execute;
 import com.mama.doc.Result;
-import com.mama.doc.dao.DoctorDAO;
+import com.mama.doc.dao.MemberDAO;
 
 public class CheckEmailOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServerException {
-		DoctorDAO doctorDAO = new DoctorDAO();
+		MemberDAO memberDAO = new MemberDAO();
 		
-		int count = doctorDAO.checkEmail(request.getParameter("doctorEmail"));
+		int count = memberDAO.checkEmail(request.getParameter("memberEmail"));
 		System.out.println(count);
 		
 		JSONObject jObj = new JSONObject();
@@ -27,7 +27,7 @@ public class CheckEmailOkController implements Execute {
 		
 		response.setContentType("application/x-json; charset=utf-8");
 		response.getWriter().print(jObj);
-
+		
 		return null;
 	}
 

@@ -46,3 +46,71 @@ function sample6_execDaumPostcode() {
         }
     }).open();
 }
+
+// 닉네임 중복검사
+$('#nickNameBtn').on('click', function(){
+	var nickname = $('#check-nickname').val();
+	var nick = $('#hidden-nick').val();
+	console.log(nickname);
+	console.log(nick);
+	
+	if(!nickname){
+		return false;
+	}
+	
+	if(nickname == nick){
+		return false;
+	}
+	
+	$.ajax({
+		url: '/mamadoc/checkNicknameOk.me',
+		data: {memberNickname: nickname},
+		dataType: 'json',
+		success: function(data){
+			console.log(data.count);
+			var exist = data.count;
+			if(exist > 0){
+				$('.nick-no').css('display', 'block');
+				$('.nick-yes').css('display', 'none');
+				alert('중복된 닉네임입니다.');
+			}else{
+				$('.nick-yes').css('display', 'block');
+				$('.nick-no').css('display', 'none');
+				alert('사용가능한 닉네임입니다.');
+			}
+		}
+	});
+});
+
+// 닉네임 수정시 중복검사 초기화
+$('#check-nickname').keyup(function(){
+	$('.nick-yes').css('display', 'none');
+	$('.nick-no').css('display', 'none');
+});
+
+// 수정 버튼 클릭시
+$('#form').submit(function(){
+	var nickname = $('#check-nickname').val();
+	var nick = $('#hidden-nick').val();
+	
+	if($('.nick-no').css('display') == 'block'){
+		alert('닉네임 중복을 확인해주세요.');
+		return false;
+	}
+	if($('.nick-yes').css('display') == 'none'){
+		if(nickname != nick){
+			alert('닉네임 중복을 확인해주세요.');
+			return false;
+		}
+	}
+	alert('회원정보가 수정되었습니다.');
+});
+
+// 회원탈퇴 클릭시
+$('#quit').on('click', function(){
+	if(confirm('정말로 탈퇴하시겠습니까?')){
+		alert('탈퇴되었습니다.');
+	}else{
+		return false;
+	}
+});

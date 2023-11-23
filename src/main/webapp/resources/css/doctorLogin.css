@@ -1,17 +1,12 @@
-body{
-    width: 1515px;
-}
-
-.form{
+form{
     margin-bottom: 170px;
     margin-top: 200px;
 }
 
 .login-container{
     width: 420px;
-    height: 590px;
+    height: 500px;
     position: relative;
-    left: 30px;
     padding: 50px;
     box-shadow: 3px 3px 10px grey;
     /* border: solid 1px black; */
@@ -28,34 +23,38 @@ body{
 
 
 .input{
-   width: 405px;
+   width: 416px;
    height: 40px;
    margin: 15px 0px 20px 0px;
 }
 
 .bt-join{
-    width: 420px;
+    width: 419px;
     height: 45px;
     margin-top: 15px;
     margin-bottom: 20px;
     background-color: white;
-    border: solid 2px #f9bb00;
-    color: lightslategray;
+    border: solid 2px #1cd6ff;
+    color: #1cd6ff;
+    font-weight: bold;
     text-align: center;
     justify-content: center;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .bt-login{
-    width: 420px;
+    width: 419px;
     height: 45px;
     margin-top: 15px;
     background-color: #f9bb00;
     border: solid 2px #f9bb00;
-    color: lightslategray;
+    color: white;
+    font-weight: bold;
     text-align: center;
     justify-content: center;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .first-line, .second-line{
@@ -86,7 +85,8 @@ body{
 }
 
 .bt-join:hover{
-    background-color: #f9bb00;
+    background-color: #1cd6ff;
+    color: white;
 }
 
 .bt-login:hover{
@@ -97,24 +97,23 @@ body{
     background-color: rgb(4, 151, 4);
 }
 
-.change-pw{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    color: lightslategray;
-    margin: 20px 0px 5px 0px;
-    padding-top: 5px;
-    font-size: 13px;
-}
-
 .change-pw-text{
     display: flex;
     text-align: center;
     justify-content: center;
+    color: lightslategray;
+    margin: 10px 0px 5px 0px;
+    padding-top: 5px;
     font-size: 13px;
 }
 
+.change-pw{
+	color: black;
+}
 
+.change-pw:hover{
+	color: #f9bb00;
+}
 
 a{
     text-decoration: none;

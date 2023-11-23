@@ -19,7 +19,7 @@
 	</c:if>
 	
 	<!-- 본인 인증 페이지 -->
-    <form class="ckMember" action="/mamadoc/checkMemberOk.me" method="post">
+    <form class="ckMember" action="/mamadoc/checkDoctorOk.do" method="post">
         	<div class="ckMember-container">
       
       		<!-- 비밀번호 찾기 제목, 소제목 -->  
@@ -31,12 +31,12 @@
 			<!-- 본인 인증 양식 -->
             <div class="ckMember-email">
             	<h5>이메일*</h5>
-                <input type="text" class="input" placeholder=" 회원가입 시 입력했던 이메일을 입력해주세요." name="memberEmail" required>
+                <input type="text" class="input" placeholder=" 회원가입 시 입력했던 이메일을 입력해주세요." name="doctorEmail" required>
             </div>
 
             <div class="ckMember-code">
             	<h5>이름*</h5>
-                <input type="text" class="input" placeholder=" 회원가입 시 입력했던 이름을 입력해주세요." name="memberName" required>
+                <input type="text" class="input" placeholder=" 회원가입 시 입력했던 이름을 입력해주세요." name="doctorName" required>
             </div>
 
          	<!-- 본인 인증 확인 버튼 -->

@@ -21,7 +21,7 @@
 	</c:if>
 	
 	<!-- 일반 회원 정보 수정 -->
-    <form class="join" action="/mamadoc/modifyInformOk.me" method="post">
+    <form class="join" action="/mamadoc/modifyInformOk.me" id="form" method="post">
     	<div class="join-container">
 
 		<!-- 일반 회원 정보 수정 제목, 소제목 -->
@@ -31,41 +31,46 @@
 		<!-- 회원 정보 수정 양식 -->
     	<div class="join-name">
     		<h5>성명</h5>
-      		<input type="text" class="join-name" id="bt-non" value="${inform.memberName}" readonly>
+      		<input type="text" class="bt-non" value="${inform.memberName}" readonly>
       	</div>
 
     	<div class="join-email">
     		<h5>이메일</h5>
-       	 	<input type="email" class="join-email" id="bt-non" value="${inform.memberEmail}" readonly>
+       	 	<input type="email" class="bt-non" value="${inform.memberEmail}" readonly>
        	</div>
 
-    	<div class="join-nickname">
-    		<h5>닉네임*</h5>
-        	<input type="text" class="join-nickname" class="bt" placeholder=" 닉네임 입력" value="${inform.memberNickname}" name="memberNickname" required>
-        	<button type="button" class="bt-certification">인증하기</button>
+    	<div class="join-nicknames">
+    		<div style="display: flex;justify-content: space-between;">
+	    		<h5>닉네임*</h5>
+	    		<h5 class="nick-no" style="color: red;display: none;">중복된 닉네임입니다</h5>
+	    		<h5 class="nick-yes" style="color: blue;display: none;">사용가능한 닉네임입니다</h5>
+	   		</div>
+        	<input type="text" class="join-nickname" id="check-nickname" placeholder=" 닉네임 입력" value="${inform.memberNickname}" name="memberNickname" required>
+        	<input type="hidden" id="hidden-nick" value="${inform.memberNickname}">
+        	<button type="button" class="bt-certification" id="nickNameBtn">중복확인</button>
         </div>
 
-        <div class="join-zipcode">
+        <div class="join-zipcodes">
         	<h5>우편번호*</h5>
-            <input type="text" class="join-zipcode" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" value="${inform.memberPostCode}" name="memberPostCode" readonly>
+            <input type="text" class="join-zipcode ads" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" value="${inform.memberPostCode}" name="memberPostCode" readonly>
             <button type="button" class="bt-findzipcode" onclick="sample6_execDaumPostcode()">주소찾기</button>
         </div>
-        <input type="text" class="join-address" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." value="${inform.memberAddress}" name="memberAddress" readonly>
-        <input type="text" class="join-addr-extra" id="sample6_extraAddress" placeholder=" 참고항목" value="${inform.memberExtraAddress}" name="memberExtraAddress" readonly>
-        <input type="text" class="join-address-detail" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요." value="${inform.memberDetailAddress}" name="memberDetailAddress">
+        <input type="text" class="join-address ad" id="sample6_address" placeholder=" 주소찾기로 검색해주세요." value="${inform.memberAddress}" name="memberAddress" readonly>
+        <input type="text" class="join-address-extra ad" id="sample6_extraAddress" placeholder=" 참고항목" value="${inform.memberExtraAddress}" name="memberExtraAddress" readonly>
+        <input type="text" class="join-address-detail ad" id="sample6_detailAddress" placeholder=" 상세주소를 입력해주세요." value="${inform.memberDetailAddress}" name="memberDetailAddress" required>
         <br>
 
 		<!-- 회원 정보 수정 완료 버튼 -->
         <div class="join-button">
-        	<button class="bt-join">확인</button>
+        	<button class="bt-join">수정</button>
         </div>
 
 		<!-- 비밀번호 찾기 및 회원 탈퇴 -->
         <span class="change-pw">
-        	<a href="${pageContext.request.contextPath}/password/ckMember.jsp" class="change-pw-tag">비밀번호 찾기</a>
+        	<a href="/mamadoc/modifyPw.me" class="change-pw-tag">비밀번호 찾기</a>
         </span>
         <span class="withdrawal">
-        	<a href="/mamadoc/quitOk.me" class="withdrawal-tag">회원 탈퇴</a>
+        	<a href="/mamadoc/quitOk.me" class="withdrawal-tag" id="quit">회원 탈퇴</a>
         </span>
     	</div>
 	</form>

@@ -66,15 +66,28 @@ public class DoctorFrontController extends HttpServlet {
 			break;
 		case "/checkNicknameOk.do":
 			System.out.println("닉네임 중복검사");
+			new CheckNicknameOkController().execute(request, response);
+			break;
+		case "/checkLicenseOk.do":
+			System.out.println("의사면허번호 중복검사");
+			new CheckLicenseOkController().execute(request, response);
 			break;
 		case "/joinOk.do":
 			System.out.println("의료인 회원가입 성공");
 			result = new JoinOkController().execute(request, response);
-			request.getRequestDispatcher("/login/doctorLogin.jsp").forward(request, response);
 			break;
 		case "/login.do":
 			System.out.println("로그인 페이지");
 			request.getRequestDispatcher("/login/doctorLogin.jsp").forward(request, response);
+			break;
+		case "/checkDoctor.do":
+			System.out.println("본인인증 페이지");
+			request.getRequestDispatcher("/password/ckDoctor.jsp").forward(request, response);
+			break;
+		case "/checkDoctorOk.do":
+			System.out.println("본인인증 성공");
+			new CheckDoctorOkController().execute(request, response);
+			request.getRequestDispatcher("/modifyPw.do").forward(request, response);
 			break;
 		case "/loginOk.do":
 			System.out.println("의료인 로그인 성공");
@@ -93,6 +106,14 @@ public class DoctorFrontController extends HttpServlet {
 			System.out.println("정보수정 성공");
 			new ModifyInformOkController().execute(request, response);
 			request.getRequestDispatcher("/informOk.do").forward(request, response);
+			break;
+		case "/modifyPw.do":
+			System.out.println("비밀번호 변경 페이지");
+			request.getRequestDispatcher("/password/changeDoctorPw.jsp").forward(request, response);
+			break;
+		case "/modifyPwOk.do":
+			System.out.println("비밀번호 변경 성공");
+			new ModifyPwOkController().execute(request, response);
 			break;
 		case "/quitOk.do":
 			System.out.println("회원탈퇴 성공");
