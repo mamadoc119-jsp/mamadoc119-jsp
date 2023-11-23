@@ -65,7 +65,7 @@
                     <a href="" class="main-hidden-tag">예방 알림</a>
                 </li>
                 <li class="main-hidden-list">
-                    <a href="" class="main-hidden-tag">상담소</a>
+                    <a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl" class="main-hidden-tag">상담소</a>
                 </li>
             </ul>
         </div>

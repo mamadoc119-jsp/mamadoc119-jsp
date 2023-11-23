@@ -9,22 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mama.doc.Execute;
 import com.mama.doc.Result;
-import com.mama.doc.cl.dao.ClinicDAO;
+import com.mama.doc.cl.dao.CommentDAO;
 
-public class ClinicModifyController implements Execute{
+public class CommentDeleteOkController implements Execute{
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException, ServerException {
-		System.out.println("여기까지 오나?");
-	
-
-		ClinicDAO clinicDAO = new ClinicDAO();
-		int clinicNumber = Integer.parseInt(request.getParameter("clinicNumber"));
 		
+		CommentDAO commentDAO = new CommentDAO();
+		int commentNumber = Integer.parseInt(request.getParameter("commentNumber"));
 		
-		request.setAttribute("clinic", clinicDAO.getClinicDetail(clinicNumber));
-		request.getRequestDispatcher("/clinic/clinicModify.jsp?clinicNumber="+ clinicNumber).forward(request, response);
+		commentDAO.deleteComment(commentNumber);
 		
 		
 		return null;

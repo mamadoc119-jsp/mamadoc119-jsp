@@ -19,6 +19,7 @@
 <c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
 	<jsp:include page="include/headerLogin.jsp" />
 </c:if>
+
 <main>
     <!-- 베너 영역(3개) -->
     <section class="main-section-banner">
@@ -223,7 +224,7 @@
                     <img src="${pageContext.request.contextPath}/resources/img/more.png" alt="main-pc-more" class="main-all-img">
                 </a>
             </div>
-            <!-- 상담소 최신 3개글 -->
+            <!-- 상담소 최신 3개글 --> 
             <div class="main-pc-group">
                 <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
                     <div class="main-detail-title">
