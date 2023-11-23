@@ -13,13 +13,13 @@ import com.mama.doc.Execute;
 import com.mama.doc.Result;
 import com.mama.doc.dao.DoctorDAO;
 
-public class CheckEmailOkController implements Execute {
+public class CheckNicknameOkController implements Execute {
 
 	@Override
 	public Result execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServerException {
 		DoctorDAO doctorDAO = new DoctorDAO();
 		
-		int count = doctorDAO.checkEmail(request.getParameter("doctorEmail"));
+		int count = doctorDAO.checkNickname(request.getParameter("doctorNickname"));
 		System.out.println(count);
 		
 		JSONObject jObj = new JSONObject();
@@ -27,7 +27,7 @@ public class CheckEmailOkController implements Execute {
 		
 		response.setContentType("application/x-json; charset=utf-8");
 		response.getWriter().print(jObj);
-
+		
 		return null;
 	}
 

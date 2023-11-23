@@ -1,14 +1,38 @@
-function selectAll(selectAll)  {
-    const checkboxes 
-         = document.getElementsByName('agree');
-    
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = selectAll.checked;
-    })
-  }
+// 전체선택 체크
+$('#check-all').on('click', function(){
+	if($(this).is(':checked')){
+		$('#check-use').prop('checked', true);
+		$('#check-info').prop('checked', true);
+	}else{
+		$('#check-use').prop('checked', false);
+		$('#check-info').prop('checked', false);
+	}
+});
 
-  // 주소 API 
-  function sample6_execDaumPostcode() {
+// 이용약관 체크
+$('#check-use').on('click', function(){
+	if($(this).is(':checked')){
+		if($('#check-info').is(':checked')){
+			$('#check-all').prop('checked', true);
+		}
+	}else{
+		$('#check-all').prop('checked', false);
+	}
+});
+
+// 개인정보 체크
+$('#check-info').on('click', function(){
+	if($(this).is(':checked')){
+		if($('#check-use').is(':checked')){
+			$('#check-all').prop('checked', true);
+		}
+	}else{
+		$('#check-all').prop('checked', false);
+	}
+});
+
+// 주소 API 
+function sample6_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
             // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -55,3 +79,123 @@ function selectAll(selectAll)  {
         }
     }).open();
 }
+
+// 이메일 중복검사
+$('#emailBtn').on('click', function(){
+	var email = $('#memberEmail').val();
+	console.log(email);
+	
+	if(!email){
+		return false;
+	}
+	
+	$.ajax({
+		url: '/mamadoc/checkEmailOk.do',
+		data: {doctorEmail: email},
+		dataType: 'json',
+		success: function(data){
+			console.log(data.count);
+			var exist = data.count;
+			if(exist > 0){
+				$('.email-no').css('display', 'block');
+				$('.email-yes').css('display', 'none');
+				alert('중복된 이메일입니다.');
+			}else{
+				$('.email-yes').css('display', 'block');
+				$('.email-no').css('display', 'none');
+				alert('사용가능한 이메일입니다.');
+			}
+		}
+	});
+});
+
+// 이메일 수정시 중복검사와 이메일 인증 초기화
+$('#memberEmail').keyup(function(){
+	$('.email-yes').css('display', 'none');
+	$('.email-no').css('display', 'none');
+	/*$('.code-yes').css('display', 'none');
+	$('.code-no').css('display', 'none');*/
+});
+
+// 닉네임 중복검사
+$('#nickNameBtn').on('click', function(){
+	var nickname = $('#check-nickname').val();
+	console.log(nickname);
+	
+	if(!nickname){
+		return false;
+	}
+	
+	$.ajax({
+		url: '/mamadoc/checkNicknameOk.me',
+		data: {memberNickname: nickname},
+		dataType: 'json',
+		success: function(data){
+			console.log(data.count);
+			var exist = data.count;
+			if(exist > 0){
+				$('.nick-no').css('display', 'block');
+				$('.nick-yes').css('display', 'none');
+				alert('중복된 닉네임입니다.');
+			}else{
+				$('.nick-yes').css('display', 'block');
+				$('.nick-no').css('display', 'none');
+				alert('사용가능한 닉네임입니다.');
+			}
+		}
+	});
+});
+
+// 닉네임 수정시 중복검사 초기화
+$('#check-nickname').keyup(function(){
+	$('.nick-yes').css('display', 'none');
+	$('.nick-no').css('display', 'none');
+});
+
+// 비밀번호 확인
+$('#check-pw').keyup(function(){
+	var pw = $('#pw').val();
+	var checkPw = $('#check-pw').val();
+	if(pw == checkPw){
+		$('.pw-no').css('display', 'none');
+		$('.pw-yes').css('display', 'block');
+	}else{
+		$('.pw-yes').css('display', 'none');
+		$('.pw-no').css('display', 'block');
+	}
+});
+
+// 비밀번호 수정시 비밀번호 확인 초기화
+$('#pw').keyup(function(){
+	$('.pw-yes').css('display', 'none');
+	$('.pw-no').css('display', 'none');
+});
+
+// 회원가입 가능 여부
+$('#form').submit(function(){
+	if($('.email-yes').css('display') != 'block'){
+		alert('이메일 중복을 확인해주세요.');
+		return false;
+	}
+	if($('.nick-yes').css('display') != 'block'){
+		alert('닉네임 중복을 확인해주세요.');
+		return false;
+	}
+	if($('.pw-yes').css('display') != 'block'){
+		alert('비밀번호를 확인해주세요.');
+		return false;
+	}
+	if($('#sample6_postcode').val() == ''){
+		alert('주소를 입력해주세요.');
+		return false;
+	}
+	if($('#check-use').is(':checked') == false){
+		alert('이용약관에 동의해주세요.');
+		return false;
+	}
+	if($('#check-info').is(':checked') == false){
+		alert('개인정보 이용 및 취급에 동의해주세요.');
+		return false;
+	}
+	alert('회원가입이 완료되었습니다.');
+});

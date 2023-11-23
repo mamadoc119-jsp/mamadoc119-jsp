@@ -15,7 +15,7 @@
 	<jsp:include page="../include/header.jsp" />
 	
 	<!-- 일반 회원가입 페이지 -->
-    <form class="join" action="/mamadoc/joinOk.me" method="post">
+    <form class="join" action="/mamadoc/joinOk.me" id="form" method="post">
     	<div class="join-container">
 
 			<!-- 회원가입 페이지 제목, 소제목 -->
@@ -28,50 +28,67 @@
 			
 			    <div class="join-name">
 			    	<h5>성명*</h5>
-			        <input type="text" name="memberName" class="input" id="bt-non" placeholder=" 이름 입력" required>
+			        <input type="text" name="memberName" class="bt-non" placeholder=" 이름 입력" required>
 			    </div>
 			
 			    <div class="join-email">
-			    	<h5>이메일*</h5>
-			        <input type="email" name="memberEmail" class="input" class="bt" placeholder=" 이메일 입력" required>
-			        <button class="bt-sendcode" type="button">인증코드 발송</button>
+			    	<div style="display: flex;justify-content: space-between;">
+		    			<h5>이메일*</h5>
+		    			<h5 class="email-no" style="color: red;display: none;">중복된 이메일입니다</h5>
+	    				<h5 class="email-yes" style="color: blue;display: none;">사용가능한 이메일입니다</h5>
+	    			</div>
+			        <input type="email" name="memberEmail" class="input" id="memberEmail" placeholder=" 이메일 입력" required>
+			        <button class="bt-sendcode" type="button" id="emailBtn">중복확인</button>
 			    </div>
 			
-			    <div class="join-code">
-			    	<h5>인증코드 입력*</h5>
-			        <input type="text" class="input" class="bt" placeholder=" 인증코드 입력" required>
+			    <!-- <div class="join-code">
+			    	<div style="display: flex;justify-content: space-between;">
+		    			<h5>인증코드 입력*</h5>
+		    			<h5 class="code-no" style="color: red;display: none;">잘못된 인증코드입니다</h5>
+	    				<h5 class="code-yes" style="color: blue;display: none;">인증되었습니다</h5>
+	    			</div>
+			        <input type="text" class="input" id="check-code" placeholder=" 인증코드 입력" required>
 			        <button class="bt-certification" type="button">인증하기</button>
-			    </div>
+			    </div> -->
 			
 			    <div class="join-nickname">
-			    	<h5>닉네임*</h5>
-			        <input type="text" name="memberNickname" class="input" id="bt-non" placeholder=" 닉네임 입력" required>
+			    	<div style="display: flex;justify-content: space-between;">
+	    				<h5>닉네임*</h5>
+	    				<h5 class="nick-no" style="color: red;display: none;">중복된 닉네임입니다</h5>
+	    				<h5 class="nick-yes" style="color: blue;display: none;">사용가능한 닉네임입니다</h5>
+	    			</div>
+			        <input type="text" name="memberNickname" class="input" id="check-nickname" placeholder=" 닉네임 입력" required>
+			        <button class="bt-nickname" type="button" id="nickNameBtn">중복확인</button>
 			    </div>
 			
 			    <div class="join-pw">
 			    	<h5>비밀번호*</h5>
-			        <input type="password" name="memberPassword" class="input" id="bt-non" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required>
+			        <input type="password" name="memberPassword" class="bt-non" id="pw" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required>
 			    </div>
 			
 			    <div class="join-ckpw">
-			    	<h5>비밀번호 재입력*</h5>
-			        <input type="password" class="input" id="bt-non" placeholder=" 비밀번호를 한번 더 입력해주세요." required>
+			    	<div style="display: flex;justify-content: space-between;">
+	    				<h5>비밀번호 재입력*</h5>
+	    				<h5 class="pw-no" style="color: red;display: none;">비밀번호가 일치하지 않습니다</h5>
+	    				<h5 class="pw-yes" style="color: blue;display: none;">비밀번호가 일치합니다</h5>
+	    			</div>
+			        <input type="password" class="bt-non" id="check-pw" placeholder=" 비밀번호를 한번 더 입력해주세요." required>
 			    </div>
 			
 			    <div class="join-zipcode">
 			    	<h5>우편번호*</h5>
-			        <input type="text" name="memberPostCode" class="address-code" class="bt" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
+			        <input type="text" name="memberPostCode" class="address-code" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
 			        <button class="bt-findzipcode" type="button" onclick="sample6_execDaumPostcode()">주소찾기</button>
 			    </div>
-			    <input type="text" name="memberAddress" class="address-find" id="sample6_address" id="bt-non" placeholder=" 주소찾기로 검색해주세요." readonly>
+			    <input type="text" name="memberAddress" class="address-find" id="sample6_address" placeholder=" 주소찾기로 검색해주세요." readonly>
 			    <input type="text" name="memberExtraAddress" class="address" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
-			    <input type="text" name="memberDetailAddress" class="address" id="sample6_detailAddress" id="bt-non" placeholder=" 상세주소를 입력해주세요.">
+			    <input type="text" name="memberDetailAddress" class="address" id="sample6_detailAddress" placeholder=" 상세주소를 입력해주세요." required>
 			</div>
 			<br>
 
 			<!-- 이용약관 체크박스 -->
 		    <div class="join-agree-term-container">
-		    	<input type="checkbox" class="join-agree-term" name="agree"> 이용약관 동의*
+		    	<input type="checkbox" class="join-agree-term" id="check-use" name="agree"> 이용약관 동의*
 		    </div>
 		    <div class="scroll-box">
 
@@ -199,7 +216,7 @@
 
 			<!-- 개인정보 이용 및 취급 동의 체크박스 -->
 		    <div class="join-agree-personal-info-container">
-		        <input type="checkbox" class="join-agree-personal-info" name="agree"> 개인정보 이용 및 취급 동의*
+		        <input type="checkbox" class="join-agree-personal-info" id="check-info" name="agree"> 개인정보 이용 및 취급 동의*
 		    </div>
 	        <div id ="box" class="scroll-box">            
 	            <p>제1조 (목적) 본 약관은 똥강아지 사이트(이하 "당 사이트")가 제공하는 모든 서비스(이하 "서비스")의 이용조건 및 절차, 이용자와 당 사이트의 권리, 의무, 책임사항과 
@@ -221,7 +238,7 @@
 
 			<!-- 전체 동의 체크박스 -->
 	        <div class="join-agree-all">
-	            <input type="checkbox" class="join-agree-all" onclick="selectAll(this)"> 모두 동의하기
+	            <input type="checkbox" class="join-agree-all" id="check-all"> 모두 동의하기
 	        </div>
 	        <br>
 	

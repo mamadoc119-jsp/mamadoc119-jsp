@@ -70,6 +70,16 @@ public class MemberFrontController extends HttpServlet {
 			request.getRequestDispatcher("/join/memberJoin.jsp").forward(request, response);
 			break;
 			
+		case "/checkEmailOk.me":
+			System.out.println("checkEmailOk!!");
+			new CheckEmailOkController().execute(request, response);
+			break;
+			
+		case "/checkNicknameOk.me":
+			System.out.println("checkNicknameOk!!");
+			new CheckNicknameOkController().execute(request, response);
+			break;
+			
 		case "/joinOk.me":
 			System.out.println("joinOk!!");
 			new JoinOkController().execute(request, response);
@@ -78,6 +88,17 @@ public class MemberFrontController extends HttpServlet {
 		case "/login.me":
 			System.out.println("login!!");
 			request.getRequestDispatcher("/login/memberLogin.jsp").forward(request, response);
+			break;
+			
+		case "/checkMember.me":
+			System.out.println("checkMember!!");
+			request.getRequestDispatcher("/password/ckMember.jsp").forward(request, response);
+			break;
+			
+		case "/checkMemberOk.me":
+			System.out.println("checkMemberOk!!");
+			new CheckMemberOkController().execute(request, response);
+			request.getRequestDispatcher("/modifyPw.me").forward(request, response);
 			break;
 			
 		case "/loginOk.me":
@@ -100,6 +121,16 @@ public class MemberFrontController extends HttpServlet {
 			System.out.println("modifyInformOk!!");
 			new ModifyInformOkController().execute(request, response);
 			request.getRequestDispatcher("/informOk.me").forward(request, response);
+			break;
+			
+		case "/modifyPw.me":
+			System.out.println("modifyPw!!");
+			request.getRequestDispatcher("/password/changeMemberPw.jsp").forward(request, response);
+			break;
+			
+		case "/modifyPwOk.me":
+			System.out.println("modifyPwOk!!");
+			new ModifyPwOkController().execute(request, response);
 			break;
 			
 		case "/quitOk.me":

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dofile">
+	<!-- 면허증 등록 -->
+	<insert id="fileInsert" parameterType="DofileDTO">
+		insert into mamadoc_dofile(dofile_number, doctor_number, dofile_path, dofile_uuid, dofile_name, dofile_type)
+		values(seq_mamadoc_dofile.nextval, #{doctorNumber}, #{dofilePath}, #{dofileUuid}, #{dofileName}, #{dofileType})
+	</insert>
+</mapper>

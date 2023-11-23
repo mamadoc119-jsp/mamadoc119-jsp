@@ -79,6 +79,7 @@
 		<mapper resource = "com/mybatis/mapper/ClinicMapper.xml"></mapper>
 
 		<mapper resource = "com/mybatis/mapper/DoctorMapper.xml"></mapper>
+		<mapper resource = "com/mybatis/mapper/DofileMapper.xml"></mapper>
 	</mappers>
 	
 </configuration>

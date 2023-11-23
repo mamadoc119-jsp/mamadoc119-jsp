@@ -3,7 +3,7 @@
 <mapper namespace="doctor">
 	<!-- 이메일 중복검사 -->
 	<select id="checkDoctorEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
-		select count(doctor_number)
+		select count(doctor_number) as doctor_count
 		from mamadoc_doctor
 		where doctor_email = #{doctorEmail}
 	</select>
@@ -19,10 +19,17 @@
 		from mamadoc_doctor
 		where doctor_nickname = #{doctorNickname}
 	</select>
-	<select id="checkMemberEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+	<select id="checkMemberNickname" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select count(member_nickname)
 		from mamadoc_member
 		where member_nickname = #{doctorNickname}
+	</select>
+	
+	<!-- 의사면허번호 중복검사 -->
+	<select id="checkLicense" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(doctor_license)
+		from mamadoc_doctor
+		where doctor_license= #{doctorLicense}
 	</select>
 	
 	<!-- 회원가입 -->
@@ -31,11 +38,29 @@
 		values (seq_mamadoc_doctor.nextval, #{doctorName}, #{doctorEmail}, #{doctorPassword}, #{doctorNickname}, #{doctorPostCode}, #{doctorAddress}, #{doctorExtraAddress}, #{doctorDetailAddress}, #{doctorLicense}, #{doctorMajor})
 	</insert>
 	
+	<!-- 최신 회원번호 불러오기 -->
+	<select id="findLast" resultType="java.lang.Integer">
+		select doctor_number
+		from (
+		    select doctor_number
+		    from mamadoc_doctor
+		    order by doctor_number desc
+		)
+		where rownum = 1
+	</select>
+	
 	<!-- 로그인 -->
 	<select id="login" parameterType="DoctorDTO" resultType="DoctorDTO">
 		select doctor_number
 		from mamadoc_doctor
 		where doctor_email = #{doctorEmail} and doctor_password = #{doctorPassword}
+	</select>
+	
+	<!-- 본인인증 -->
+	<select id="checkDoctor" parameterType="DoctorDTO" resultType="java.lang.Integer">
+		select doctor_number
+		from mamadoc_doctor
+		where doctor_email = #{doctorEmail} and doctor_name = #{doctorName}
 	</select>
 	
 	<!-- 마이페이지 -->
@@ -49,6 +74,13 @@
 	<update id="modifyInform" parameterType="DoctorDTO">
 		update mamadoc_doctor
 		set doctor_nickname = #{doctorNickname}, doctor_post_code = #{doctorPostCode}, doctor_address = #{doctorAddress}, doctor_extra_address = #{doctorExtraAddress}, doctor_detail_address = #{doctorDetailAddress}
+		where doctor_number = #{doctorNumber}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="modifyPw" parameterType="DoctorDTO">
+		update mamadoc_doctor
+		set doctor_password = #{doctorPassword}
 		where doctor_number = #{doctorNumber}
 	</update>
 	

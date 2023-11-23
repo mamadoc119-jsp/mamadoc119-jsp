@@ -19,7 +19,7 @@
 		from mamadoc_member
 		where member_nickname = #{memberNickname}
 	</select>
-	<select id="checkDoctorEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+	<select id="checkDoctorNickname" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select count(doctor_nickname)
 		from mamadoc_doctor
 		where doctor_nickname = #{memberNickname}
@@ -41,6 +41,13 @@
 		where member_email = #{memberEmail} and member_password = #{memberPassword}
 	</select>
 	
+	<!-- 본인인증 -->
+	<select id="checkMember" parameterType="MemberDTO" resultType="java.lang.Integer">
+		select member_number
+		from mamadoc_member
+		where member_email = #{memberEmail} and member_name = #{memberName}
+	</select>
+	
 	<!-- 마이페이지 -->
 	<select id="inform" parameterType="java.lang.Integer" resultType="MemberDTO">
 		select *
@@ -55,10 +62,16 @@
 		where member_number = #{memberNumber}
 	</update>
 	
+	<!-- 비밀번호 변경 -->
+	<update id="modifyPw" parameterType="MemberDTO">
+		update mamadoc_member
+		set member_password = #{memberPassword}
+		where member_number = #{memberNumber}
+	</update>
+	
 	<!-- 회원탈퇴 -->
 	<delete id="quit" parameterType="java.lang.Integer">
 		delete from mamadoc_member
 		where member_number = #{memberNumber}
 	</delete>
-
 </mapper>
