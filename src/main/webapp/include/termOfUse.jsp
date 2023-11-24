@@ -7,7 +7,12 @@
 <title>개인정보처리방침</title>
 </head>
 <body>
-<jsp:include page="../include/header.jsp" />   
+<c:if test="${sessionScope.doctorNumber == null && sessionScope.memberNumber == null}">
+	<jsp:include page="/include/header.jsp" />
+</c:if>
+<c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
+	<jsp:include page="/include/headerLogin.jsp" />
+</c:if> 
    <!-- head -->
    <div class="pophead" style="display: flex; justify-content:center; 
    margin-top:200px; margin-bottom:5%;">
