@@ -19,7 +19,6 @@
 <c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
 	<jsp:include page="include/headerLogin.jsp" />
 </c:if>
-
 <main>
     <!-- 베너 영역(3개) -->
     <section class="main-section-banner">
@@ -51,6 +50,11 @@
 
     <!-- 영양제 추천(4개씩, 배너) -->
     <section class="main-nu-section">
+    <c:choose>
+				<c:when test = "${not empty nuList}">
+				<c:forEach var = "nuList" items ="${nuList}" begin="0" end="11">
+				<input type = "hidden" value = "${nuList.nutrientsNumber}"/>
+
         <h1 class="main-nu-title">추천 소아영양제</h1>
         <h2 class="main-nu-subtitle">똥강아지에서 추천하는 소아영양제를 만나보세요.</h2>
         <div class="main-nu-banner">
@@ -58,103 +62,10 @@
                 <div class="main-nu-bannerList">
                     <div class="main-nu-list">
                         <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu1.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu2.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu3.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu4.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="main-nu-bannerList">
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu5.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu6.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu1.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu2.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄원</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="main-nu-bannerList">
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu3.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄원</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu4.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu5.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
-                        </a>
-                    </div>
-                    <div class="main-nu-list">
-                        <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/img/nu6.png" alt="main-num-img1" class="main-nu-img">
-                            <div class="main-nu-name">키가 쑥쑥~</div>
-                            <div class="main-nu-info">정보 : 키가 쑥쑥 이가 탄탄</div>
-                            <div class="main-nu-effect">효과 : 눈, 코, 입</div>
+                            <img src="${pageContext.request.contextPath}/resources/upload/${nulist.nufileUuid}${nulist.nufileType}" class="kindSuppImg">
+                            <div class="main-nu-name" name="nutrientsName">${nuList.nutrientsName}</div>
+                            <div class="main-nu-info" name="nutrientsInfo">${nuList.nutrientsInfo}</div>
+                            <div class="main-nu-effect" name="nutrientsEffect">${nuList.nutrientsEffect}</div>
                         </a>
                     </div>
                 </div>
@@ -165,6 +76,10 @@
             <span class="main-num-button2"></span>
             <span class="main-num-button3"></span>
         </div>
+        
+        </c:forEach>
+  		</c:when> 	
+		</c:choose>
     </section>
 
     <!-- 병원찾기 -->
@@ -186,67 +101,53 @@
         <div class="main-pc-cate">
             <div class="main-pc-title">
                 <div class="main-pc-name">예방알림</div>
-                <a href="${pageContext.request.contextPath}/precaution/precautionaryNoticeList.jsp" class="main-pc-all">
+                <a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr" class="main-pc-all">
                     <div class="main-show-text">전체보기</div>
                     <img src="${pageContext.request.contextPath}/resources/img/more.png" alt="main-pc-more" class="main-all-img">
                 </a>
             </div>
             <!-- 예방알림 최신 3개글 -->
             <div class="main-pc-group">
-                <a href="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" class="main-pc-detail">
-                    <div class="main-detail-title">
-                        예방알림글 제목 ㅎㅎ
-                    </div>
-                    <div class="main-detail-nick">종민Lee</div>
-                    <div class="main-detail-date">2023.11.10</div>
+            <c:choose>
+				<c:when test = "${not empty prList}">
+				<c:forEach var = "prList" items ="${prList}" begin="0" end="2">
+				<input type = "hidden" value = "${prList.precautionNumber}"/>
+
+                <a href="${pageContext.request.contextPath}/precaution/precautionDetailOk.pr?precautionNumber=${prList.precautionNumber}" class="main-pc-detail">
+                    <div class="main-detail-title" name="precautionTitle">${prList.precautionTitle}</div>
+                    <div class="main-detail-nick" name="precautionNickname">${prList.doctorNickname}</div>
+                    <div class="main-detail-date" name="precautionDate">${prList.precautionDate}</div>
                 </a>
-                <a href="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" class="main-pc-detail">
-                    <div class="main-detail-title">
-                        예방알림글 제목 ㅎㅎ
-                    </div>
-                    <div class="main-detail-nick">종민Lee</div>
-                    <div class="main-detail-date">2023.11.10</div>
-                </a>
-                <a href="${pageContext.request.contextPath}/precaution/precautionDetail.jsp" class="main-pc-detail">
-                    <div class="main-detail-title">
-                        예방알림글 제목 ㅎㅎ
-                    </div>
-                    <div class="main-detail-nick">종민Lee</div>
-                    <div class="main-detail-date">2023.11.10</div>
-                </a>
+                </c:forEach>
+          		</c:when> 	
+        		</c:choose>
             </div>
         </div>
         <div class="main-pc-cate">
             <div class="main-pc-title">
                 <div class="main-pc-name">상담소</div>
-                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterList.jsp" class="main-pc-all">
+                <a href="${pageContext.request.contextPath}/clinic/clinicListOk.cl" class="main-pc-all">
                     <div class="main-show-text">전체보기</div>
                     <img src="${pageContext.request.contextPath}/resources/img/more.png" alt="main-pc-more" class="main-all-img">
                 </a>
             </div>
-            <!-- 상담소 최신 3개글 --> 
+            
+            <!-- 상담소 최신 3개글 -->
             <div class="main-pc-group">
-                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
-                    <div class="main-detail-title">
-                        상담소글 제목 ㅎㅎ
-                    </div>
-                    <div class="main-detail-nick">예은na</div>
-                    <div class="main-detail-date">2023.11.10</div>
+            <c:choose>
+				<c:when test = "${not empty clList}">
+				<c:forEach var = "clList" items ="${clList}" begin="0" end="2">
+				<input type = "hidden" value = "${clList.clinicNumber}"/>
+
+                <a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clList.clinicNumber}" class="main-pc-detail">
+                    <div class="main-detail-title" name="clinicTitle">${clList.clinicTitle}</div>
+                    <div class="main-detail-nick" name="memberNickname">${clList.memberNickname}</div>
+                    <div class="main-detail-date" name="clinicDate">${clList.clinicDate}</div>
                 </a>
-                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
-                    <div class="main-detail-title">
-                        상담소글 제목 ㅎㅎ
-                    </div>
-                    <div class="main-detail-nick">예은na</div>
-                    <div class="main-detail-date">2023.11.10</div>
-                </a>
-                <a href="${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp" class="main-pc-detail">
-                    <div class="main-detail-title">
-                        상담소글 제목 ㅎㅎ
-                    </div>
-                    <div class="main-detail-nick">예은na</div>
-                    <div class="main-detail-date">2023.11.10</div>
-                </a>
+                </c:forEach>
+          		</c:when> 	
+        		</c:choose>
+                
             </div>
         </div>
     </section>

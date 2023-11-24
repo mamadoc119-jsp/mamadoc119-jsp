@@ -10,16 +10,13 @@
    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/precautionaryNoticeList.css">
 </head>
 <body>
-<!-- 헤더 -->
-<c:choose>
-       <c:when test="${empty sessionScope}">
-           <jsp:include page="../include/header.jsp" />
-       </c:when>
-       <c:otherwise>
-       
-           <jsp:include page="../include/headerLogin.jsp" />
-       </c:otherwise>
-   </c:choose>
+<!-- 헤더 -->   
+<c:if test="${sessionScope.doctorNumber == null && sessionScope.memberNumber == null}">
+	<jsp:include page="/include/header.jsp" />
+</c:if>
+<c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
+	<jsp:include page="/include/headerLogin.jsp" />
+</c:if>
    
    <!-- c:set에서 내용으로 파라미터 값을 넣으면, 문자열로 변환된 후 저장된다. -->
 		<!-- c:set value속성에 값을 넣으면, 해당 값의 타입이 그대로 유지된다. -->
@@ -90,9 +87,12 @@
                 </tbody>
             </table>
         </div>
+        
         <div class="write-down-div">
-            <button class="write-down" type="button" onclick="location.href='./precautionWrite.pr'">글쓰기</button>
-        </div>
+  		  <c:if test="${sessionScope.doctorNumber!= null && sessionScope.doctorStatus == 1} }">
+        	<button class="write-down" type="button" onclick="location.href='./precautionWrite.pr'">글쓰기</button>
+    	  </c:if>
+		</div>
 
 
           <div style="display: flex;  justify-content: center;">

@@ -47,6 +47,7 @@ public class MainPageFrontController extends HttpServlet {
 		protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
 			System.out.println("mainPage 서블릿이 실행");
+			request.setCharacterEncoding("UTF-8");
 			
 			//request.getContextPath()는 URL루트 경로를 의미한다
 			System.out.println(request.getContextPath());
@@ -60,7 +61,7 @@ public class MainPageFrontController extends HttpServlet {
 			Result result = null;
 			
 			switch (target) {
-//                
+                
             case "/" :
 				System.out.println("select precaution List Ok!!");
 				result = new MaListOkController().execute(request, response);

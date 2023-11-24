@@ -15,7 +15,7 @@
 <header>
     <div class="main-header-container">
         <div class="main-header-logo">
-            <a href="${pageContext.request.contextPath}/index.jsp" class="main-logo-tag">
+            <a href="${pageContext.request.contextPath}/mainPage.jsp" class="main-logo-tag">
                 <img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="main-header-logo"
                 class="main-logo-img">
             </a>
