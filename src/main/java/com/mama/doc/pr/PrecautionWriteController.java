@@ -68,7 +68,7 @@ public class PrecautionWriteController implements Execute{
 			//저장하면 정보를 가지고 목록으로 이동
 		} else {
 			result.setRedirect(false);
-			result.setPath("/precautionWrite.pr");
+			result.setPath("/precaution/precautionWrite.pr");
 		}
 		
 		

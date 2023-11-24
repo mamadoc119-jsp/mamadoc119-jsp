@@ -7,11 +7,15 @@ body{
     width: 1515px;
     display: flex;
     justify-content: center;
+    
 }
 main{
     margin-top: 120px;
     width: 1515px;
     margin-bottom: 70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 /* 카카오맵 api */
 .map_wrap, .map_wrap * {
@@ -26,7 +30,7 @@ main{
 }
 .map_wrap {
     position:relative;
-    width:100%;
+    width:100vw;
     height:570px;
     
 }
