@@ -16,7 +16,7 @@
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
         <div style="width: 900px;display: flex;flex-direction: column;">
 			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">예방알림</div>
-            <form action="${pageContext.request.contextPath}/precaution/precautionModifyOk.pr?precautionNumber = ${precaution.precautionNumber}" onsubmit="return modifyMsg();">
+            <form action="${pageContext.request.contextPath}/precaution/precautionModifyOk.pr?precautionNumber = ${precaution.precautionNumber}" onsubmit="return modifyMsg();" method="post">
             <input type="hidden" name="precautionNumber" value="${precaution.precautionNumber}">
                 <!-- 제목/등록날짜 -->
                 <div style="display: flex;">

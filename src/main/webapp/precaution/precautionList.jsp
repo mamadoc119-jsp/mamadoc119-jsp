@@ -89,7 +89,7 @@
         </div>
         
         <div class="write-down-div">
-  		  <c:if test="${sessionScope.doctorNumber!= null && sessionScope.doctorStatus == 1} }">
+  		  <c:if test="${sessionScope.doctorNumber != null && sessionScope.doctorStatus == 1}">
         	<button class="write-down" type="button" onclick="location.href='./precautionWrite.pr'">글쓰기</button>
     	  </c:if>
 		</div>
