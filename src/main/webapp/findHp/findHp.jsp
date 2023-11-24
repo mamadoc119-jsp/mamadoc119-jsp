@@ -13,7 +13,16 @@
 </head>
 <body>
 <!-- 헤더(로그아웃) -->
-<jsp:include page="../include/header.jsp" />
+<!-- 헤더 -->
+<c:choose>
+       <c:when test="${empty sessionScope}">
+           <jsp:include page="../include/header.jsp" />
+       </c:when>
+       <c:otherwise>
+       
+           <jsp:include page="../include/headerLogin.jsp" />
+       </c:otherwise>
+   </c:choose>
     <!-- 카카오맵 api -->
     <main>
         <div class="map_wrap">

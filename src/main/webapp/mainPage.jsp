@@ -14,10 +14,10 @@
 
 <!-- 헤더(로그아웃) -->
 <c:if test="${sessionScope.doctorNumber == null && sessionScope.memberNumber == null}">
-	<jsp:include page="include/header.jsp" />
+   <jsp:include page="include/header.jsp" />
 </c:if>
 <c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
-	<jsp:include page="include/headerLogin.jsp" />
+   <jsp:include page="include/headerLogin.jsp" />
 </c:if>
 <main>
     <!-- 베너 영역(3개) -->
@@ -51,9 +51,9 @@
     <!-- 영양제 추천(4개씩, 배너) -->
     <section class="main-nu-section">
     <c:choose>
-				<c:when test = "${not empty nuList}">
-				<c:forEach var = "nuList" items ="${nuList}" begin="0" end="11">
-				<input type = "hidden" value = "${nuList.nutrientsNumber}"/>
+            <c:when test = "${not empty nuList}">
+            <c:forEach var = "nuList" items ="${nuList}" begin="0" end="11">
+            <input type = "hidden" value = "${nuList.nutrientsNumber}"/>
 
         <h1 class="main-nu-title">추천 소아영양제</h1>
         <h2 class="main-nu-subtitle">똥강아지에서 추천하는 소아영양제를 만나보세요.</h2>
@@ -78,8 +78,8 @@
         </div>
         
         </c:forEach>
-  		</c:when> 	
-		</c:choose>
+        </c:when>    
+      </c:choose>
     </section>
 
     <!-- 병원찾기 -->
@@ -109,9 +109,9 @@
             <!-- 예방알림 최신 3개글 -->
             <div class="main-pc-group">
             <c:choose>
-				<c:when test = "${not empty prList}">
-				<c:forEach var = "prList" items ="${prList}" begin="0" end="2">
-				<input type = "hidden" value = "${prList.precautionNumber}"/>
+            <c:when test = "${not empty prList}">
+            <c:forEach var = "prList" items ="${prList}" begin="0" end="2">
+            <input type = "hidden" value = "${prList.precautionNumber}"/>
 
                 <a href="${pageContext.request.contextPath}/precaution/precautionDetailOk.pr?precautionNumber=${prList.precautionNumber}" class="main-pc-detail">
                     <div class="main-detail-title" name="precautionTitle">${prList.precautionTitle}</div>
@@ -119,8 +119,8 @@
                     <div class="main-detail-date" name="precautionDate">${prList.precautionDate}</div>
                 </a>
                 </c:forEach>
-          		</c:when> 	
-        		</c:choose>
+                </c:when>    
+              </c:choose>
             </div>
         </div>
         <div class="main-pc-cate">
@@ -135,9 +135,9 @@
             <!-- 상담소 최신 3개글 -->
             <div class="main-pc-group">
             <c:choose>
-				<c:when test = "${not empty clList}">
-				<c:forEach var = "clList" items ="${clList}" begin="0" end="2">
-				<input type = "hidden" value = "${clList.clinicNumber}"/>
+            <c:when test = "${not empty clList}">
+            <c:forEach var = "clList" items ="${clList}" begin="0" end="2">
+            <input type = "hidden" value = "${clList.clinicNumber}"/>
 
                 <a href="${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${clList.clinicNumber}" class="main-pc-detail">
                     <div class="main-detail-title" name="clinicTitle">${clList.clinicTitle}</div>
@@ -145,8 +145,8 @@
                     <div class="main-detail-date" name="clinicDate">${clList.clinicDate}</div>
                 </a>
                 </c:forEach>
-          		</c:when> 	
-        		</c:choose>
+                </c:when>    
+              </c:choose>
                 
             </div>
         </div>

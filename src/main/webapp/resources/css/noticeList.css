@@ -14,7 +14,10 @@
   
 }
 
-
+a{
+	text-decoration:none;
+	color:black;
+}
 .notice-title{
     font-weight: bolder;
     font-size: 45px;
