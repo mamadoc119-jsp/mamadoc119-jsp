@@ -11,7 +11,6 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f49922a8774592c118e15c56666d5011&libraries=services"></script>
     
 </head>
-<body>
 <!-- 헤더(로그아웃) -->
 <!-- 헤더 -->
 <c:choose>
@@ -23,9 +22,12 @@
            <jsp:include page="../include/headerLogin.jsp" />
        </c:otherwise>
    </c:choose>
+
+<body>
     <!-- 카카오맵 api -->
     <main>
-        <div class="map_wrap">
+        <div class="map_wrap">	
+        
             <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
         
             <div id="menu_wrap" class="bg_white">

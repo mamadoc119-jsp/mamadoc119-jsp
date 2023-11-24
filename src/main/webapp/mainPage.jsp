@@ -50,36 +50,40 @@
 
     <!-- 영양제 추천(4개씩, 배너) -->
     <section class="main-nu-section">
-    <c:choose>
-            <c:when test = "${not empty nuList}">
-            <c:forEach var = "nuList" items ="${nuList}" begin="0" end="11">
-            <input type = "hidden" value = "${nuList.nutrientsNumber}"/>
 
         <h1 class="main-nu-title">추천 소아영양제</h1>
         <h2 class="main-nu-subtitle">똥강아지에서 추천하는 소아영양제를 만나보세요.</h2>
-        <div class="main-nu-banner">
-            <div class="main-nu-group">
+       
+        <div class="main-nu-banner">        
+            	<div class="main-nu-group">
+            		
                 <div class="main-nu-bannerList">
+                <c:choose>
+				<c:when test = "${not empty nuList}">
+				<c:forEach var = "nuList" items ="${nuList}" begin="0" end="11">
                     <div class="main-nu-list">
+					<input type = "hidden" value = "${nuList.nutrientsNumber}"/>
                         <a class="main-nu-tag">
-                            <img src="${pageContext.request.contextPath}/resources/upload/${nulist.nufileUuid}${nulist.nufileType}" class="kindSuppImg">
+                            <img src="${pageContext.request.contextPath}/resources/upload/${nuList.nufileUuid}${nuList.nufileType}" class="main-nu-img">
                             <div class="main-nu-name" name="nutrientsName">${nuList.nutrientsName}</div>
                             <div class="main-nu-info" name="nutrientsInfo">${nuList.nutrientsInfo}</div>
                             <div class="main-nu-effect" name="nutrientsEffect">${nuList.nutrientsEffect}</div>
-                        </a>
+                        </a> 
                     </div>
+				</c:forEach>
+	  			</c:when> 	
+				</c:choose>
                 </div>
+                 
             </div>
+            
         </div>
+        
         <div class="main-nu-button">
             <span class="main-num-button1"></span>
             <span class="main-num-button2"></span>
             <span class="main-num-button3"></span>
         </div>
-        
-        </c:forEach>
-        </c:when>    
-      </c:choose>
     </section>
 
     <!-- 병원찾기 -->

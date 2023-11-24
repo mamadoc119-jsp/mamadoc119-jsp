@@ -18,16 +18,13 @@ public class LogoutOkController implements Execute {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		System.out.println("로그아웃 실행");
+		Result result = new Result();
 		
-		try {
-			request.getRequestDispatcher("/index.jsp").forward(request, response);
-		} catch (ServletException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
-		return null;
+		result.setRedirect(false);
+		result.setPath("/");
+		
+		return result;
 	}
 
 }
