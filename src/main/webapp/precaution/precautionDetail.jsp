@@ -34,17 +34,20 @@
             <div style="display: flex;justify-content: end;margin: 0 10px 10px 10px;">
             
                 <!-- 수정 -->
+                <c:if test="${sessionScope.doctorNumber == precaution.doctorNumber}">
                 <form action="${pageContext.request.contextPath}/precaution/precautionModify.pr?precautionNumber=${precautionNumber}">
                 <input type = "hidden" value = "${precaution.precautionNumber}" name="precautionNumber"/>
-				
                     <button class="modify-btn">수정</button>
                 </form>
+                </c:if>
+                
                 <!-- 삭제 -->
-                <form action="${pageContext.request.contextPath}/precaution/precautionDeleteOk.pr?precautionNumber=${precautionNumber}" onsubmit="return removeMsg();">
+                <c:if test="${sessionScope.doctorNumber == precaution.doctorNumber}">
+                <form action="${pageContext.request.contextPath}/precaution/precautionDeleteOk.pr?precautionNumber=${precautionNumber}" onsubmit="return removeMsg();">              
                 <input type = "hidden" value = "${precaution.precautionNumber}" name="precautionNumber"/>
-				
                     <button class="remove-btn">삭제</button>
                 </form>
+                </c:if>
             </div>
         </div>
     </div>
