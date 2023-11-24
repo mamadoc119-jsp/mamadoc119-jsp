@@ -111,13 +111,14 @@
 		
 	
 	<servlet>
-		<servlet-name>MainPage</servlet-name>
-		<servlet-class>com.mama.doc.ma.MainPageFrontController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>MainPage</servlet-name>
-		<url-pattern></url-pattern>
-	</servlet-mapping>
-	
+
+        <servlet-name>MainPage</servlet-name>
+        <servlet-class>com.mama.doc.ma.MainPageFrontController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MainPage</servlet-name>
+        <url-pattern></url-pattern>
+    </servlet-mapping>
 	
 </web-app>

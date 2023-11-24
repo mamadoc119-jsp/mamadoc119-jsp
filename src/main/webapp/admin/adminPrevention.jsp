@@ -66,7 +66,7 @@
                 <div class="title"><c:out value="${adPr.precautionTitle}"/></div>
                 <div class="date"><c:out value="${adPr.precautionDate}"/></div>
                 <div class="sortation">
-                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/precaution/precautionDetail.jsp'">보기</button> <!--클릭 시 예방상담 상세페이지로 이동-->
+                    <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/precaution/precautionDetailOk.pr?precautionNumber=${adPr.precautionNumber}'">보기</button> <!--클릭 시 예방상담 상세페이지로 이동-->
                     <button class="remove-btn" onclick="deleteDo(${adPr.precautionNumber})">삭제</button>
                 </div>
             </div>

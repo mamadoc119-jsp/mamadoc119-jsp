@@ -79,7 +79,7 @@
                 <div class="title"><c:out value="${adClinic.clinicTitle}"/></div>
                 <div class="date"><c:out value="${adClinic.clinicDate}"/></div>
                 <div class="sortation">
-                   <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/counselingCenter/counselingCenterDetail.jsp'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
+                   <button class="show-btn" onclick="location.href='${pageContext.request.contextPath}/clinic/clinicDetailOk.cl?clinicNumber=${adClinic.clinicNumber}'">보기</button><!--상세버튼 클릭 시 해당 게시물의 상세페이지로 이동-->
                     <button class="remove-btn" onclick="deleteDo(${adClinic.clinicNumber})">삭제</button>
                 </div>
             </div>

@@ -10,7 +10,16 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/precautionDetail.css">
 </head>
 <body>
-<jsp:include page="../include/header.jsp" />
+<!-- 헤더 -->
+<c:choose>
+       <c:when test="${empty sessionScope}">
+           <jsp:include page="../include/header.jsp" />
+       </c:when>
+       <c:otherwise>
+       
+           <jsp:include page="../include/headerLogin.jsp" />
+       </c:otherwise>
+   </c:choose>
     <div style="display: flex;margin-top: 200px;margin-bottom: 170px;justify-content: center;">
     <input type = "hidden" value = "${precaution.precautionNumber}"/>
         <div style="width: 900px;display: flex;flex-direction: column;">
