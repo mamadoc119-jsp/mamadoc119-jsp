@@ -87,7 +87,7 @@ function lineMove() {
 let slideNuLists = $('.main-nu-bannerList');
 let slideNuWidth = 1300;
 let currentNuIdx = 0;
-let slideNuCnt = slideNuLists.length;
+let slideNuCnt = 3;
 let button1 = $('.main-num-button1');
 let button2 = $('.main-num-button2');
 let button3 = $('.main-num-button3');
@@ -147,6 +147,8 @@ button3.on('click', function(){
 
 function slideNuInterval() {
     currentNuIdx++;
+    console.log("slideNuCnt : "+slideNuCnt);
+    console.log("currentNuIdx : "+currentNuIdx);
     currentNuIdx = currentNuIdx === slideNuCnt ? 0 : currentNuIdx;
     slideNuLists.css('left', -(currentNuIdx * slideNuWidth));
     checkButton();

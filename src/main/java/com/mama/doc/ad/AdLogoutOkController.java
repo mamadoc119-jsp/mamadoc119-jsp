@@ -24,7 +24,7 @@ public class AdLogoutOkController implements Execute {
 		System.out.println("실행");
 		
 		result.setRedirect(false);
-		result.setPath("/admin/adminLogin.ad");
+		result.setPath("/adminLogin.ad");
 			
 		return result;
 		
