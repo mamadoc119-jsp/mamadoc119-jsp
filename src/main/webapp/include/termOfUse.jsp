@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,14 +9,15 @@
 <title>개인정보처리방침</title>
 </head>
 <body>
-<c:if test="${sessionScope.doctorNumber == null && sessionScope.memberNumber == null}">
+
+ <c:if test="${empty sessionScope.doctorNumber  &&empty sessionScope.memberNumber}">
 	<jsp:include page="/include/header.jsp" />
 </c:if>
-<c:if test="${sessionScope.doctorNumber != null || sessionScope.memberNumber != null}">
+<c:if test="${not empty sessionScope.doctorNumber ||not empty sessionScope.memberNumber}">
 	<jsp:include page="/include/headerLogin.jsp" />
-</c:if> 
+</c:if>
    <!-- head -->
-   <div class="pophead" style="display: flex; justify-content:center; 
+   <div class="pophead" style=" justify-content:center; 
    margin-top:200px; margin-bottom:5%;">
       <h1>개인정보처리방침</h1>
    </div>
