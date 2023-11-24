@@ -38,6 +38,7 @@ public class LoginOkController implements Execute {
 			// 회원 정보를 세션에 저장
 			HttpSession session = request.getSession();
 			session.setAttribute("doctorNumber", doctor.getDoctorNumber());
+			session.setAttribute("doctorStatus", doctor.getDoctorStatus());
 			response.sendRedirect(request.getContextPath());
 		} catch (Exception e) {
 			// 예외 처리 로직 추가

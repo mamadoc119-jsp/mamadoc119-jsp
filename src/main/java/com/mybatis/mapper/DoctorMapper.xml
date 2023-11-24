@@ -51,7 +51,7 @@
 	
 	<!-- 로그인 -->
 	<select id="login" parameterType="DoctorDTO" resultType="DoctorDTO">
-		select doctor_number
+		select doctor_number, doctor_status
 		from mamadoc_doctor
 		where doctor_email = #{doctorEmail} and doctor_password = #{doctorPassword}
 	</select>
