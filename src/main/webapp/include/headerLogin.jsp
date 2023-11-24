@@ -15,7 +15,7 @@
 <header>
     <div class="main-header-container">
         <div class="main-header-logo">
-            <a href="${pageContext.request.contextPath}/index.jsp" class="main-logo-tag">
+            <a href="${pageContext.request.contextPath}/" class="main-logo-tag">
                 <img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="main-header-logo"
                 class="main-logo-img">
             </a>
@@ -35,7 +35,7 @@
                     <a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr" class="main-category-tag">정보놀이터</a>
                 </li>
                 <li class="main-header-category-list">
-                    <a href="${pageContext.request.contextPath}/noticeList.adno" class="main-category-tag">공지사항</a>
+                    <a href="${pageContext.request.contextPath}/notice/noticeList.adno" class="main-category-tag">공지사항</a>
                 </li>
             </ul>
         </nav>

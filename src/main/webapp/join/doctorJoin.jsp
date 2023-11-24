@@ -11,8 +11,15 @@
     <script defer src="${pageContext.request.contextPath}/resources/js/doctorJoin.js"></script>
 </head>
 <body>
-	<!-- 헤더(로그아웃) -->
-	<jsp:include page="../include/header.jsp" />
+	<!-- 헤더 -->
+<c:choose>
+       <c:when test="${empty sessionScope}">
+           <jsp:include page="../include/header.jsp" />
+       </c:when>
+       <c:otherwise>
+           <jsp:include page="../include/headerLogin.jsp" />
+       </c:otherwise>
+   </c:choose>
 		
 	<!-- 의료인 회원가입 페이지 -->
 	<form class="join" action="/mamadoc/joinOk.do" id="form" method ="post" enctype="multipart/form-data">
