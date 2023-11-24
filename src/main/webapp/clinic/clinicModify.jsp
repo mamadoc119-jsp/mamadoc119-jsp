@@ -17,7 +17,7 @@
         <div style="width: 900px;display: flex;flex-direction: column;">
 			<div style="font-size: 45px;font-weight: bolder;margin-bottom: 30px;padding-left: 10px;">상담소</div>
             <c:set var="clinic" value ="${clinic}"/>
-            <form action="${pageContext.request.contextPath}/clinic/clinicModifyOk.cl" onsubmit="return modifyMsg();">
+            <form action="${pageContext.request.contextPath}/clinic/clinicModifyOk.cl"  method="post" onsubmit="return modifyMsg();">
                <input type="hidden" name="clinicNumber" value="${clinic.getClinicNumber()}">
                
                 <!-- 제목/등록날짜 -->
