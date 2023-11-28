@@ -10,17 +10,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMain.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminHeader.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminMC.css"/>
-    <style>
-  @font-face {
-    font-family: 'Giants-Inline';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Giants-Inline.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-* {
-	     font-family: 'Giants-Inline';
-}
-    </style>
     
 
 </head>
