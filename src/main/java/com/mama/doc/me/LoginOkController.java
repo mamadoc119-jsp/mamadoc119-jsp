@@ -30,7 +30,7 @@ public class LoginOkController implements Execute {
 			member = memberDAO.login(memberDTO);
 			
 			if (member == null) {
-				String scriptId = "<script>alert('이메일과 비밀번호가 일치하지 않습니다.); location.href='" + request.getContextPath() + "/login/memberLogin.jsp';</script>";
+				String scriptId = "<script>alert('이메일과 비밀번호가 일치하지 않습니다.'); location.href='" + request.getContextPath() + "/login/memberLogin.jsp';</script>";
 				response.getWriter().println(scriptId);
 				return null;
 			}

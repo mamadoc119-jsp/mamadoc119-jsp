@@ -50,8 +50,12 @@
 		
 				<!-- 비밀번호 찾기 양식 -->
 		        <div class="changePw-newPw">
-		        	<h5>변경 할 비밀번호*</h5>
-		            <input type="password" class="input" id="pw" placeholder=" 변경 할 비밀번호를 입력해주세요." name="doctorPassword" required>
+		        	<div style="display: flex;justify-content: space-between;">
+			        	<h5>변경 할 비밀번호*</h5>
+			        	<h5 class="pw-no">8자리 이상 영문 대소문자 포함</h5>
+	    				<h5 class="pw-yes">사용가능한 비밀번호입니다</h5>
+	    			</div>
+		            <input type="password" class="input" id="pw" placeholder="변경 할 비밀번호를 입력해주세요." name="doctorPassword" required>
 		        </div>
 		
 		        <div class="changePw-ckPw">
@@ -60,7 +64,7 @@
 		        		<h5 class="pw-no" style="color: red;display: none;">비밀번호가 일치하지 않습니다</h5>
 		    			<h5 class="pw-yes" style="color: blue;display: none;">비밀번호가 일치합니다</h5>
 		        	</div>
-		            <input type="password" class="input" id="check-pw" placeholder=" 변경 할 비밀번호를 다시 한번 입력해주세요." required>
+		            <input type="password" class="input" id="check-pw" placeholder="변경 할 비밀번호를 다시 한번 입력해주세요." required>
 		        </div>
 		        
 		     	<!-- 비밀번호 찾기 확인 버튼 -->

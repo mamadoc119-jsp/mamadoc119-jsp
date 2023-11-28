@@ -31,12 +31,12 @@
 			<!-- 본인 인증 양식 -->
             <div class="ckMember-email">
             	<h5>이메일*</h5>
-                <input type="text" class="input" placeholder=" 회원가입 시 입력했던 이메일을 입력해주세요." name="doctorEmail" required>
+                <input type="text" class="input" placeholder="회원가입 시 입력했던 이메일을 입력해주세요." name="doctorEmail" required>
             </div>
 
             <div class="ckMember-code">
             	<h5>이름*</h5>
-                <input type="text" class="input" placeholder=" 회원가입 시 입력했던 이름을 입력해주세요." name="doctorName" required>
+                <input type="text" class="input" placeholder="회원가입 시 입력했던 이름을 입력해주세요." name="doctorName" required>
             </div>
 
          	<!-- 본인 인증 확인 버튼 -->

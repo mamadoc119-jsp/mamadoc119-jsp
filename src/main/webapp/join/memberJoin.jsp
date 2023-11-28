@@ -28,16 +28,16 @@
 			
 			    <div class="join-name">
 			    	<h5>성명*</h5>
-			        <input type="text" name="memberName" class="bt-non" placeholder=" 이름 입력" required>
+			        <input type="text" name="memberName" class="bt-non" placeholder="이름 입력" required>
 			    </div>
 			
 			    <div class="join-email">
 			    	<div style="display: flex;justify-content: space-between;">
 		    			<h5>이메일*</h5>
-		    			<h5 class="email-no" style="color: red;display: none;">중복된 이메일입니다</h5>
-	    				<h5 class="email-yes" style="color: blue;display: none;">사용가능한 이메일입니다</h5>
+		    			<h5 class="email-no">중복된 이메일입니다</h5>
+	    				<h5 class="email-yes">사용가능한 이메일입니다</h5>
 	    			</div>
-			        <input type="email" name="memberEmail" class="input" id="memberEmail" placeholder=" 이메일 입력" required>
+			        <input type="email" name="memberEmail" class="input" id="memberEmail" placeholder="이메일 입력" required>
 			        <button class="bt-sendcode" type="button" id="emailBtn">중복확인</button>
 			    </div>
 			
@@ -54,35 +54,39 @@
 			    <div class="join-nickname">
 			    	<div style="display: flex;justify-content: space-between;">
 	    				<h5>닉네임*</h5>
-	    				<h5 class="nick-no" style="color: red;display: none;">중복된 닉네임입니다</h5>
-	    				<h5 class="nick-yes" style="color: blue;display: none;">사용가능한 닉네임입니다</h5>
+	    				<h5 class="nick-no">중복된 닉네임입니다</h5>
+	    				<h5 class="nick-yes">사용가능한 닉네임입니다</h5>
 	    			</div>
-			        <input type="text" name="memberNickname" class="input" id="check-nickname" placeholder=" 닉네임 입력" required>
+			        <input type="text" name="memberNickname" class="input" id="check-nickname" placeholder="닉네임 입력" required>
 			        <button class="bt-nickname" type="button" id="nickNameBtn">중복확인</button>
 			    </div>
 			
 			    <div class="join-pw">
-			    	<h5>비밀번호*</h5>
-			        <input type="password" name="memberPassword" class="bt-non" id="pw" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" required>
+			    	<div style="display: flex;justify-content: space-between;">
+			    		<h5>비밀번호*</h5>
+			    		<h5 class="pw-no">8자리 이상 영문 대소문자 포함</h5>
+	    				<h5 class="pw-yes">사용가능한 비밀번호입니다</h5>
+			    	</div>
+			        <input type="password" name="memberPassword" class="bt-non" id="pw" placeholder="8자리 이상 숫자 + 영문 대소문자 포함" required>
 			    </div>
 			
 			    <div class="join-ckpw">
 			    	<div style="display: flex;justify-content: space-between;">
 	    				<h5>비밀번호 재입력*</h5>
-	    				<h5 class="pw-no" style="color: red;display: none;">비밀번호가 일치하지 않습니다</h5>
-	    				<h5 class="pw-yes" style="color: blue;display: none;">비밀번호가 일치합니다</h5>
+	    				<h5 class="pwck-no">비밀번호가 일치하지 않습니다</h5>
+	    				<h5 class="pwck-yes">비밀번호가 일치합니다</h5>
 	    			</div>
-			        <input type="password" class="bt-non" id="check-pw" placeholder=" 비밀번호를 한번 더 입력해주세요." required>
+			        <input type="password" class="bt-non" id="check-pw" placeholder="비밀번호를 한번 더 입력해주세요." required>
 			    </div>
 			
 			    <div class="join-zipcode">
 			    	<h5>우편번호*</h5>
-			        <input type="text" name="memberPostCode" class="address-code" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" readonly>
+			        <input type="text" name="memberPostCode" class="address-code" id="sample6_postcode" placeholder="우편번호(주소찾기로 검색해주세요.)" readonly>
 			        <button class="bt-findzipcode" type="button" onclick="sample6_execDaumPostcode()">주소찾기</button>
 			    </div>
-			    <input type="text" name="memberAddress" class="address-find" id="sample6_address" placeholder=" 주소찾기로 검색해주세요." readonly>
-			    <input type="text" name="memberExtraAddress" class="address" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
-			    <input type="text" name="memberDetailAddress" class="address" id="sample6_detailAddress" placeholder=" 상세주소를 입력해주세요." required>
+			    <input type="text" name="memberAddress" class="address-find" id="sample6_address" placeholder="주소찾기로 검색해주세요." readonly>
+			    <input type="text" name="memberExtraAddress" class="address" id="sample6_extraAddress" placeholder="참고항목" readonly>
+			    <input type="text" name="memberDetailAddress" class="address" id="sample6_detailAddress" placeholder="상세주소를 입력해주세요." required>
 			</div>
 			<br>
 

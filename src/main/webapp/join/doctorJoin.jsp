@@ -28,16 +28,16 @@
 	
 	    		<div class="join-name">
 	    			<h5>성명*</h5>
-	        		<input type="text" class="bt-non" placeholder=" 이름 입력" name="doctorName" required>
+	        		<input type="text" class="bt-non" placeholder="이름 입력" name="doctorName" required>
 	        	</div>
 	
 	    		<div class="join-email">
 	    			<div style="display: flex;justify-content: space-between;">
 		    			<h5>이메일*</h5>
-		    			<h5 class="email-no" style="color: red;display: none;">중복된 이메일입니다</h5>
-	    				<h5 class="email-yes" style="color: blue;display: none;">사용가능한 이메일입니다</h5>
+		    			<h5 class="email-no">중복된 이메일입니다</h5>
+	    				<h5 class="email-yes">사용가능한 이메일입니다</h5>
 	    			</div>
-	        		<input type="email" class="input" id="doctorEmail" placeholder=" 이메일 입력" name="doctorEmail" required>
+	        		<input type="email" class="input" id="doctorEmail" placeholder="이메일 입력" name="doctorEmail" required>
 	        		<button class="bt-sendcode" type="button" id="emailBtn">중복확인</button>
 	        	</div>
 	
@@ -54,51 +54,55 @@
 	    		<div class="join-nickname">
 	    			<div style="display: flex;justify-content: space-between;">
 	    				<h5>닉네임*</h5>
-	    				<h5 class="nick-no" style="color: red;display: none;">중복된 닉네임입니다</h5>
-	    				<h5 class="nick-yes" style="color: blue;display: none;">사용가능한 닉네임입니다</h5>
+	    				<h5 class="nick-no">중복된 닉네임입니다</h5>
+	    				<h5 class="nick-yes">사용가능한 닉네임입니다</h5>
 	    			</div>
-	        		<input type="text" class="input" id="check-nickname" placeholder=" 닉네임 입력" name="doctorNickname" required>
+	        		<input type="text" class="input" id="check-nickname" placeholder="닉네임 입력" name="doctorNickname" required>
 	        		<button class="bt-nickname" type="button" id="nickNameBtn">중복확인</button>
 	        	</div>
 	
 	    		<div class="join-pw">
-	    			<h5>비밀번호*</h5>
-	        		<input type="password" class="bt-non" id="pw" placeholder=" 6자리 이상 숫자 + 영문 대소문자 포함" name="doctorPassword" required>
+	    			<div style="display: flex;justify-content: space-between;">
+	    				<h5>비밀번호*</h5>
+	    				<h5 class="pw-no">8자리 이상 영문 대소문자 포함</h5>
+	    				<h5 class="pw-yes">사용가능한 비밀번호입니다</h5>
+	    			</div>
+	        		<input type="password" class="bt-non" id="pw" placeholder="8자리 이상 숫자 + 영문 대소문자 포함" name="doctorPassword" required>
 	        	</div>
 	
 	    		<div class="join-ckpw">
 	    			<div style="display: flex;justify-content: space-between;">
 	    				<h5>비밀번호 재입력*</h5>
-	    				<h5 class="pw-no" style="color: red;display: none;">비밀번호가 일치하지 않습니다</h5>
-	    				<h5 class="pw-yes" style="color: blue;display: none;">비밀번호가 일치합니다</h5>
+	    				<h5 class="pwck-no">비밀번호가 일치하지 않습니다</h5>
+	    				<h5 class="pwck-yes">비밀번호가 일치합니다</h5>
 	    			</div>
-	        		<input type="password" class="bt-non" id="check-pw" placeholder=" 비밀번호를 한번 더 입력해주세요." required>
+	        		<input type="password" class="bt-non" id="check-pw" placeholder="비밀번호를 한번 더 입력해주세요." required>
 	        	</div>
 	
 	        	<div class="join-zipcode">
 	        		<h5>근무지 주소*</h5>
-	            	<input type="text" class="address-code" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" name="doctorPostCode" readonly>
+	            	<input type="text" class="address-code" id="sample6_postcode" placeholder="우편번호(주소찾기로 검색해주세요.)" name="doctorPostCode" readonly>
 	            	<button class="bt-findzipcode" type="button" onclick="sample6_execDaumPostcode()">주소찾기</button>
 	            </div>
-	            <input type="text" class="address-find" id="sample6_address" placeholder=" 주소찾기로 검색해주세요." name="doctorAddress" readonly>
-	            <input type="text" class="address" id="sample6_extraAddress" placeholder=" 참고항목" name="doctorExtraAddress" readonly>
-	            <input type="text" class="address" id="sample6_detailAddress" placeholder=" 상세주소를 입력해주세요." name="doctorDetailAddress">
+	            <input type="text" class="address-find" id="sample6_address" placeholder="주소찾기로 검색해주세요." name="doctorAddress" readonly>
+	            <input type="text" class="address" id="sample6_extraAddress" placeholder="참고항목" name="doctorExtraAddress" readonly>
+	            <input type="text" class="address" id="sample6_detailAddress" placeholder="상세주소를 입력해주세요." name="doctorDetailAddress">
 			</div>
 	        <br>
 	    
 	    	<div class="join-license-number">
 	    		<div style="display: flex;justify-content: space-between;">
 	    			<h5>의사면허번호*</h5>
-	    			<h5 class="license-no" style="color: red;display: none;">중복된 면허번호입니다</h5>
-	    			<h5 class="license-yes" style="color: blue;display: none;">사용가능한 면허번호입니다</h5>
+	    			<h5 class="license-no">중복된 면허번호입니다</h5>
+	    			<h5 class="license-yes">사용가능한 면허번호입니다</h5>
 	    		</div>
-	        	<input type="text" class="input" id="check-license" placeholder=" 의사면허번호를 입력해주세요." name="doctorLicense" required>
+	        	<input type="text" class="input" id="check-license" placeholder="의사면허번호를 입력해주세요." name="doctorLicense" required>
 	        	<button class="bt-license" type="button" id="licenseBtn">중복확인</button>
 	        </div>
 	
 	    	<div class="join-major">
 	    		<h5>전공*</h5>
-	        	<input type="text" class="bt-non" placeholder=" 전공을 입력해주세요." name="doctorMajor" required>
+	        	<input type="text" class="bt-non" placeholder="전공을 입력해주세요." name="doctorMajor" required>
 	        </div>
 	
 	    	<div class="join-file">
