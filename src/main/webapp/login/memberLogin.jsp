@@ -25,12 +25,12 @@
 				<!-- 일반 회원 로그인 양식 -->
 	    		<div class="login-email">
 	    			<h5>이메일</h5>
-	        		<input type="email" class="input" placeholder=" 이메일" name="memberEmail" required>
+	        		<input type="email" class="input" placeholder="이메일" name="memberEmail" required>
 	        	</div>
 	
 	    		<div class="login-pw">
 	    			<h5>비밀번호</h5>
-	        		<input type="password" class="input" placeholder=" 비밀번호" name="memberPassword" required>
+	        		<input type="password" class="input" placeholder="비밀번호" name="memberPassword" required>
 	        	</div>
 	        	<br>
 	

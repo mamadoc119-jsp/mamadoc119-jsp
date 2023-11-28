@@ -42,22 +42,22 @@
     	<div class="join-nicknames">
     		<div style="display: flex;justify-content: space-between;">
 	    		<h5>닉네임*</h5>
-	    		<h5 class="nick-no" style="color: red;display: none;">중복된 닉네임입니다</h5>
-	    		<h5 class="nick-yes" style="color: blue;display: none;">사용가능한 닉네임입니다</h5>
+	    		<h5 class="nick-no" style="color: #f95a00;display: none;">중복된 닉네임입니다</h5>
+	    		<h5 class="nick-yes" style="color: #1cd6ff;display: none;">사용가능한 닉네임입니다</h5>
 	   		</div>
-        	<input type="text" class="join-nickname" id="check-nickname" placeholder=" 닉네임 입력" value="${inform.memberNickname}" name="memberNickname" required>
+        	<input type="text" class="join-nickname" id="check-nickname" placeholder="닉네임 입력" value="${inform.memberNickname}" name="memberNickname" required>
         	<input type="hidden" id="hidden-nick" value="${inform.memberNickname}">
         	<button type="button" class="bt-certification" id="nickNameBtn">중복확인</button>
         </div>
 
         <div class="join-zipcodes">
         	<h5>우편번호*</h5>
-            <input type="text" class="join-zipcode ads" id="sample6_postcode" placeholder=" 우편번호(주소찾기로 검색해주세요.)" value="${inform.memberPostCode}" name="memberPostCode" readonly>
+            <input type="text" class="join-zipcode ads" id="sample6_postcode" placeholder="우편번호(주소찾기로 검색해주세요.)" value="${inform.memberPostCode}" name="memberPostCode" readonly>
             <button type="button" class="bt-findzipcode" onclick="sample6_execDaumPostcode()">주소찾기</button>
         </div>
-        <input type="text" class="join-address ad" id="sample6_address" placeholder=" 주소찾기로 검색해주세요." value="${inform.memberAddress}" name="memberAddress" readonly>
-        <input type="text" class="join-address-extra ad" id="sample6_extraAddress" placeholder=" 참고항목" value="${inform.memberExtraAddress}" name="memberExtraAddress" readonly>
-        <input type="text" class="join-address-detail ad" id="sample6_detailAddress" placeholder=" 상세주소를 입력해주세요." value="${inform.memberDetailAddress}" name="memberDetailAddress" required>
+        <input type="text" class="join-address ad" id="sample6_address" placeholder="주소찾기로 검색해주세요." value="${inform.memberAddress}" name="memberAddress" readonly>
+        <input type="text" class="join-address-extra ad" id="sample6_extraAddress" placeholder="참고항목" value="${inform.memberExtraAddress}" name="memberExtraAddress" readonly>
+        <input type="text" class="join-address-detail ad" id="sample6_detailAddress" placeholder="상세주소를 입력해주세요." value="${inform.memberDetailAddress}" name="memberDetailAddress" required>
         <br>
 
 		<!-- 회원 정보 수정 완료 버튼 -->

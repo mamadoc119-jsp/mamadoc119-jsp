@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'omyu_pretty';
+    font-size: 18px;
+}
+
 form{
     margin-bottom: 170px;
     margin-top: 200px;
@@ -17,6 +29,14 @@ form{
     margin: 20px;
 }
 
+.login-img{
+	font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .member-img, .doctor-img{
     width: 200px;
     height: 200px;
@@ -26,20 +46,31 @@ form{
 .login-text{
     font-size: 18px;
     font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .doctor{
-    margin: 40px 40px 40px 120px;
+	text-align: center;
     position: relative;
+    color: black;
+}
+
+.doctor:hover{
+	color: #f9bb00;
 }
 
 .member{
-    margin: 40px 40px 40px 80px;
+    text-align: center;
     position: relative;
+    color: black;
+}
+
+.member:hover{
+	color: #f9bb00;
 }
 
 a{
     text-decoration: none;
 }
-
-

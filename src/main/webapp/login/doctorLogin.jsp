@@ -26,12 +26,12 @@
 				<!-- 의료인 로그인 양식 -->
 	    		<div class="login-email">
 	    			<h5>이메일</h5>
-	        		<input type="email" class="input" placeholder=" 이메일" name="doctorEmail" required>
+	        		<input type="email" class="input" placeholder="이메일" name="doctorEmail" required>
 	        	</div>
 	
 	    		<div class="login-pw">
 	    			<h5>비밀번호</h5>
-	        		<input type="password" class="input" placeholder=" 비밀번호" name="doctorPassword" required>
+	        		<input type="password" class="input" placeholder="비밀번호" name="doctorPassword" required>
 	        	</div>
         		<br>
 

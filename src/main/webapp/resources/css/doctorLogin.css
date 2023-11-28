@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'omyu_pretty';
+    font-size: 18px;
+}
+
 form{
     margin-bottom: 170px;
     margin-top: 200px;
@@ -23,9 +35,10 @@ form{
 
 
 .input{
-   width: 416px;
+   width: 396px;
    height: 40px;
    margin: 15px 0px 20px 0px;
+   padding: 0 10px;
 }
 
 .bt-join{
@@ -117,4 +130,12 @@ form{
 
 a{
     text-decoration: none;
+}
+
+button{
+	font-family: 'omyu_pretty';
+}
+
+input{
+	font-family: 'omyu_pretty';
 }
