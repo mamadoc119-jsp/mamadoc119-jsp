@@ -54,6 +54,18 @@ $('#summernote').summernote({
         ['view', ['fullscreen', 'codeview', 'help']]
     ]
 });
+
+$(document).ready(function () {
+ 
+    var content = $('#summernote').val();
+
+    if (content.trim() === '') {
+        alert('내용을 입력해주세요');
+    }
+});
+
+
+
 </script>
 </body>
 </html>

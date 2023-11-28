@@ -78,7 +78,7 @@
                         <!-- 로그인된 닉네임 -->
                         <div style="margin-top: 10px;margin-left: 10px;font-size: 15px;font-weight: bold;">댓글</div>
                         <!-- 댓글 작성 창 -->
-                        <textarea name="content" placeholder="댓글은 100자까지 작성이 가능합니다."  style="height: 100%;border: none; resize: none;margin: 10px;" class="invert" maxlength="100" ></textarea>
+                        <textarea class="invert"  name="content" placeholder="댓글은 100자까지 작성이 가능합니다."  style="height: 100%;border: none; resize: none;margin: 10px;" maxlength="100" ></textarea>
                         <!-- 댓글 등록 -->
                         <div style="display: flex;justify-content: end;">
                     	    <input id="register" type="button"class="regist-btn"  value="등록"  onclick="comment()"/>
