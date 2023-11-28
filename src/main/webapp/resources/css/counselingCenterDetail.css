@@ -3,6 +3,20 @@
     padding: 0;
 }
 
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'omyu_pretty';
+    font-size : 18px;
+}
+
+
+
 .modify-btn{
     font-size: 15px;
     font-weight: bold;
@@ -16,6 +30,7 @@
     margin-right: 5px;
     margin-top: 10px;
     float: right;
+    font-family: 'omyu_pretty';
 }
 
 .modify-btn:hover{
@@ -37,6 +52,7 @@
     margin-top: 10px;
     float: right;
     margin-right: 5px;
+  font-family: 'omyu_pretty';
     
 }
 
@@ -60,6 +76,7 @@
     border: 2px solid #f9bb00;
     margin-top: 10px;
     float: right;
+      font-family: 'omyu_pretty';
 }
 
 
@@ -100,6 +117,7 @@
     padding: 4px 8px;
     border: 2px solid #1cd6ff;
     display: none;
+      font-family: 'omyu_pretty';
 }
 
 .reply:hover{
@@ -147,6 +165,7 @@
     border: none;
     padding: 4px 8px;
     border: 2px solid #1cd6ff;
+      font-family: 'omyu_pretty';
 }
 
 .reply-modify-btn:hover{
@@ -167,6 +186,6 @@ hr {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-	
-	
+
+
 	
