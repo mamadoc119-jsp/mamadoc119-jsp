@@ -8,6 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/noticeDetail.css">
+    <style>
+    	*{
+    margin: 0;
+    padding: 0;
+	 font-family: 'omyu_pretty';
+	 font-size:18px;
+}
+	@font-face {
+	    font-family: 'omyu_pretty';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+    </style>
 </head>
 <body>
 <!-- 헤더 -->

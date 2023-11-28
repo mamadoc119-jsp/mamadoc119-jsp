@@ -10,6 +10,18 @@
     <title>상담소</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/counselingCenterDetail.css">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	<style>
+	@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+	}
+
+	*{
+    font-family: 'omyu_pretty';
+	}
+	</style>
 </head>
 <body>
 
