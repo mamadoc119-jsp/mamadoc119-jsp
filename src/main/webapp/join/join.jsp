@@ -14,24 +14,23 @@
 	
 	<!-- 회원가입 페이지 -->
     <form class="join">
-    <div class="join-container">
-
-	<!-- 회원가입 제목 -->
-    <h1 class="join-title">회원가입</h1>
-
-	<!-- 회원 가입 이미지 -->
-    <div class="join-img">
-        <a href="/mamadoc/join.me"><img class="member-img" src="${pageContext.request.contextPath}/resources/img/member.png" alt="member"></a>
-        <a href="/mamadoc/join.do"><img class="doctor-img" src="${pageContext.request.contextPath}/resources/img/doctor.png" alt="doctor"></a>
-    </div>
-
-	<!-- 회원 가입 텍스트 -->
-    <div class="join-text">
-        <a href="/mamadoc/join.me"><span class="member">일반 회원가입</span></a>
-        <a href="/mamadoc/join.do"><span class="doctor">의료인 회원가입</span></a>
-    </div>
-    </div>
-</form>
+	    <div class="join-container">
+			<!-- 회원가입 제목 -->
+		    <h1 class="join-title">회원가입</h1>
+			<div style="display: flex; justify-content: space-between;">
+				<!-- 일반 회원 가입 -->
+			    <div class="join-img">
+			        <a href="/mamadoc/join.me"><img class="member-img" src="${pageContext.request.contextPath}/resources/img/member.png" alt="member"></a>
+			        <a href="/mamadoc/join.me"><span class="member">일반 회원가입</span></a>
+			    </div>
+				<!-- 의료인 회원 가입 -->
+			    <div class="join-text">
+			    	<a href="/mamadoc/join.do"><img class="doctor-img" src="${pageContext.request.contextPath}/resources/img/doctor.png" alt="doctor"></a>
+			        <a href="/mamadoc/join.do"><span class="doctor">의료인 회원가입</span></a>
+			    </div>
+		    </div>
+	    </div>
+	</form>
 
 	<!-- footer -->
 	<jsp:include page="../include/footer.jsp" />
