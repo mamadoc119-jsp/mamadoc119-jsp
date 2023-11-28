@@ -24,13 +24,15 @@
     <section class="main-section-banner">
         <div class="main-banner-group">
             <div class="main-banner-list">
-                <img src="${pageContext.request.contextPath}/resources/img/banner1.png" alt="main-banner-img1" class="main-banner-img">
+                <img src="${pageContext.request.contextPath}/resources/img/banner01.png" alt="main-banner-img1" class="main-banner-img">
             </div>
             <div class="main-banner-list">
-                <img src="${pageContext.request.contextPath}/resources/img/banner2.png" alt="main-banner-img2" class="main-banner-img">
+                <img src="${pageContext.request.contextPath}/resources/img/banner02.png" alt="main-banner-img2" class="main-banner-img">
             </div>
             <div class="main-banner-list">
-                <img src="${pageContext.request.contextPath}/resources/img/banner3.png" alt="main-banner-img3" class="main-banner-img">
+            	<a href="${pageContext.request.contextPath}/precaution/precautionListOk.pr">
+                <img src="${pageContext.request.contextPath}/resources/img/banner03.png" alt="main-banner-img3" class="main-banner-img">
+            	</a>
             </div>
         </div>
         <div class="main-banner-arrow">
